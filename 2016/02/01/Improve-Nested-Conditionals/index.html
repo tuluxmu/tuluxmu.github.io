@@ -57,25 +57,19 @@
 
 
 
-<meta name="description" content="1.     保证需要拥有交互效果     $(‘body’).delegate(‘.list’,’click’,function(){});2.     开启一个定时器,一定要记得关掉这个定时器     var timer = setInterval(function(){                    if () {
-     }else if(){
-
-     }else{">
+<meta name="description" content="##Improve Nested ConditionalsHow can we improve and make more efficient nested if statement in javascript.
+&amp;#10;if (color) &amp;#123;&amp;#10;  if (color === &amp;#39;black&amp;#39;) &amp;#123;&amp;#10;    printBlackBackgrou">
 <meta property="og:type" content="article">
-<meta property="og:title" content="小代码の记录">
-<meta property="og:url" content="http://yoursite.com/2016/02/01/小代码の记录/index.html">
+<meta property="og:title" content="Improve Nested Conditionals">
+<meta property="og:url" content="http://yoursite.com/2016/02/01/Improve-Nested-Conditionals/index.html">
 <meta property="og:site_name" content="Lucy's Blog">
-<meta property="og:description" content="1.     保证需要拥有交互效果     $(‘body’).delegate(‘.list’,’click’,function(){});2.     开启一个定时器,一定要记得关掉这个定时器     var timer = setInterval(function(){                    if () {
-     }else if(){
-
-     }else{">
-<meta property="og:updated_time" content="2016-02-01T02:44:44.000Z">
+<meta property="og:description" content="##Improve Nested ConditionalsHow can we improve and make more efficient nested if statement in javascript.
+&amp;#10;if (color) &amp;#123;&amp;#10;  if (color === &amp;#39;black&amp;#39;) &amp;#123;&amp;#10;    printBlackBackgrou">
+<meta property="og:updated_time" content="2016-02-01T03:29:49.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小代码の记录">
-<meta name="twitter:description" content="1.     保证需要拥有交互效果     $(‘body’).delegate(‘.list’,’click’,function(){});2.     开启一个定时器,一定要记得关掉这个定时器     var timer = setInterval(function(){                    if () {
-     }else if(){
-
-     }else{">
+<meta name="twitter:title" content="Improve Nested Conditionals">
+<meta name="twitter:description" content="##Improve Nested ConditionalsHow can we improve and make more efficient nested if statement in javascript.
+&amp;#10;if (color) &amp;#123;&amp;#10;  if (color === &amp;#39;black&amp;#39;) &amp;#123;&amp;#10;    printBlackBackgrou">
 
 
 
@@ -93,7 +87,7 @@
   };
 </script>
 
-  <title> 小代码の记录 | Lucy's Blog </title>
+  <title> Improve Nested Conditionals | Lucy's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -251,7 +245,7 @@
             
             
               
-                小代码の记录
+                Improve Nested Conditionals
               
             
           </h1>
@@ -263,7 +257,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-01T10:44:31+08:00" content="2016-02-01">
+            <time itemprop="dateCreated" datetime="2016-02-01T11:28:43+08:00" content="2016-02-01">
               2016-02-01
             </time>
           </span>
@@ -274,8 +268,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/02/01/小代码の记录/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/小代码の记录/" itemprop="commentsCount"></span>
+                <a href="/2016/02/01/Improve-Nested-Conditionals/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/Improve-Nested-Conditionals/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -296,40 +290,15 @@
       
 
       
-        <p>1.<br>     保证需要拥有交互效果<br>     $(‘body’).delegate(‘.list’,’click’,function(){});<br>2.<br>     开启一个定时器,一定要记得关掉这个定时器<br>     var timer = setInterval(function(){<br>                    if () {</p>
-<pre><code>     }else if(){
+        <p>##Improve Nested Conditionals<br>How can we improve and make more efficient nested if statement in javascript.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#10;if (color) &#123;&#10;  if (color === &#39;black&#39;) &#123;&#10;    printBlackBackground();&#10;  &#125; else if (color === &#39;red&#39;) &#123;&#10;    printRedBackground();&#10;  &#125; else if (color === &#39;blue&#39;) &#123;&#10;    printBlueBackground();&#10;  &#125; else if (color === &#39;green&#39;) &#123;&#10;    printGreenBackground();&#10;  &#125; else &#123;&#10;    printYellowBackground();&#10;  &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>One way to improve the nested if statement would be using the switch statement. Although it is less verbose and is more ordered, It’s not recommended to use it because it’s so difficult to debug errors, here’s why.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#10;switch(color) &#123;&#10;  case &#39;black&#39;:&#10;    printBlackBackground();&#10;    break;&#10;  case &#39;red&#39;:&#10;    printRedBackground();&#10;    break;&#10;  case &#39;blue&#39;:&#10;    printBlueBackground();&#10;    break;&#10;  case &#39;green&#39;:&#10;    printGreenBackground();&#10;    break;&#10;  default:&#10;    printYellowBackground();&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>But what if we have a conditional with several checks in each statement? In this case, if we like to do less verbose and more ordered, we can use the conditional switch. If we pass true as parameter to the switch statement, It allows us to put a conditional in each case.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#10;switch(true) &#123;&#10;  case (typeof color === &#39;string&#39; &#38;&#38; color === &#39;black&#39;):&#10;    printBlackBackground();&#10;    break;&#10;  case (typeof color === &#39;string&#39; &#38;&#38; color === &#39;red&#39;):&#10;    printRedBackground();&#10;    break;&#10;  case (typeof color === &#39;string&#39; &#38;&#38; color === &#39;blue&#39;):&#10;    printBlueBackground();&#10;    break;&#10;  case (typeof color === &#39;string&#39; &#38;&#38; color === &#39;green&#39;):&#10;    printGreenBackground();&#10;    break;&#10;  case (typeof color === &#39;string&#39; &#38;&#38; color === &#39;yellow&#39;):&#10;    printYellowBackground();&#10;    break;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>But we must always avoid having several checks in every condition, avoiding use of switch as far as possible and take into account that the most efficient way to do this is through an object.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#10;var colorObj = &#123;&#10;  &#39;black&#39;: printBlackBackground,&#10;  &#39;red&#39;: printRedBackground,&#10;  &#39;blue&#39;: printBlueBackground,&#10;  &#39;green&#39;: printGreenBackground,&#10;  &#39;yellow&#39;: printYellowBackground&#10;&#125;;&#10;&#10;if (color &#38;&#38; colorObj.hasOwnProperty(color)) &#123;&#10;  colorObj[color]();&#10;&#125;</span><br></pre></td></tr></table></figure>
 
-     }else{
-          clearInterval(timer);
-     }
-},1000);
-</code></pre><p>3.<br>     当我在利用一个url的参数进行操作的时候<br>     var options_number = option.href.indexOf(‘?’),<br>                    options =  option.href.substr(options_number)<br>                    //“?app_id=01&amp;lang=zh&amp;device_id=F188AB23-D252-4013-93FA-EE1B9448EF29&amp;platform=ios&amp;channelID=AppStore&amp;themeid=0&amp;v=5.3.1&amp;auth=3.IqYrI2oO0owNFYGjipdLv3MUkJzfQtp1QMeCrAvnIoQ%3D”<br>4.判断是否滚动到底部<br>scroll:function(){<br>               var i = document,<br>                   d = screen.height,<br>                      h = i.documentElement.scrollTop == 0 ? i.body.scrollTop: i.documentElement.scrollTop,<br>                      f = i.documentElement.scrollTop == 0 ? i.body.scrollHeight: i.documentElement.scrollHeight,<br>                      _this = this;<br>                    if(h + d &gt;= f ){<br>                         //滚动到底部所要进行的操作<br>                    }<br>          }<br>5.通过滚动到底部加载更多的数据<br>//<a href="http://coin.seeyouyima.com/luck/draw-zero?app_id=01&amp;lang=zh&amp;device_id=F188AB23-D252-4013-93FA-EE1B9448EF29&amp;platform=ios&amp;channelID=AppStore&amp;themeid=0&amp;v=5.3.1&amp;auth=3.IqYrI2oO0owNFYGjipdLv3MUkJzfQtp1QMeCrAvnIoQ%3D" target="_blank" rel="external">http://coin.seeyouyima.com/luck/draw-zero?app_id=01&amp;lang=zh&amp;device_id=F188AB23-D252-4013-93FA-EE1B9448EF29&amp;platform=ios&amp;channelID=AppStore&amp;themeid=0&amp;v=5.3.1&amp;auth=3.IqYrI2oO0owNFYGjipdLv3MUkJzfQtp1QMeCrAvnIoQ%3D</a></p>
-<p><script><br>        var page=0;<br>        window.onscroll = function(){<br>            scroll();<br>        };<br>        function scroll(){<br>            var i = document,<br>                    d = screen.height,<br>                    h = i.documentElement.scrollTop == 0 ? i.body.scrollTop: i.documentElement.scrollTop,<br>                    f = i.documentElement.scrollTop == 0 ? i.body.scrollHeight: i.documentElement.scrollHeight,<br>                    _this = this;<br>            if(h + d &gt;= f &amp;&amp; $(‘.list-more’).html() != ‘没有更多数据了’){<br>                page+=1;<br>                getDate(page);<br>            }<br>        }<br>        function getDate(page){<br>            $.ajax({<br>                type:’GET’,<br>                dataType: ‘json’,<br>                url: href,<br>                data:{‘action’: ‘getData’ , ‘page’ : page},<br>                success:function(data){<br>                    if(data.data == undefined || data.data == null || data.data == ‘’){<br>                         html(‘没有更多数据了’);<br>                    }else{<br>                        html(‘加载中…’).show();<br>                        var html = ‘’;<br>                        $.each(data.data,function(commentIndex,comment){</p>
-<pre><code>                        html+=&apos;render the Data&apos;;
-                    });
-
-                    $(html).insertBefore($(&apos;.list-more&apos;));
-                    setTimeout(function(){
-                        _this.judge($(&apos;.list-message-time&apos;));//判断这个时候需要显示的是哪一种状态
-                    },0);
-                    option.list_more.html(&apos;加载更多数据&apos;)
-
-                }
-            },
-            error:function(xhr){
-                if (xhr.responseText) {
-                    var msg = JSON.parse(xhr.responseText);
-                    alert(msg)
-                }
-            }
-
-        })
-
-    }
-&lt;/script&gt;
-</code></pre><p>5.JSON.stringify 语法实例讲解<br>//<a href="http://www.cnblogs.com/ningvsban/p/3660654.html">http://www.cnblogs.com/ningvsban/p/3660654.html</a></p>
-<p>6.$.extend的方法<br>     var result=$.extend({},{name:”Tom”,age:21},{name:”Jerry”,sex:”Boy”})<br>     那么合并后的结果result={name:”Jerry”,age:21,sex:”Boy”}<br>7.判断是否是一个函数<br>        function isFunction(fn) {<br>            return (!!fn&amp;&amp;!fn.nodename&amp;&amp;fn.constructor!=String&amp;&amp;fn.constructor!=RegExp&amp;&amp;fn.constructor!=Array&amp;&amp;/function/i.test(fn+””));<br>        }</p>
-</script></p>
       
     </div>
 
@@ -340,12 +309,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/02/01/Check-if-a-property-is-in-a-Object/" rel="next" title="Check if a property is in a Object">
+                <i class="fa fa-chevron-left"></i> Check if a property is in a Object
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/02/01/webpack学习resources-1/" rel="prev" title="webpack学习resources[1]">
-                webpack学习resources[1] <i class="fa fa-chevron-right"></i>
+              <a href="/2016/02/01/how-to-make-a-good-front-end-developer/" rel="prev" title="how to make a good front-end developer">
+                how to make a good front-end developer <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -372,8 +345,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/02/01/小代码の记录/"
-           data-title="小代码の记录" data-url="http://yoursite.com/2016/02/01/小代码の记录/">
+      <div class="ds-thread" data-thread-key="2016/02/01/Improve-Nested-Conditionals/"
+           data-title="Improve Nested Conditionals" data-url="http://yoursite.com/2016/02/01/Improve-Nested-Conditionals/">
       </div>
     
   </div>

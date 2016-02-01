@@ -57,25 +57,19 @@
 
 
 
-<meta name="description" content="1.     保证需要拥有交互效果     $(‘body’).delegate(‘.list’,’click’,function(){});2.     开启一个定时器,一定要记得关掉这个定时器     var timer = setInterval(function(){                    if () {
-     }else if(){
-
-     }else{">
+<meta name="description" content="#ReactJs与浏览器之间的运作原理React 针对浏览器提供了十分强大的抽象化概念，让你在大部份的情况下不必再直接操作 DOM ，不过有些时候或许还是需要单纯的存取底层的 API(DOM API)，可能是使用第三方函式库或者是已经写好的程序码。
+##关于虚拟 DOMReact 快速的原因是因为它从来不直接影响 DOM。React 会负责在存储器中持续维护一份 DOM 的表现结构。render(">
 <meta property="og:type" content="article">
-<meta property="og:title" content="小代码の记录">
-<meta property="og:url" content="http://yoursite.com/2016/02/01/小代码の记录/index.html">
+<meta property="og:title" content="ReactJs与浏览器之间的运作原理">
+<meta property="og:url" content="http://yoursite.com/2016/02/01/ReactJs与浏览器之间的运作原理/index.html">
 <meta property="og:site_name" content="Lucy's Blog">
-<meta property="og:description" content="1.     保证需要拥有交互效果     $(‘body’).delegate(‘.list’,’click’,function(){});2.     开启一个定时器,一定要记得关掉这个定时器     var timer = setInterval(function(){                    if () {
-     }else if(){
-
-     }else{">
-<meta property="og:updated_time" content="2016-02-01T02:44:44.000Z">
+<meta property="og:description" content="#ReactJs与浏览器之间的运作原理React 针对浏览器提供了十分强大的抽象化概念，让你在大部份的情况下不必再直接操作 DOM ，不过有些时候或许还是需要单纯的存取底层的 API(DOM API)，可能是使用第三方函式库或者是已经写好的程序码。
+##关于虚拟 DOMReact 快速的原因是因为它从来不直接影响 DOM。React 会负责在存储器中持续维护一份 DOM 的表现结构。render(">
+<meta property="og:updated_time" content="2016-02-01T03:39:54.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小代码の记录">
-<meta name="twitter:description" content="1.     保证需要拥有交互效果     $(‘body’).delegate(‘.list’,’click’,function(){});2.     开启一个定时器,一定要记得关掉这个定时器     var timer = setInterval(function(){                    if () {
-     }else if(){
-
-     }else{">
+<meta name="twitter:title" content="ReactJs与浏览器之间的运作原理">
+<meta name="twitter:description" content="#ReactJs与浏览器之间的运作原理React 针对浏览器提供了十分强大的抽象化概念，让你在大部份的情况下不必再直接操作 DOM ，不过有些时候或许还是需要单纯的存取底层的 API(DOM API)，可能是使用第三方函式库或者是已经写好的程序码。
+##关于虚拟 DOMReact 快速的原因是因为它从来不直接影响 DOM。React 会负责在存储器中持续维护一份 DOM 的表现结构。render(">
 
 
 
@@ -93,7 +87,7 @@
   };
 </script>
 
-  <title> 小代码の记录 | Lucy's Blog </title>
+  <title> ReactJs与浏览器之间的运作原理 | Lucy's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -251,7 +245,7 @@
             
             
               
-                小代码の记录
+                ReactJs与浏览器之间的运作原理
               
             
           </h1>
@@ -263,7 +257,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-01T10:44:31+08:00" content="2016-02-01">
+            <time itemprop="dateCreated" datetime="2016-02-01T11:37:25+08:00" content="2016-02-01">
               2016-02-01
             </time>
           </span>
@@ -274,8 +268,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/02/01/小代码の记录/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/小代码の记录/" itemprop="commentsCount"></span>
+                <a href="/2016/02/01/ReactJs与浏览器之间的运作原理/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/ReactJs与浏览器之间的运作原理/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -296,40 +290,14 @@
       
 
       
-        <p>1.<br>     保证需要拥有交互效果<br>     $(‘body’).delegate(‘.list’,’click’,function(){});<br>2.<br>     开启一个定时器,一定要记得关掉这个定时器<br>     var timer = setInterval(function(){<br>                    if () {</p>
-<pre><code>     }else if(){
+        <p>#ReactJs与浏览器之间的运作原理<br>React 针对浏览器提供了十分强大的抽象化概念，让你在大部份的情况下不必再直接操作 DOM ，不过有些时候或许还是需要单纯的存取底层的 API(DOM API)，可能是使用第三方函式库或者是已经写好的程序码。</p>
+<p>##关于虚拟 DOM<br>React 快速的原因是因为它从来不直接影响 DOM。<br>React 会负责在存储器中持续维护一份 DOM 的表现结构。<br>render() 方法负责回传关于 DOM 的描速，React 就能得知其和存储器中结构的差异，接着他会计算出最快的更新方式然后交给浏览器去影响 DOM。<br>此外，React 完整实作了对应的事件系统，所有物件的事件保证符合 W3C 的规范，且关于事件气泡传递(bubbles)的行为在任何浏览器也都一致。<br>甚至可以在 IE8 使用 HTML5 的事件。<br>大多数的时候你的程序操作应该都会 React 所建构的”仿浏览器”的世界里，因为它俱有高效能和相对容易使用。<br>不过有些情况下，你可能会需要存取使用底层基本的 API，例如使用 jQuery 第三方套件，React 提供了一个后门允许你可以直接操作底层的 API。</p>
+<h1 id="Refs__u548C_getDOMNode_28_29"><a href="#Refs__u548C_getDOMNode_28_29" class="headerlink" title="Refs 和 getDOMNode()"></a>Refs 和 getDOMNode()</h1><p>为了与浏览器互动，你需要使用指向 DOM 节点的参考物件。<br>每一个 Mounted 的 React 元件都会有 getDOMNode() 的功能 ，你可以透过呼叫它取得该 DOM 的参考物件。<br>注意：getDOMNode() 只能在元件已经挂载完毕时使用(换句话说这表示该物件已经被渲染放置到 DOM 里了)。如果你尝试在元件尚未挂载完毕前呼叫这个 API 将会发生例外。<br>为了取得 React 元件的参考，你可以使用 this 取得目前元件或者使用 refs，使用 refs 则需要设定一个名称，如下范例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/** @jsx React.DOM */&#10;&#10;var MyComponent = React.createClass(&#123;&#10;  handleClick: function() &#123;&#10;    // &#36879;&#36807;&#21407;&#29983; API &#26126;&#30830;&#30340;&#25351;&#31034; input &#20026; focus &#29366;&#24577;&#12290;&#10;    this.refs.myTextInput.getDOMNode().focus();&#10;  &#125;,&#10;  render: function() &#123;&#10;    // ref &#23646;&#24615;&#26367;&#20803;&#20214;&#22686;&#21152;&#19968;&#20010;&#21442;&#32771;&#28982;&#21518;&#20320;&#23601;&#21487;&#20197;&#22312;&#20803;&#20214;&#25346;&#36733;&#23436;&#27605;&#21518;&#20351;&#29992; `this.refs`&#10;    return (&#10;      &#60;div&#62;&#10;        &#60;input type=&#34;text&#34; ref=&#34;myTextInput&#34; /&#62;&#10;        &#60;input&#10;          type=&#34;button&#34;&#10;          value=&#34;Focus the text input&#34;&#10;          onClick=&#123;this.handleClick&#125;&#10;        /&#62;&#10;      &#60;/div&#62;&#10;    );&#10;  &#125;&#10;&#125;);&#10;&#10;React.renderComponent(&#10;  &#60;MyComponent /&#62;,&#10;  document.getElementById(&#39;example&#39;)&#10;);</span><br></pre></td></tr></table></figure>
+<p>#元件的生命周期</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#20803;&#20214;&#30340;&#29983;&#21629;&#21608;&#26399;&#26377;&#19977;&#20010;&#20027;&#35201;&#30340;&#37096;&#20998;&#65306;&#10;&#62; &#61623;Mounting&#65306;&#20803;&#20214;&#27491;&#20934;&#22791;&#35201;&#34987;&#20889;&#20837; DOM&#10;&#62; &#61623;Updating&#65306;&#20803;&#20214;&#20390;&#27979;&#21040;&#29366;&#24577;&#30340;&#25913;&#21464;&#20934;&#22791;&#37325;&#26032;&#28210;&#26579;&#12290;&#10;&#62; &#61623;Unmounting&#65306;&#20803;&#20214;&#27491;&#35201;&#34987;&#20174; DOM &#20013;&#31227;&#38500;&#12290;&#10;React &#26681;&#25454;&#29983;&#21629;&#21608;&#26399;&#25552;&#20379;&#20102;&#23545;&#24212;&#30340;&#26041;&#27861;(&#20107;&#20214;)&#35753;&#20320;&#21487;&#20197;&#22312;&#23545;&#24212;&#30340;&#38454;&#27573;&#20570;&#19968;&#20123;&#22788;&#29702;&#12290;&#10;Will &#30340;&#26041;&#27861;&#29992;&#22312;&#26576;&#20123;&#29366;&#20917;&#20934;&#22791;&#21457;&#29983;&#20043;&#21069;&#65292;Did &#30340;&#26041;&#27861;&#21017;&#34920;&#31034;&#35813;&#29366;&#20917;&#24050;&#32463;&#21457;&#29983;&#21518;&#12290;&#10;Mounting &#25346;&#36733;&#27969;&#31243;&#10;&#61623;getInitialState()&#65306;&#24403;&#29289;&#20214;&#34987;&#35843;&#29992;&#26102;&#27492;&#26041;&#27861;&#20250;&#22312;&#20889;&#20837; DOM &#20043;&#21069;&#34987;&#35302;&#21457;&#65292;&#36890;&#24120;&#29992;&#26469;&#31649;&#29702;&#29366;&#24577;&#30340;&#20803;&#20214;&#21487;&#20197;&#29992;&#36825;&#20010;&#26041;&#27861;&#21021;&#22987;&#21270;&#19968;&#20123;&#36164;&#26009;&#12290;&#10;&#61623;componentWillMount&#65306;&#24403;&#20803;&#20214;&#20869;&#37096;&#30340;&#32467;&#26500;&#22788;&#29702;&#23436;&#27605;&#20934;&#22791;&#20889;&#20837; DOM &#20043;&#21069;&#35302;&#21457;&#12290;&#10;&#61623;componentDidMount(DOMElement rootNode)&#65306;&#24403;&#20803;&#20214;&#34987;&#20889;&#20837; DOM &#20043;&#21518;&#35302;&#21457;&#12290;&#24403;&#21021;&#22987;&#21270;&#38656;&#35201;&#25805;&#20316; DOM &#20803;&#32032;&#23601;&#21487;&#20197;&#29992;&#36825;&#20010;&#26041;&#27861;&#12290;&#10;Updating &#26356;&#26032;&#27969;&#31243;&#10;&#61623;componentWillReceiveProps(nextProps)&#65306;&#24050;&#25346;&#36733;&#30340;&#20803;&#20214;&#25910;&#21040;&#26032;&#30340; props &#26102;&#34987;&#35302;&#21457;&#12290;&#22312;&#36825;&#20010;&#26041;&#27861;&#37324;&#20320;&#36890;&#24120;&#20250;&#21435;&#27604;&#36739; this.props &#21644; nextProps &#28982;&#21518;&#20877;&#29992; this.setState &#21435;&#25913;&#21464;&#29366;&#24577;&#12290;&#10;&#61623;shouldComponentUpdate(nextProps, nextState)&#65306;&#36825;&#20010;&#20989;&#24335;&#38656;&#35201;&#22238;&#20256;&#19968;&#20010;&#24067;&#23572;&#20540;&#65292;&#24403;&#20803;&#20214;&#21028;&#26029;&#26159;&#21542;&#38656;&#35201;&#26356;&#26032; DOM &#26102;&#20250;&#34987;&#35302;&#21457;&#12290;&#20320;&#21487;&#20197;&#22312;&#36825;&#20010;&#26041;&#27861;&#37324;&#38754;&#21435;&#27604;&#36739; this.props&#65292;this.state&#65292;nextProps&#65292;nextState &#26469;&#20915;&#23450;&#26159;&#21542;&#38656;&#35201;&#26356;&#26032;&#65292;&#22238;&#20256; false &#21017;&#20250;&#36339;&#36807;&#27492;&#27425;&#35302;&#21457;&#19981;&#26356;&#26032;&#65292;&#22914;&#26524;&#20320;&#20160;&#20040;&#37117;&#19981;&#22238;&#20256;&#39044;&#35774;&#20250;&#24403;&#20570; false &#12290;&#10;&#61623;componentWillUpdate&#65306;&#20363;&#22914;&#22312;&#19978;&#38754; shouldComponentUpdate &#20320;&#22238;&#20256;&#20102; true &#65292;&#20803;&#20214;&#30830;&#23450;&#35201;&#26356;&#26032;&#20102;&#65292;&#22312;&#20934;&#22791;&#26356;&#26032;&#21069;&#36825;&#20010;&#26041;&#27861;&#20250;&#34987;&#35302;&#21457;&#12290;&#10;&#61623;componentDidupdate(prevProps, prevState, rootNode)&#65306;&#26356;&#26032;&#21518;&#35302;&#21457;&#12290;&#10;Unmounting &#21368;&#36733;&#27969;&#31243;&#10;&#61623;componentWillUnmount()&#65306;&#24403;&#20803;&#20214;&#20934;&#22791;&#35201;&#34987;&#31227;&#38500;&#25110;&#30772;&#22351;&#26102;&#35302;&#21457;&#12290;&#10;&#25346;&#36733;&#21518;&#25165;&#33021;&#20351;&#29992;&#30340;&#26041;&#27861;&#10;&#61623;getDOMNode()&#65306;&#20351;&#29992;&#27492;&#26041;&#27861;&#20250;&#20256;&#22238;&#19968;&#20010; DOM &#20803;&#32032;&#29289;&#20214;&#65292;&#36879;&#36807;&#36825;&#20010;&#26041;&#27861;&#20320;&#21487;&#20197;&#21462;&#24471;&#19968;&#20010;&#21442;&#32771;&#29289;&#20214;&#30452;&#25509;&#25805;&#20316; DOM &#33410;&#28857;&#12290;&#10;&#61623;forceUpdate()&#65306;&#20219;&#20309;&#24050;&#25346;&#36733;&#30340;&#20803;&#20214;&#65292;&#24403;&#20320;&#30693;&#36947;&#20803;&#20214;&#20869;&#37096;&#26377;&#20123;&#29366;&#24577;&#24050;&#32463;&#25913;&#21464;&#20294;&#20182;&#19981;&#26159;&#36879;&#36807; this.setState() &#21435;&#20462;&#25913;&#20540;&#30340;&#26102;&#20505;&#21487;&#20197;&#21628;&#21483;&#36825;&#20010;&#26041;&#27861;&#24378;&#36843;&#26356;&#26032;&#12290;&#10;&#27880;&#24847;&#65306;componentDidMount() &#21644; componentDidUpdate() &#30340; rootNode &#21442;&#25968;&#21482;&#26159;&#25552;&#20379;&#20320;&#19968;&#20010;&#27604;&#36739;&#26041;&#20415;&#30340;&#26041;&#24335;&#23384;&#21462; DOM &#65292;&#36825;&#21644;&#20351;&#29992; this.getDOMNode() &#26159;&#19968;&#26679;&#30340;&#12290;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/** @jsx React.DOM */var Test = React.createClass(&#123;&#10;  getInitialState: function () &#123;&#10;    console.log(&#34;&#62; getInitialState()&#34;);&#10;    return &#123;user: &#39;AndyYou&#39;&#125;;&#10;  &#125;,&#10;  componentWillMount: function () &#123;&#10;    console.log(&#34;&#62; componentWillMount()&#34;);&#10;  &#125;,&#10;  componentDidMount: function (node) &#123;&#10;    console.log(&#34;&#62; componentDidMount(node)&#34;);&#10;    console.log(node.className);&#10;    console.log(node.value);&#10;    console.log(node.id);&#10;    console.log(this.getDOMNode().className);&#10;    console.log(this.getDOMNode().value);&#10;    console.log(this.getDOMNode().id);&#10;  &#125;,&#10;  componentWillReceiveProps: function (nextProps) &#123;&#10;    console.log(&#34;&#62; componentWillReceiveProps(nextProps)&#34;);&#10;    console.log(nextProps);&#10;  &#125;,&#10;  handleChange: function (e) &#123;&#10;    console.log(e.target.value);&#10;    this.setState(&#123;user: e.target.value&#125;);&#10;  &#125;,&#10;  shouldComponentUpdate: function (nextProps, nextState) &#123;&#10;    console.log(&#34;&#62; shouldComponentUpdate(nextProps, nextState)&#34;);&#10;    console.log(&#34;nextProps: &#34;);&#10;    console.log(nextProps);&#10;    console.log(&#34;nextState: &#34;);&#10;    console.log(nextState);&#10;    return true; /* need return true/false */&#10;  &#125;,&#10;  componentWillUpdate: function (nextProps, nextState) &#123;&#10;    console.log(&#34;&#62; componentWillUpdate(nextProps, nextState)&#34;);&#10;  &#125;,&#10;  componentWillUnmount: function () &#123;&#10;    console.log(&#34;&#62; componentWillUnmount()&#34;);&#10;  &#125;,&#10;  render: function () &#123;&#10;    return (&#10;      &#60;input type=&#39;text&#39; id=&#39;foobar&#39; value=&#123;this.state.user&#125; className=&#39;nav&#39; onChange=&#123;this.handleChange&#125; /&#62;&#10;    );&#10;  &#125;&#125;);var test = React.renderComponent(&#60;Test title=&#39;Untitled&#39; /&#62;, document.getElementById(&#39;example&#39;));// test.setProps(&#123;title: &#39;No&#39;&#125;);&#10;// React.unmountComponentAtNode(document.getElementById(&#39;example&#39;));// test.setState(&#123;user:&#39;Calvert&#39;&#125;);</span><br></pre></td></tr></table></figure>
 
-     }else{
-          clearInterval(timer);
-     }
-},1000);
-</code></pre><p>3.<br>     当我在利用一个url的参数进行操作的时候<br>     var options_number = option.href.indexOf(‘?’),<br>                    options =  option.href.substr(options_number)<br>                    //“?app_id=01&amp;lang=zh&amp;device_id=F188AB23-D252-4013-93FA-EE1B9448EF29&amp;platform=ios&amp;channelID=AppStore&amp;themeid=0&amp;v=5.3.1&amp;auth=3.IqYrI2oO0owNFYGjipdLv3MUkJzfQtp1QMeCrAvnIoQ%3D”<br>4.判断是否滚动到底部<br>scroll:function(){<br>               var i = document,<br>                   d = screen.height,<br>                      h = i.documentElement.scrollTop == 0 ? i.body.scrollTop: i.documentElement.scrollTop,<br>                      f = i.documentElement.scrollTop == 0 ? i.body.scrollHeight: i.documentElement.scrollHeight,<br>                      _this = this;<br>                    if(h + d &gt;= f ){<br>                         //滚动到底部所要进行的操作<br>                    }<br>          }<br>5.通过滚动到底部加载更多的数据<br>//<a href="http://coin.seeyouyima.com/luck/draw-zero?app_id=01&amp;lang=zh&amp;device_id=F188AB23-D252-4013-93FA-EE1B9448EF29&amp;platform=ios&amp;channelID=AppStore&amp;themeid=0&amp;v=5.3.1&amp;auth=3.IqYrI2oO0owNFYGjipdLv3MUkJzfQtp1QMeCrAvnIoQ%3D" target="_blank" rel="external">http://coin.seeyouyima.com/luck/draw-zero?app_id=01&amp;lang=zh&amp;device_id=F188AB23-D252-4013-93FA-EE1B9448EF29&amp;platform=ios&amp;channelID=AppStore&amp;themeid=0&amp;v=5.3.1&amp;auth=3.IqYrI2oO0owNFYGjipdLv3MUkJzfQtp1QMeCrAvnIoQ%3D</a></p>
-<p><script><br>        var page=0;<br>        window.onscroll = function(){<br>            scroll();<br>        };<br>        function scroll(){<br>            var i = document,<br>                    d = screen.height,<br>                    h = i.documentElement.scrollTop == 0 ? i.body.scrollTop: i.documentElement.scrollTop,<br>                    f = i.documentElement.scrollTop == 0 ? i.body.scrollHeight: i.documentElement.scrollHeight,<br>                    _this = this;<br>            if(h + d &gt;= f &amp;&amp; $(‘.list-more’).html() != ‘没有更多数据了’){<br>                page+=1;<br>                getDate(page);<br>            }<br>        }<br>        function getDate(page){<br>            $.ajax({<br>                type:’GET’,<br>                dataType: ‘json’,<br>                url: href,<br>                data:{‘action’: ‘getData’ , ‘page’ : page},<br>                success:function(data){<br>                    if(data.data == undefined || data.data == null || data.data == ‘’){<br>                         html(‘没有更多数据了’);<br>                    }else{<br>                        html(‘加载中…’).show();<br>                        var html = ‘’;<br>                        $.each(data.data,function(commentIndex,comment){</p>
-<pre><code>                        html+=&apos;render the Data&apos;;
-                    });
-
-                    $(html).insertBefore($(&apos;.list-more&apos;));
-                    setTimeout(function(){
-                        _this.judge($(&apos;.list-message-time&apos;));//判断这个时候需要显示的是哪一种状态
-                    },0);
-                    option.list_more.html(&apos;加载更多数据&apos;)
-
-                }
-            },
-            error:function(xhr){
-                if (xhr.responseText) {
-                    var msg = JSON.parse(xhr.responseText);
-                    alert(msg)
-                }
-            }
-
-        })
-
-    }
-&lt;/script&gt;
-</code></pre><p>5.JSON.stringify 语法实例讲解<br>//<a href="http://www.cnblogs.com/ningvsban/p/3660654.html">http://www.cnblogs.com/ningvsban/p/3660654.html</a></p>
-<p>6.$.extend的方法<br>     var result=$.extend({},{name:”Tom”,age:21},{name:”Jerry”,sex:”Boy”})<br>     那么合并后的结果result={name:”Jerry”,age:21,sex:”Boy”}<br>7.判断是否是一个函数<br>        function isFunction(fn) {<br>            return (!!fn&amp;&amp;!fn.nodename&amp;&amp;fn.constructor!=String&amp;&amp;fn.constructor!=RegExp&amp;&amp;fn.constructor!=Array&amp;&amp;/function/i.test(fn+””));<br>        }</p>
-</script></p>
       
     </div>
 
@@ -340,13 +308,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/02/01/React-TABS/" rel="next" title="React TABS">
+                <i class="fa fa-chevron-left"></i> React TABS
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/02/01/webpack学习resources-1/" rel="prev" title="webpack学习resources[1]">
-                webpack学习resources[1] <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -372,8 +340,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/02/01/小代码の记录/"
-           data-title="小代码の记录" data-url="http://yoursite.com/2016/02/01/小代码の记录/">
+      <div class="ds-thread" data-thread-key="2016/02/01/ReactJs与浏览器之间的运作原理/"
+           data-title="ReactJs与浏览器之间的运作原理" data-url="http://yoursite.com/2016/02/01/ReactJs与浏览器之间的运作原理/">
       </div>
     
   </div>
@@ -480,7 +448,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Refs__u548C_getDOMNode_28_29"><span class="nav-number">1.</span> <span class="nav-text">Refs 和 getDOMNode()</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

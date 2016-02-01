@@ -250,6 +250,749 @@
             
               
                 
+                <a class="post-title-link" href="/2016/02/01/本地端连接git/" itemprop="url">
+                  本地端连接git
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-01T11:06:13+08:00" content="2016-02-01">
+              2016-02-01
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/01/本地端连接git/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/本地端连接git/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>配置Deployment首先，你需要为自己配置身份信息，打开命令行，然后输入：</p>
+<ul>
+<li>git config –global user.name “yourname”</li>
+<li>git config –global user.email “youremail”</li>
+</ul>
+<p>同样在_config.yml文件中，找到Deployment，然后按照如下修改：<br>deploy:<br>type: git<br>repo: git@github.com:yourname/yourname.github.io.git<br>branch: master<br>如果使用git方式进行部署，执行npm install hexo-deployer-git –save来安装所需的插件<br>然后在当前目录打开命令行，输入：</p>
+<p>###hexo d<br>随后按照提示，分别输入自己的Github账号用户名和密码，开始上传。</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/01/how-include-gulp-webpack-to-struct-a-multi-page-app-1/" itemprop="url">
+                  how-include-gulp+webpack-to-struct-a-multi-page-app-1
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-01T11:04:21+08:00" content="2016-02-01">
+              2016-02-01
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/01/how-include-gulp-webpack-to-struct-a-multi-page-app-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/how-include-gulp-webpack-to-struct-a-multi-page-app-1/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="how_include_gulp_+_webpack_to_struct_a_multi-page_app_1"><a href="#how_include_gulp_+_webpack_to_struct_a_multi-page_app_1" class="headerlink" title="how include gulp + webpack to struct a multi-page app 1"></a>how include gulp + webpack to struct a multi-page app 1</h1><h2 id="when_i_use_GULP_2Cthe_way_of_pack_is_to_wrap_all_the_-js_file_into_a_one__2C_and_all_the_-css_file_into_a_one__2C_and_every_page_just_include_one_-js"><a href="#when_i_use_GULP_2Cthe_way_of_pack_is_to_wrap_all_the_-js_file_into_a_one__2C_and_all_the_-css_file_into_a_one__2C_and_every_page_just_include_one_-js" class="headerlink" title="when i use GULP,the way of pack is to wrap all the .js file into a one , and all the .css file into a one , and every page just include one .js"></a>when i use GULP,the way of pack is to wrap all the .js file into a one , and all the .css file into a one , and every page just include one .js</h2><p>file and one .css file.</p>
+<p>this is what we say the style of  /<em>all in one</em>/,the ambition what we de is to decrease the <em>HTTP REQUEST</em>.<br>The way is very convenient for simple project.<br>But a better way to resolve the pack file what we look for is about request merge , just load what we need ,module develop , listening the update of files automatically , and the suporting the combination of pictures.<br>if we do the above things , we can improve the effect of the page.<br>the way to resolve the above Question is four process.<br>1.analyze the front-end static file dependence by tool.<br>2.the page load the entry file by module tool , and combine all dependency files into <em>combo request</em> .<br>3-back-end return <em>combo file</em>, and the browsery cache the module . if we execute the process 2 , just request those files that dont be cached.<br>4-we use <em>dependency analyze </em> and <em>back-end combo </em> to realize load just what we need and request combination.</p>
+<p>##the use of webpack<br>webpack is very convenient for React.<br>In React , component can include css or picture straightly , and what we write is just a require sentences and a config of loader.</p>
+<p>our project is a multi page item , that is every page is a .html file . and when we visit different page we load different Href.<br>the project derectory is like this:<br>in APP we put .html file.<br>in CSS we put .css file.<br>images we put some .png file.<br>in JS derectory have different folders , some are core file , some are lib file ,and the other are UI components.<br>and the file :MAIN.JS is the entry file.<br>the structure likes this :</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#9500;&#9472;&#9472; app&#10;&#9474;   &#9500;&#9472;&#9472; header.inc&#10;&#9474;   &#9500;&#9472;&#9472; help-charge.inc&#10;&#9474;   &#9500;&#9472;&#9472; index.html&#10;&#9474;   &#9500;&#9472;&#9472; news-detail.html&#10;&#9474;   &#9492;&#9472;&#9472; news-list.html&#10;&#9500;&#9472;&#9472; css&#10;&#9474;   &#9500;&#9472;&#9472; icon.less&#10;&#9474;   &#9492;&#9472;&#9472; slider.css&#10;&#9500;&#9472;&#9472; images&#10;&#9492;&#9472;&#9472; js&#10;    &#9500;&#9472;&#9472; core&#10;    &#9500;&#9472;&#9472; lib&#10;    &#9500;&#9472;&#9472; ui&#10;    &#9500;&#9472;&#9472; news-detail.js&#10;    &#9500;&#9472;&#9472; news-list.js&#10;    &#9492;&#9472;&#9472; main.js</span><br></pre></td></tr></table></figure>
+<p>the project we just use webpack to deal with the wrap of js , and the other tasks is to gulp.<br>the config like this :</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">module.exports = &#123;&#10;    devtool: &#34;source-map&#34;,    //&#29983;&#25104;sourcemap,&#20415;&#20110;&#24320;&#21457;&#35843;&#35797;&#10;    entry: getEntry(),         //&#33719;&#21462;&#39033;&#30446;&#20837;&#21475;js&#25991;&#20214;&#10;    output: &#123;&#10;        path: path.join(__dirname, &#34;dist/js/&#34;), //&#25991;&#20214;&#36755;&#20986;&#30446;&#24405;&#10;        publicPath: &#34;dist/js/&#34;,        //&#29992;&#20110;&#37197;&#32622;&#25991;&#20214;&#21457;&#24067;&#36335;&#24452;&#65292;&#22914;CDN&#25110;&#26412;&#22320;&#26381;&#21153;&#22120;&#10;        filename: &#34;[name].js&#34;,        //&#26681;&#25454;&#20837;&#21475;&#25991;&#20214;&#36755;&#20986;&#30340;&#23545;&#24212;&#22810;&#20010;&#25991;&#20214;&#21517;&#10;    &#125;,&#10;    module: &#123;&#10;        //&#21508;&#31181;&#21152;&#36733;&#22120;&#65292;&#21363;&#35753;&#21508;&#31181;&#25991;&#20214;&#26684;&#24335;&#21487;&#29992;require&#24341;&#29992;&#10;        loaders: [&#10;            // &#123; test: /\.css$/, loader: &#34;style-loader!css-loader&#34;&#125;,&#10;            // &#123; test: /\.less$/, loader: &#34;style-loader!csss-loader!less-loader&#34;&#125;&#10;        ]&#10;    &#125;,&#10;    resolve: &#123;&#10;        //&#37197;&#32622;&#21035;&#21517;&#65292;&#22312;&#39033;&#30446;&#20013;&#21487;&#32553;&#20943;&#24341;&#29992;&#36335;&#24452;&#10;        alias: &#123;&#10;            jquery: srcDir + &#34;/js/lib/jquery.min.js&#34;,&#10;            core: srcDir + &#34;/js/core&#34;,&#10;            ui: srcDir + &#34;/js/ui&#34;&#10;        &#125;&#10;    &#125;,&#10;    plugins: [&#10;        //&#25552;&#20379;&#20840;&#23616;&#30340;&#21464;&#37327;&#65292;&#22312;&#27169;&#22359;&#20013;&#20351;&#29992;&#26080;&#38656;&#29992;require&#24341;&#20837;&#10;        new webpack.ProvidePlugin(&#123;&#10;            jQuery: &#34;jquery&#34;,&#10;            $: &#34;jquery&#34;,&#10;            // nie: &#34;nie&#34;&#10;        &#125;),&#10;        //&#23558;&#20844;&#20849;&#20195;&#30721;&#25277;&#31163;&#20986;&#26469;&#21512;&#24182;&#20026;&#19968;&#20010;&#25991;&#20214;&#10;        new CommonsChunkPlugin(&#39;common.js&#39;),&#10;        //js&#25991;&#20214;&#30340;&#21387;&#32553;&#10;        new uglifyJsPlugin(&#123;&#10;            compress: &#123;&#10;                warnings: false&#10;            &#125;&#10;        &#125;)&#10;    ]&#10;&#125;;</span><br></pre></td></tr></table></figure>
+<p>config reference document :</p>
+<p>the way of packing :<br>the way of packing is that there is a entry file in every page .<br>in File , you can include other modules by REQUIRE , and the webpack will combine all modules into a file.<br>we can use function getEntry to get the entry file .</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function getEntry() &#123;&#10;    var jsPath = path.resolve(srcDir, &#39;js&#39;);&#10;    var dirs = fs.readdirSync(jsPath);&#10;    var matchs = [], files = &#123;&#125;;&#10;    dirs.forEach(function (item) &#123;&#10;        matchs = item.match(/(.+)\.js$/);&#10;        if (matchs) &#123;&#10;            files[matchs[1]] = path.resolve(srcDir, &#39;js&#39;, item);&#10;        &#125;&#10;    &#125;);&#10;    return files;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>this way will output the absolute path .<br>for example :</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">entry&#65306;&#123;&#10;    news-detail: /../Document/project/.../news-detail.js&#10;&#125;&#10;`</span><br></pre></td></tr></table></figure>
+<p>then the output file will be created in [output.path] intu [name].js,that is [news-detail.js].<br>the file name will not be changed.<br>the usage of module is to add loaders ,then what the usage of loaders ?<br>if we want to include some js by require , e.g. css / image ,then we need config the loaders .<br>it is very convenient for React ,bucause in Component ,we can use module-css.</p>
+<p>resolve 中的alias可以用于定义别名，用过seajs等模块工具的都知道alias的作用，比如我们在这里定义了ui这个别名，那么在模块中想引用ui目录下的文件，就可以直接这样写</p>
+<p>require(‘ui/dialog.js’);<br>不用加上前面的更长的文件路径。</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/01/command-line/" itemprop="url">
+                  command-line
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-01T11:01:38+08:00" content="2016-02-01">
+              2016-02-01
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/01/command-line/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/command-line/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>举例：下列命令包含前三个部分，用于删除 Junk 这个程序。</p>
+<p>###michelle$ rm -R /Applications/Junk.app</p>
+<p>切换到其他路径和目录</p>
+<p>如果你想将当前 command line 会话切换到其他目录，需要用到三个命令：pwd，ls和cd。</p>
+<ul>
+<li>pwd的含义是“print working directory”，会显示当前目录的绝对路径。</li>
+<li>ls的含义是“list directory contents”，它会列出当前目录的内容。这个命令还有其他参数可选。</li>
+<li>cd的含义是“change directory”，它会改变当前目录到你指定的目录。如果你不指定，则会返回你的 home folder。</li>
+</ul>
+<p>编辑文件和文件夹</p>
+<p>有许多基础的命令用来编辑文件和文件夹，包括mkdir, cp, mv, rm, rmdir以及vi。下面我们来简要地介绍一下这些命令。</p>
+<p>###mkdir</p>
+<p>“make diretory”的缩写，用来创建文件夹，语法为mkdir后接新文件夹的目录。可以用-p选项，来一起创建路径中不存在的文件夹（这样你就不用挨层创建了）。</p>
+<p>###cp</p>
+<p>“copy”的缩写，用来把文件从一处复制到另一处。语法为cp后接原始路径，后接目标路径。如果你想复制整个文件夹和所有内容，需要添加-R选项。如果指定的目标路径不含文件名，则 cp 命令会按原名复制。如果指定的目标路径包括文件名，则会复制为你指定的文件名。如果仅指定新文件名，则会在原处以新名称创建文件副本。注意，系统会自动替换同名文件而不出现提示。</p>
+<p>###mv</p>
+<p>“move”的缩写，用来移动文件。语法为mv后接原路径，后接新路径。mv 的指定路径规则和 cp 是一样的（没错，如果仅指定新文件名，它就成了重命名命令）。</p>
+<p>###rm</p>
+<p>“remove”的缩写，会永久删除文件。注意，command-line中没有废纸篓。语法为rm后接文件路径。然而，使用 rm 命令删除的文件有可能可以通过数据恢复工具恢复。如果希望安全删除文件，可以使用srm命令。</p>
+<p>###rmdir和rm -R</p>
+<p>rmdir是“remove directory”的缩写，这个命令会永久删除文件夹。再强调一遍，CLI 中木有废纸篓。语法为rmdir后接希望删除目录的路径。然而，rmdir 命令无法删除含有任何其他文件的文件夹，所以大多数情形下rmdir命令是不适用的。不过，你可以利用rm添加-R选项来删除文件夹及包含的所有文件。</p>
+<p>###vi</p>
+<p>代表“visual”（视觉的），然而这个名称相当具有讽刺意味：vi可能是可视化效果最差的文本编辑器了。然而，vi 是 command line 中最常见的文本编辑器。用vi打开文本文件，只需要输入vi后接文件路径即可。Mac OS X 还提供了nano，一个更加现代的文本编辑器。它也更加方便，例如在底部包含了一个作弊小条（=_=），上面有常用的快捷键列表（你就不用背下来它们了）。然而，vi却有时是默认的文本编辑器，所以掌握vi是很有用的。</p>
+<p>和less命令类似，vi命令会占用整个 Terminal 空间来显示文件内容。打开后，在“command模式”，vi 会等你输入一些预定义字符来告诉 vi 你想做什么。你也可以使用键盘上的箭头键单纯地浏览文件。你想编辑时，按A开始（会进入编辑模式）。文字会插入到光标处。如果你想保存，需要先退出编辑模式进入 command 模式。方法是按下esc键。回到 command 模式后，按住shift同时按两次Z来保存并退出。如果你不想保存，在 command 模式输入:quit!并按enter</p>
+<p>return直接退出。</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/01/vim编辑器-vim基本命令/" itemprop="url">
+                  vim编辑器-vim基本命令
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-01T10:59:33+08:00" content="2016-02-01">
+              2016-02-01
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/01/vim编辑器-vim基本命令/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/vim编辑器-vim基本命令/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>###vim基本命令</p>
+<ul>
+<li>vim<br>在命令行中输入vim,进入vim编辑器</li>
+<li>i/insert<br>按一下i/insert键,下端显示 –INSERT–<br>插入命令,在vim中可能任意字符都有作用</li>
+<li>Esc<br>退出i(插入)命令进行其它命令使用</li>
+<li>:r filename<br>读入一个文件内容,并写入到当前编辑器中</li>
+<li>:w newfilename<br>将该编辑器中的内容写入到一个新文件中</li>
+<li>:w<br>在编辑的过程中保存文件,相当于word中的ctrl+s</li>
+<li>:! command<br>暂时离开 vi 到指令列模式下执行 command 的显示结果！<br>例如:!ls<br>在编辑过程中执行shell命令ls</li>
+<li>:sh<br>进入shell命令行,执行完命令后ctrl+d退出重新进入vim编辑继续编辑<br>在shell命令下，执行ctrl+l完成清屏</li>
+<li>:wq<br>保存文件并退出</li>
+<li>ZZ<br>保存文件并退出,同上一个命令,注意大写</li>
+<li>:q!<br>强制退出,不保存</li>
+<li>:set number或者：set nu<br>使编辑中的文件显示行号</li>
+<li>:set nonumber或者：set nonu<br>与上一条命令相反,不显示行号</li>
+<li>:help i<br>查看插入命令帮助</li>
+<li>u<br>撤消上一步操作</li>
+<li>/Fedora<br>查找Fedora字符</li>
+<li>:s /Fedora/Redhat<br>将Fedora字符替换为Redhat(只替换在光标所在的行)</li>
+<li>dw<br>删除单词<br>dd<br>删除行</li>
+<li>o<br>打开空白一行</li>
+<li>vim + filename<br>进行文件最后一行进行编辑</li>
+<li>vim +n filename<br>进入文件第n行进行编辑</li>
+<li>:1,.s/redhat/fedora<br>.号表示当前行,即光标所在行<br>将第1行到当前行(.)第一次出现的redhat字符代替为fedora</li>
+<li>:1,.s/redhat/fedora/g<br>将第1行到当前行(.)所有出现的redhat字符代替为fedora,g<br>全局标志</li>
+<li>:1,$s/redhat/fedora/g<br>$表示最后一行<br>将第1行到最后一行所有出现的redhat字符代替为fedora</li>
+<li>:%s/redhat/fedora/g<br>同上一个命令</li>
+<li>:%s/\/fedora/g<br>将第1行到最后一行所有出现的redhat字代替为fedora<br>字,而不是字符</li>
+<li>:f<br>显示文件内容,状态等等<br>同ctrl+g命令</li>
+<li>:e!<br>当前文件,返回到上次保存<br>:e file<br>切换编辑文件</li>
+<li>:n<br>当编辑时有多个文件(比如vim file1 file2)时切换到下一个文件,与:e file<br>结合使用</li>
+</ul>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/01/webpack学习resources-2/" itemprop="url">
+                  webpack学习resources[2]
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-01T10:58:22+08:00" content="2016-02-01">
+              2016-02-01
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/01/webpack学习resources-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/webpack学习resources-2/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>webpack<br>安装Webpack首先得有Node.js</p>
+<p>然后通过npm install -g webpack安装webpack，当然也可以通过gulp来处理webpack任务，如果使用gulp的话就npm install –save-dev gulp-webpack</p>
+<p>配置Webpack</p>
+<p>Webpack的构建过程需要一个配置文件，一个典型的配置文件大概就是这样</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var webpack = require(&#39;webpack&#39;);&#10;var commonsPlugin = new webpack.optimize.CommonsChunkPlugin(&#39;common.js&#39;);&#10;&#10;module.exports = &#123;&#10;    entry: &#123;&#10;        entry1: &#39;./entry/entry1.js&#39;,&#10;        entry2: &#39;./entry/entry2.js&#39;&#10;    &#125;,&#10;    output: &#123;&#10;        path: __dirname,&#10;        filename: &#39;[name].entry.js&#39;&#10;    &#125;,&#10;    resolve: &#123;&#10;        extensions: [&#39;&#39;, &#39;.js&#39;, &#39;.jsx&#39;]&#10;    &#125;,&#10;    module: &#123;&#10;        loaders: [&#123;&#10;            test: /\.js$/,&#10;            loader: &#39;babel-loader&#39;&#10;        &#125;, &#123;&#10;            test: /\.jsx$/,&#10;            loader: &#39;babel-loader!jsx-loader?harmony&#39;&#10;        &#125;]&#10;    &#125;,&#10;    plugins: [commonsPlugin]&#10;&#125;;</span><br></pre></td></tr></table></figure>
+<p>这里对Webpack的打包行为做了配置，主要分为几个部分：</p>
+<ul>
+<li>entry：指定打包的入口文件，每有一个键值对，就是一个入口文件</li>
+<li>output：配置打包结果，path定义了输出的文件夹，filename则定义了打包结果文件的名称，filename里面的[name]会由entry中的键（这里是entry1和entry2）替换</li>
+<li>resolve：定义了解析模块路径时的配置，常用的就是extensions，可以用来指定模块的后缀，这样在引入模块时就不需要写后缀了，会自动补全</li>
+<li>module：定义了对模块的处理逻辑，这里可以用loaders定义了一系列的加载器，以及一些正则。当需要加载的文件匹配test的正则时，就会调用后面的loader对文件进行处理，这正是webpack强大的原因。比如这里定义了凡是.js结尾的文件都是用babel-loader做处理，而.jsx结尾的文件会先经过jsx-loader处理，然后经过babel-loader处理。当然这些loader也需要通过npm install安装</li>
+<li>plugins: 这里定义了需要使用的插件，比如commonsPlugin在打包多个入口文件时会提取出公用的部分，生成common.js</li>
+</ul>
+<p>执行打包</p>
+<p>如果通过npm install -g webpack方式安装webpack的话，可以通过命令行直接执行打包命令，比如这样：</p>
+<p>$webpack –config webpack.config.js</p>
+<p>这样就会读取当前目录下的webpack.config.js作为配置文件执行打包操作</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/01/Communicate-Between-Components/" itemprop="url">
+                  Communicate Between Components
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-01T10:55:54+08:00" content="2016-02-01">
+              2016-02-01
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/01/Communicate-Between-Components/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/Communicate-Between-Components/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Communicate Between Components<br>For parent-child communication, simply pass props.<br>For child-parent communication: Say your GroceryList component has a list of items generated through an array. When a list item is clicked, you want to display its name:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var GroceryList = React.createClass(&#123;&#10;  handleClick: function(i) &#123;&#10;    console.log(&#39;You clicked: &#39; + this.props.items[i]);&#10;  &#125;,&#10;&#10;  render: function() &#123;&#10;    return (&#10;      &#60;div&#62;&#10;        &#123;this.props.items.map(function(item, i) &#123;&#10;          return (&#10;            &#60;div onClick=&#123;this.handleClick.bind(this, i)&#125; key=&#123;i&#125;&#62;&#123;item&#125;&#60;/div&#62;&#10;          );&#10;        &#125;, this)&#125;&#10;      &#60;/div&#62;&#10;    );&#10;  &#125;&#125;);&#10;&#10;ReactDOM.render(&#10;  &#60;GroceryList items=&#123;[&#39;Apple&#39;, &#39;Banana&#39;, &#39;Cranberry&#39;]&#125; /&#62;, mountNode);</span><br></pre></td></tr></table></figure>
+<p>Notice the use of bind(this, arg1, arg2, …): we’re simply passing more arguments tohandleClick. This is not a new React concept; it’s just JavaScript.<br>For communication between two components that don’t have a parent-child relationship, you can set up your own global event system. Subscribe to events in componentDidMount(), unsubscribe in componentWillUnmount(), and call setState() when you receive an event.Flux pattern is one of the possible ways to arrange this.</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/01/npm常用命令/" itemprop="url">
+                  npm常用命令
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-01T10:53:39+08:00" content="2016-02-01">
+              2016-02-01
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/01/npm常用命令/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/npm常用命令/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>###npm install <name>安装nodejs的依赖包</name></p>
+<p>例如npm install express 就会默认安装express的最新版本，也可以通过在后面加版本号的方式安装指定版本，如npm install express@3.0.6</p>
+<p>###npm install <name> -g  将包安装到全局环境中</name></p>
+<p>但是代码中，直接通过require()的方式是没有办法调用全局安装的包的。全局的安装是供命令行使用的，就好像全局安装了vmarket后，就可以在命令行中直接运行vm命令</p>
+<p>###npm install <name> –save  安装的同时，将信息写入package.json中</name></p>
+<p>项目路径中如果有package.json文件时，直接使用npm install方法就可以根据dependencies配置安装所有的依赖包</p>
+<p>这样代码提交到github时，就不用提交node_modules这个文件夹了。</p>
+<p>###npm init  会引导你创建一个package.json文件，包括名称、版本、作者这些信息等</p>
+<p>###npm remove <name>移除</name></p>
+<p>###npm update <name>更新</name></p>
+<p>###npm ls 列出当前安装的了所有包</p>
+<p>###npm root 查看当前包的安装路径</p>
+<p>###npm root -g  查看全局的包的安装路径</p>
+<p>###npm help  帮助，如果要单独查看install命令的帮助，可以使用的npm help install</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/02/01/yeoman教程/" itemprop="url">
                   yeoman教程
                 </a>
@@ -673,7 +1416,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">20</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

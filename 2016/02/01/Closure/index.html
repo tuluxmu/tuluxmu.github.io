@@ -57,25 +57,19 @@
 
 
 
-<meta name="description" content="1.     保证需要拥有交互效果     $(‘body’).delegate(‘.list’,’click’,function(){});2.     开启一个定时器,一定要记得关掉这个定时器     var timer = setInterval(function(){                    if () {
-     }else if(){
-
-     }else{">
+<meta name="description" content="#Closurea most important idea.1-to master the closure.the first thing i do is find the demo code.
+&amp;#10;function A()&amp;#123;&amp;#10;    function B()&amp;#123;&amp;#10;       console.log(&amp;#34;Hello Closure!&amp;#34;);&amp;#">
 <meta property="og:type" content="article">
-<meta property="og:title" content="小代码の记录">
-<meta property="og:url" content="http://yoursite.com/2016/02/01/小代码の记录/index.html">
+<meta property="og:title" content="Closure">
+<meta property="og:url" content="http://yoursite.com/2016/02/01/Closure/index.html">
 <meta property="og:site_name" content="Lucy's Blog">
-<meta property="og:description" content="1.     保证需要拥有交互效果     $(‘body’).delegate(‘.list’,’click’,function(){});2.     开启一个定时器,一定要记得关掉这个定时器     var timer = setInterval(function(){                    if () {
-     }else if(){
-
-     }else{">
-<meta property="og:updated_time" content="2016-02-01T02:44:44.000Z">
+<meta property="og:description" content="#Closurea most important idea.1-to master the closure.the first thing i do is find the demo code.
+&amp;#10;function A()&amp;#123;&amp;#10;    function B()&amp;#123;&amp;#10;       console.log(&amp;#34;Hello Closure!&amp;#34;);&amp;#">
+<meta property="og:updated_time" content="2016-02-01T03:33:02.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小代码の记录">
-<meta name="twitter:description" content="1.     保证需要拥有交互效果     $(‘body’).delegate(‘.list’,’click’,function(){});2.     开启一个定时器,一定要记得关掉这个定时器     var timer = setInterval(function(){                    if () {
-     }else if(){
-
-     }else{">
+<meta name="twitter:title" content="Closure">
+<meta name="twitter:description" content="#Closurea most important idea.1-to master the closure.the first thing i do is find the demo code.
+&amp;#10;function A()&amp;#123;&amp;#10;    function B()&amp;#123;&amp;#10;       console.log(&amp;#34;Hello Closure!&amp;#34;);&amp;#">
 
 
 
@@ -93,7 +87,7 @@
   };
 </script>
 
-  <title> 小代码の记录 | Lucy's Blog </title>
+  <title> Closure | Lucy's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -251,7 +245,7 @@
             
             
               
-                小代码の记录
+                Closure
               
             
           </h1>
@@ -263,7 +257,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-01T10:44:31+08:00" content="2016-02-01">
+            <time itemprop="dateCreated" datetime="2016-02-01T11:32:16+08:00" content="2016-02-01">
               2016-02-01
             </time>
           </span>
@@ -274,8 +268,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/02/01/小代码の记录/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/小代码の记录/" itemprop="commentsCount"></span>
+                <a href="/2016/02/01/Closure/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/Closure/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -296,40 +290,16 @@
       
 
       
-        <p>1.<br>     保证需要拥有交互效果<br>     $(‘body’).delegate(‘.list’,’click’,function(){});<br>2.<br>     开启一个定时器,一定要记得关掉这个定时器<br>     var timer = setInterval(function(){<br>                    if () {</p>
-<pre><code>     }else if(){
+        <p>#Closure<br>a most important idea.<br>1-to master the closure.<br>the first thing i do is find the demo code.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#10;function A()&#123;&#10;    function B()&#123;&#10;       console.log(&#34;Hello Closure!&#34;);&#10;    &#125;&#10;    return B;&#10;&#125;&#10;var c = A();&#10;c();//Hello Closure!</span><br></pre></td></tr></table></figure>
+<p>the above is the most simple demo.<br>we analyze the code , and we will find that :<br>1-define a function A.<br>2-In A , define a function B.<br>3-In A , return B .<br>4-execute A(),and the return value == c ;<br>5-execute C().<br>In a word , In function A ,there has a function B.<br>and we use var C to execute function B();<br>2-the function of the Closure</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#10;function A()&#123;&#10;    var count = 0;&#10;    function B()&#123;&#10;       count ++;&#10;       console.log(count);&#10;    &#125;&#10;    return B;&#10;&#125;&#10;var c = A();&#10;c();// 1&#10;c();// 2&#10;c();// 3</span><br></pre></td></tr></table></figure>
+<p>3-</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#10;(function(document)&#123;&#10;    var viewport;&#10;    var obj = &#123;&#10;        init:function(id)&#123;&#10;           viewport = document.querySelector(&#34;#&#34;+id);&#10;        &#125;,&#10;        addChild:function(child)&#123;&#10;            viewport.appendChild(child);&#10;        &#125;,&#10;        removeChild:function(child)&#123;&#10;            viewport.removeChild(child);&#10;        &#125;&#10;    &#125;&#10;    window.jView = obj;&#10;&#125;)(document);</span><br></pre></td></tr></table></figure>
+<p>4-</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#10;var f = function(document)&#123;&#10;    var viewport;&#10;    var obj = &#123;&#10;        init:function(id)&#123;&#10;            viewport = document.querySelector(&#34;#&#34;+id);&#10;        &#125;,&#10;        addChild:function(child)&#123;&#10;            viewport.appendChild(child);&#10;        &#125;,&#10;        removeChild:function(child)&#123;&#10;            viewport.removeChild(child);&#10;        &#125;&#10;    &#125;&#10;    window.jView = obj;&#10;&#125;;&#10;f(document);</span><br></pre></td></tr></table></figure>
+<p>#window.jView = obj; refs to the meaning of Closure.</p>
 
-     }else{
-          clearInterval(timer);
-     }
-},1000);
-</code></pre><p>3.<br>     当我在利用一个url的参数进行操作的时候<br>     var options_number = option.href.indexOf(‘?’),<br>                    options =  option.href.substr(options_number)<br>                    //“?app_id=01&amp;lang=zh&amp;device_id=F188AB23-D252-4013-93FA-EE1B9448EF29&amp;platform=ios&amp;channelID=AppStore&amp;themeid=0&amp;v=5.3.1&amp;auth=3.IqYrI2oO0owNFYGjipdLv3MUkJzfQtp1QMeCrAvnIoQ%3D”<br>4.判断是否滚动到底部<br>scroll:function(){<br>               var i = document,<br>                   d = screen.height,<br>                      h = i.documentElement.scrollTop == 0 ? i.body.scrollTop: i.documentElement.scrollTop,<br>                      f = i.documentElement.scrollTop == 0 ? i.body.scrollHeight: i.documentElement.scrollHeight,<br>                      _this = this;<br>                    if(h + d &gt;= f ){<br>                         //滚动到底部所要进行的操作<br>                    }<br>          }<br>5.通过滚动到底部加载更多的数据<br>//<a href="http://coin.seeyouyima.com/luck/draw-zero?app_id=01&amp;lang=zh&amp;device_id=F188AB23-D252-4013-93FA-EE1B9448EF29&amp;platform=ios&amp;channelID=AppStore&amp;themeid=0&amp;v=5.3.1&amp;auth=3.IqYrI2oO0owNFYGjipdLv3MUkJzfQtp1QMeCrAvnIoQ%3D" target="_blank" rel="external">http://coin.seeyouyima.com/luck/draw-zero?app_id=01&amp;lang=zh&amp;device_id=F188AB23-D252-4013-93FA-EE1B9448EF29&amp;platform=ios&amp;channelID=AppStore&amp;themeid=0&amp;v=5.3.1&amp;auth=3.IqYrI2oO0owNFYGjipdLv3MUkJzfQtp1QMeCrAvnIoQ%3D</a></p>
-<p><script><br>        var page=0;<br>        window.onscroll = function(){<br>            scroll();<br>        };<br>        function scroll(){<br>            var i = document,<br>                    d = screen.height,<br>                    h = i.documentElement.scrollTop == 0 ? i.body.scrollTop: i.documentElement.scrollTop,<br>                    f = i.documentElement.scrollTop == 0 ? i.body.scrollHeight: i.documentElement.scrollHeight,<br>                    _this = this;<br>            if(h + d &gt;= f &amp;&amp; $(‘.list-more’).html() != ‘没有更多数据了’){<br>                page+=1;<br>                getDate(page);<br>            }<br>        }<br>        function getDate(page){<br>            $.ajax({<br>                type:’GET’,<br>                dataType: ‘json’,<br>                url: href,<br>                data:{‘action’: ‘getData’ , ‘page’ : page},<br>                success:function(data){<br>                    if(data.data == undefined || data.data == null || data.data == ‘’){<br>                         html(‘没有更多数据了’);<br>                    }else{<br>                        html(‘加载中…’).show();<br>                        var html = ‘’;<br>                        $.each(data.data,function(commentIndex,comment){</p>
-<pre><code>                        html+=&apos;render the Data&apos;;
-                    });
-
-                    $(html).insertBefore($(&apos;.list-more&apos;));
-                    setTimeout(function(){
-                        _this.judge($(&apos;.list-message-time&apos;));//判断这个时候需要显示的是哪一种状态
-                    },0);
-                    option.list_more.html(&apos;加载更多数据&apos;)
-
-                }
-            },
-            error:function(xhr){
-                if (xhr.responseText) {
-                    var msg = JSON.parse(xhr.responseText);
-                    alert(msg)
-                }
-            }
-
-        })
-
-    }
-&lt;/script&gt;
-</code></pre><p>5.JSON.stringify 语法实例讲解<br>//<a href="http://www.cnblogs.com/ningvsban/p/3660654.html">http://www.cnblogs.com/ningvsban/p/3660654.html</a></p>
-<p>6.$.extend的方法<br>     var result=$.extend({},{name:”Tom”,age:21},{name:”Jerry”,sex:”Boy”})<br>     那么合并后的结果result={name:”Jerry”,age:21,sex:”Boy”}<br>7.判断是否是一个函数<br>        function isFunction(fn) {<br>            return (!!fn&amp;&amp;!fn.nodename&amp;&amp;fn.constructor!=String&amp;&amp;fn.constructor!=RegExp&amp;&amp;fn.constructor!=Array&amp;&amp;/function/i.test(fn+””));<br>        }</p>
-</script></p>
       
     </div>
 
@@ -340,12 +310,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/02/01/how-to-make-a-good-front-end-developer/" rel="next" title="how to make a good front-end developer">
+                <i class="fa fa-chevron-left"></i> how to make a good front-end developer
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/02/01/webpack学习resources-1/" rel="prev" title="webpack学习resources[1]">
-                webpack学习resources[1] <i class="fa fa-chevron-right"></i>
+              <a href="/2016/02/01/React-TABS/" rel="prev" title="React TABS">
+                React TABS <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -372,8 +346,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/02/01/小代码の记录/"
-           data-title="小代码の记录" data-url="http://yoursite.com/2016/02/01/小代码の记录/">
+      <div class="ds-thread" data-thread-key="2016/02/01/Closure/"
+           data-title="Closure" data-url="http://yoursite.com/2016/02/01/Closure/">
       </div>
     
   </div>
