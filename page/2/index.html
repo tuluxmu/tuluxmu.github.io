@@ -60,7 +60,7 @@
 <meta name="description" content="Front-end engineer。">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Lucy's Blog">
-<meta property="og:url" content="http://yoursite.com/archives/2016/index.html">
+<meta property="og:url" content="http://yoursite.com/page/2/index.html">
 <meta property="og:site_name" content="Lucy's Blog">
 <meta property="og:description" content="Front-end engineer。">
 <meta name="twitter:card" content="summary">
@@ -83,7 +83,7 @@
   };
 </script>
 
-  <title> 归档 | Lucy's Blog </title>
+  <title> Lucy's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -112,7 +112,9 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  page-archive  ">
+  <div class="container one-collumn sidebar-position-left 
+   page-home 
+ ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -219,392 +221,134 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
-
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      嗯..! 目前共计 11 篇日志。 继续努力。
-    </span>
+  <section id="posts" class="posts-expand">
 
     
 
-      
-      
+    
+    
+
+    
       
 
-      
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
         
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2016">2016</h2>
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/01/小代码の记录/" itemprop="url">
+                  小代码の记录
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-01T10:44:31+08:00" content="2016-02-01">
+              2016-02-01
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/01/小代码の记录/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/小代码の记录/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
         </div>
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/02/01/webpack学习resources-3/" itemprop="url">
-              
-                <span itemprop="name">webpack学习resources-3</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-02-01T11:08:34+08:00"
-              content="2016-02-01" >
-          02-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
+      </header>
     
 
-      
-      
-      
+
+    <div class="post-body" itemprop="articleBody">
 
       
       
 
       
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
         
-            <a class="post-title-link" href="/2016/02/01/本地端连接git/" itemprop="url">
-              
-                <span itemprop="name">本地端连接git</span>
-              
-            </a>
+          
+            <p>1.<br>     保证需要拥有交互效果<br>     $(‘body’).delegate(‘.list’,’click’,function(){});<br>2.<br>     开启一个定时器,一定要记得关掉这个定时器<br>     var timer = setInterval(function(){<br>                    if () {</p>
+<pre><code>     }else if(){
+
+     }else{
+          clearInterval(timer);
+     }
+},1000);
+</code></pre><p>3.<br>     当我在利用一个url的参数进行操作的时候<br>     var options_number = option.href.indexOf(‘?’),<br>                    options =  option.href.substr(options_number)<br>                    //“?app_id=01&amp;lang=zh&amp;device_id=F188AB23-D252-4013-93FA-EE1B9448EF29&amp;platform=ios&amp;channelID=AppStore&amp;themeid=0&amp;v=5.3.1&amp;auth=3.IqYrI2oO0owNFYGjipdLv3MUkJzfQtp1QMeCrAvnIoQ%3D”<br>4.判断是否滚动到底部<br>scroll:function(){<br>               var i = document,<br>                   d = screen.height,<br>                      h = i.documentElement.scrollTop == 0 ? i.body.scrollTop: i.documentElement.scrollTop,<br>                      f = i.documentElement.scrollTop == 0 ? i.body.scrollHeight: i.documentElement.scrollHeight,<br>                      _this = this;<br>                    if(h + d &gt;= f ){<br>                         //滚动到底部所要进行的操作<br>                    }<br>          }<br>5.通过滚动到底部加载更多的数据<br>//<a href="http://coin.seeyouyima.com/luck/draw-zero?app_id=01&amp;lang=zh&amp;device_id=F188AB23-D252-4013-93FA-EE1B9448EF29&amp;platform=ios&amp;channelID=AppStore&amp;themeid=0&amp;v=5.3.1&amp;auth=3.IqYrI2oO0owNFYGjipdLv3MUkJzfQtp1QMeCrAvnIoQ%3D" target="_blank" rel="external">http://coin.seeyouyima.com/luck/draw-zero?app_id=01&amp;lang=zh&amp;device_id=F188AB23-D252-4013-93FA-EE1B9448EF29&amp;platform=ios&amp;channelID=AppStore&amp;themeid=0&amp;v=5.3.1&amp;auth=3.IqYrI2oO0owNFYGjipdLv3MUkJzfQtp1QMeCrAvnIoQ%3D</a></p>
+<p><script><br>        var page=0;<br>        window.onscroll = function(){<br>            scroll();<br>        };<br>        function scroll(){<br>            var i = document,<br>                    d = screen.height,<br>                    h = i.documentElement.scrollTop == 0 ? i.body.scrollTop: i.documentElement.scrollTop,<br>                    f = i.documentElement.scrollTop == 0 ? i.body.scrollHeight: i.documentElement.scrollHeight,<br>                    _this = this;<br>            if(h + d &gt;= f &amp;&amp; $(‘.list-more’).html() != ‘没有更多数据了’){<br>                page+=1;<br>                getDate(page);<br>            }<br>        }<br>        function getDate(page){<br>            $.ajax({<br>                type:’GET’,<br>                dataType: ‘json’,<br>                url: href,<br>                data:{‘action’: ‘getData’ , ‘page’ : page},<br>                success:function(data){<br>                    if(data.data == undefined || data.data == null || data.data == ‘’){<br>                         html(‘没有更多数据了’);<br>                    }else{<br>                        html(‘加载中…’).show();<br>                        var html = ‘’;<br>                        $.each(data.data,function(commentIndex,comment){</p>
+<pre><code>                        html+=&apos;render the Data&apos;;
+                    });
+
+                    $(html).insertBefore($(&apos;.list-more&apos;));
+                    setTimeout(function(){
+                        _this.judge($(&apos;.list-message-time&apos;));//判断这个时候需要显示的是哪一种状态
+                    },0);
+                    option.list_more.html(&apos;加载更多数据&apos;)
+
+                }
+            },
+            error:function(xhr){
+                if (xhr.responseText) {
+                    var msg = JSON.parse(xhr.responseText);
+                    alert(msg)
+                }
+            }
+
+        })
+
+    }
+&lt;/script&gt;
+</code></pre><p>5.JSON.stringify 语法实例讲解<br>//<a href="http://www.cnblogs.com/ningvsban/p/3660654.html">http://www.cnblogs.com/ningvsban/p/3660654.html</a></p>
+<p>6.$.extend的方法<br>     var result=$.extend({},{name:”Tom”,age:21},{name:”Jerry”,sex:”Boy”})<br>     那么合并后的结果result={name:”Jerry”,age:21,sex:”Boy”}<br>7.判断是否是一个函数<br>        function isFunction(fn) {<br>            return (!!fn&amp;&amp;!fn.nodename&amp;&amp;fn.constructor!=String&amp;&amp;fn.constructor!=RegExp&amp;&amp;fn.constructor!=Array&amp;&amp;/function/i.test(fn+””));<br>        }</p>
+</script></p>
+          
         
-      </h1>
+      
+    </div>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-02-01T11:06:13+08:00"
-              content="2016-02-01" >
-          02-01
-        </time>
-      </div>
+    <footer class="post-footer">
+      
 
-    </header>
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
   </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/02/01/how-include-gulp-webpack-to-struct-a-multi-page-app-1/" itemprop="url">
-              
-                <span itemprop="name">how-include-gulp+webpack-to-struct-a-multi-page-app-1</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-02-01T11:04:21+08:00"
-              content="2016-02-01" >
-          02-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/02/01/command-line/" itemprop="url">
-              
-                <span itemprop="name">command-line</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-02-01T11:01:38+08:00"
-              content="2016-02-01" >
-          02-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/02/01/vim编辑器-vim基本命令/" itemprop="url">
-              
-                <span itemprop="name">vim编辑器-vim基本命令</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-02-01T10:59:33+08:00"
-              content="2016-02-01" >
-          02-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/02/01/webpack学习resources-2/" itemprop="url">
-              
-                <span itemprop="name">webpack学习resources[2]</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-02-01T10:58:22+08:00"
-              content="2016-02-01" >
-          02-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/02/01/Communicate-Between-Components/" itemprop="url">
-              
-                <span itemprop="name">Communicate Between Components</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-02-01T10:55:54+08:00"
-              content="2016-02-01" >
-          02-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/02/01/npm常用命令/" itemprop="url">
-              
-                <span itemprop="name">npm常用命令</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-02-01T10:53:39+08:00"
-              content="2016-02-01" >
-          02-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/02/01/yeoman教程/" itemprop="url">
-              
-                <span itemprop="name">yeoman教程</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-02-01T10:50:27+08:00"
-              content="2016-02-01" >
-          02-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2016/02/01/webpack学习resources-1/" itemprop="url">
-              
-                <span itemprop="name">webpack学习resources[1]</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-02-01T10:46:57+08:00"
-              content="2016-02-01" >
-          02-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
 
 
     
@@ -613,9 +357,8 @@
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/archives/2016/page/2/">2</a><a class="extend next" rel="next" href="/archives/2016/page/2/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
   </nav>
-
 
 
 
@@ -781,12 +524,6 @@
   
 
   
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
-
 
   
 

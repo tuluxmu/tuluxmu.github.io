@@ -57,16 +57,25 @@
 
 
 
-<meta name="description" content="Communicate Between ComponentsFor parent-child communication, simply pass props.For child-parent communication: Say your GroceryList component has a list of items generated through an array. When a li">
+<meta name="description" content="webpack-howto
+Goal of this guide
+This is a cookbook of how to get things done with webpack. This includes most things we use at Instagram and nothing we don’t use.
+My advice: start with this as your w">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Communicate Between Components">
-<meta property="og:url" content="http://yoursite.com/2016/02/01/Communicate-Between-Components/index.html">
+<meta property="og:title" content="webpack学习resources-3">
+<meta property="og:url" content="http://yoursite.com/2016/02/01/webpack学习resources-3/index.html">
 <meta property="og:site_name" content="Lucy's Blog">
-<meta property="og:description" content="Communicate Between ComponentsFor parent-child communication, simply pass props.For child-parent communication: Say your GroceryList component has a list of items generated through an array. When a li">
-<meta property="og:updated_time" content="2016-02-01T02:57:24.000Z">
+<meta property="og:description" content="webpack-howto
+Goal of this guide
+This is a cookbook of how to get things done with webpack. This includes most things we use at Instagram and nothing we don’t use.
+My advice: start with this as your w">
+<meta property="og:updated_time" content="2016-02-01T03:11:21.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Communicate Between Components">
-<meta name="twitter:description" content="Communicate Between ComponentsFor parent-child communication, simply pass props.For child-parent communication: Say your GroceryList component has a list of items generated through an array. When a li">
+<meta name="twitter:title" content="webpack学习resources-3">
+<meta name="twitter:description" content="webpack-howto
+Goal of this guide
+This is a cookbook of how to get things done with webpack. This includes most things we use at Instagram and nothing we don’t use.
+My advice: start with this as your w">
 
 
 
@@ -84,7 +93,7 @@
   };
 </script>
 
-  <title> Communicate Between Components | Lucy's Blog </title>
+  <title> webpack学习resources-3 | Lucy's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -242,7 +251,7 @@
             
             
               
-                Communicate Between Components
+                webpack学习resources-3
               
             
           </h1>
@@ -254,7 +263,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-01T10:55:54+08:00" content="2016-02-01">
+            <time itemprop="dateCreated" datetime="2016-02-01T11:08:34+08:00" content="2016-02-01">
               2016-02-01
             </time>
           </span>
@@ -265,8 +274,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/02/01/Communicate-Between-Components/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/Communicate-Between-Components/" itemprop="commentsCount"></span>
+                <a href="/2016/02/01/webpack学习resources-3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/webpack学习resources-3/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -287,10 +296,99 @@
       
 
       
-        <p>Communicate Between Components<br>For parent-child communication, simply pass props.<br>For child-parent communication: Say your GroceryList component has a list of items generated through an array. When a list item is clicked, you want to display its name:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var GroceryList = React.createClass(&#123;&#10;  handleClick: function(i) &#123;&#10;    console.log(&#39;You clicked: &#39; + this.props.items[i]);&#10;  &#125;,&#10;&#10;  render: function() &#123;&#10;    return (&#10;      &#60;div&#62;&#10;        &#123;this.props.items.map(function(item, i) &#123;&#10;          return (&#10;            &#60;div onClick=&#123;this.handleClick.bind(this, i)&#125; key=&#123;i&#125;&#62;&#123;item&#125;&#60;/div&#62;&#10;          );&#10;        &#125;, this)&#125;&#10;      &#60;/div&#62;&#10;    );&#10;  &#125;&#125;);&#10;&#10;ReactDOM.render(&#10;  &#60;GroceryList items=&#123;[&#39;Apple&#39;, &#39;Banana&#39;, &#39;Cranberry&#39;]&#125; /&#62;, mountNode);</span><br></pre></td></tr></table></figure>
-<p>Notice the use of bind(this, arg1, arg2, …): we’re simply passing more arguments tohandleClick. This is not a new React concept; it’s just JavaScript.<br>For communication between two components that don’t have a parent-child relationship, you can set up your own global event system. Subscribe to events in componentDidMount(), unsubscribe in componentWillUnmount(), and call setState() when you receive an event.Flux pattern is one of the possible ways to arrange this.</p>
-
+        <p>webpack-howto</p>
+<p>Goal of this guide</p>
+<p>This is a cookbook of how to get things done with webpack. This includes most things we use at Instagram and nothing we don’t use.</p>
+<p>My advice: start with this as your webpack docs, then look at the official docs for clarification.</p>
+<p>Prerequisites</p>
+<ul>
+<li>You know browserify, RequireJS or something similar</li>
+<li>You see the value in:<ul>
+<li>Bundle splitting</li>
+<li>Async loading</li>
+<li>Packaging static assets like images and CSS</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>Why webpack?</li>
+</ol>
+<ul>
+<li><p>It’s like browserify but can split your app into multiple files. If you have multiple pages in a single-page app, the user only downloads code for just that page. If they go to another page, they don’t redownload common code.</p>
+</li>
+<li><p>It often replaces grunt or gulp because it can build and bundle CSS, preprocessed CSS, compile-to-JS languages and images, among other things.</p>
+</li>
+</ul>
+<p>It supports AMD and CommonJS, among other module systems (Angular, ES6). If you don’t know what to use, use CommonJS.</p>
+<ol>
+<li>Webpack for Browserify people</li>
+</ol>
+<p>These are equivalent:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">browserify main.js &#62; bundle.js&#10;&#10;&#10;&#10;webpack main.js bundle.js</span><br></pre></td></tr></table></figure>
+<p>However, webpack is more powerful than Browserify, so you generally want to make a webpack.config.js to keep things organized:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// webpack.config.js&#10;module.exports = &#123;&#10;  entry: &#39;./main.js&#39;,&#10;  output: &#123;&#10;    filename: &#39;bundle.js&#39;&#10;  &#125;&#10;&#125;;</span><br></pre></td></tr></table></figure>
+<p>This is just JS, so feel free to put Real Code in there.</p>
+<ol>
+<li>How to invoke webpack</li>
+</ol>
+<p>Switch to the directory containing webpack.config.js and run:</p>
+<ul>
+<li>webpack for building once for development</li>
+<li>webpack -p for building once for production (minification)</li>
+<li>webpack –watch for continuous incremental build in development (fast!)</li>
+<li>webpack -d to include source maps</li>
+</ul>
+<ol>
+<li>Compile-to-JS languages</li>
+</ol>
+<p>webpack’s equivalent of browserify transforms and RequireJS plugins is a loader. Here’s how you can teach webpack to load CoffeeScript and Facebook JSX+ES6 support (you must npm install babel-loader coffee-loader):</p>
+<p>See also the babel-loader installation instructions for additional dependencies (tl;dr run npm install babel-core babel-preset-es2015 babel-preset-react).</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// webpack.config.js&#10;module.exports = &#123;&#10;  entry: &#39;./main.js&#39;,&#10;  output: &#123;&#10;    filename: &#39;bundle.js&#39;&#10;  &#125;,&#10;  module: &#123;&#10;    loaders: [&#10;      &#123; test: /\.coffee$/, loader: &#39;coffee-loader&#39; &#125;,&#10;      &#123;&#10;        test: /\.js$/,&#10;        loader: &#39;babel-loader&#39;,&#10;        query: &#123;&#10;          presets: [&#39;es2015&#39;, &#39;react&#39;]&#10;        &#125;&#10;      &#125;&#10;    ]&#10;  &#125;&#10;&#125;;</span><br></pre></td></tr></table></figure>
+<p>To enable requiring files without specifying the extension, you must add a resolve.extensions parameter specifying which files webpack searches for:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// webpack.config.js&#10;module.exports = &#123;&#10;  entry: &#39;./main.js&#39;,&#10;  output: &#123;&#10;    filename: &#39;bundle.js&#39;&#10;  &#125;,&#10;  module: &#123;&#10;    loaders: [&#10;      &#123; test: /\.coffee$/, loader: &#39;coffee-loader&#39; &#125;,&#10;      &#123;&#10;        test: /\.js$/,&#10;        loader: &#39;babel-loader&#39;,&#10;        query: &#123;&#10;          presets: [&#39;es2015&#39;, &#39;react&#39;]&#10;        &#125;&#10;      &#125;&#10;    ]&#10;  &#125;,&#10;  resolve: &#123;&#10;    // you can now require(&#39;file&#39;) instead of require(&#39;file.coffee&#39;)&#10;    extensions: [&#39;&#39;, &#39;.js&#39;, &#39;.json&#39;, &#39;.coffee&#39;]&#10;  &#125;&#10;&#125;;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>Stylesheets and images</li>
+</ol>
+<p>First update your code to require() your static assets (named as they would with node’s require()):</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">require(&#39;./bootstrap.css&#39;);&#10;require(&#39;./myapp.less&#39;);&#10;&#10;var img = document.createElement(&#39;img&#39;);&#10;img.src = require(&#39;./glyph.png&#39;);</span><br></pre></td></tr></table></figure>
+<p>When you require CSS (or less, etc), webpack inlines the CSS as a string inside the JS bundle and require() will insert a<style> tag into the page. When you require images, webpack inlines a URL to the image into the bundle and returns it from require().</p>
+<p>But you need to teach webpack to do this (again, with loaders):</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// webpack.config.js&#10;module.exports = &#123;&#10;  entry: &#39;./main.js&#39;,&#10;  output: &#123;&#10;    path: &#39;./build&#39;, // This is where images AND js will go&#10;    publicPath: &#39;http://mycdn.com/&#39;, // This is used to generate URLs to e.g. images&#10;    filename: &#39;bundle.js&#39;&#10;  &#125;,&#10;  module: &#123;&#10;    loaders: [&#10;      &#123; test: /\.less$/, loader: &#39;style-loader!css-loader!less-loader&#39; &#125;, // use ! to chain loaders&#10;      &#123; test: /\.css$/, loader: &#39;style-loader!css-loader&#39; &#125;,&#10;      &#123;test: /\.(png|jpg)$/, loader: &#39;url-loader?limit=8192&#39;&#125; // inline base64 URLs for &#60;=8k images, direct URLs for the rest&#10;    ]&#10;  &#125;&#10;&#125;;</span><br></pre></td></tr></table></figure>
+<ol>
+<li>Feature flags</li>
+</ol>
+<p>We have code we want to gate only to our dev environments (like logging) and our internal dogfooding servers (like unreleased features we’re testing with employees). In your code, refer to magic globals:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if (__DEV__) &#123;&#10;  console.warn(&#39;Extra logging&#39;);&#10;&#125;&#10;// ...&#10;if (__PRERELEASE__) &#123;&#10;  showSecretFeature();&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>Then teach webpack those magic globals:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// webpack.config.js&#10;&#10;// definePlugin takes raw strings and inserts them, so you can put strings of JS if you want.&#10;var definePlugin = new webpack.DefinePlugin(&#123;&#10;  __DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || &#39;true&#39;)),&#10;  __PRERELEASE__: JSON.stringify(JSON.parse(process.env.BUILD_PRERELEASE || &#39;false&#39;))&#10;&#125;);&#10;&#10;module.exports = &#123;&#10;  entry: &#39;./main.js&#39;,&#10;  output: &#123;&#10;    filename: &#39;bundle.js&#39;&#10;  &#125;,&#10;  plugins: [definePlugin]&#10;&#125;;</span><br></pre></td></tr></table></figure>
+<p>Then you can build with BUILD_DEV=1 BUILD_PRERELEASE=1 webpack from the console. Note that since webpack -p runs uglify dead-code elimination, anything wrapped in one of these blocks will be stripped out, so you won’t leak secret features or strings.</p>
+<ol>
+<li>Multiple entrypoints</li>
+</ol>
+<p>Let’s say you have a profile page and a feed page. You don’t want to make the user download the code for the feed if they just want the profile. So make multiple bundles: create one “main module” (called an entrypoint) per page:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// webpack.config.js&#10;module.exports = &#123;&#10;  entry: &#123;&#10;    Profile: &#39;./profile.js&#39;,&#10;    Feed: &#39;./feed.js&#39;&#10;  &#125;,&#10;  output: &#123;&#10;    path: &#39;build&#39;,&#10;    filename: &#39;[name].js&#39; // Template based on keys in entry above&#10;  &#125;&#10;&#125;;</span><br></pre></td></tr></table></figure>
+<p>For profile, insert <script src="build/Profile.js"></script> into your page. Do a similar thing for feed.</p>
+<ol>
+<li>Optimizing common code</li>
+</ol>
+<p>Feed and Profile share a lot in common (like React and the common stylesheets and components). webpack can figure out what they have in common and make a shared bundle that can be cached between pages:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// webpack.config.js&#10;&#10;var webpack = require(&#39;webpack&#39;);&#10;&#10;var commonsPlugin =&#10;  new webpack.optimize.CommonsChunkPlugin(&#39;common.js&#39;);&#10;&#10;module.exports = &#123;&#10;  entry: &#123;&#10;    Profile: &#39;./profile.js&#39;,&#10;    Feed: &#39;./feed.js&#39;&#10;  &#125;,&#10;  output: &#123;&#10;    path: &#39;build&#39;,&#10;    filename: &#39;[name].js&#39; // Template based on keys in entry above&#10;  &#125;,&#10;  plugins: [commonsPlugin]&#10;&#125;;</span><br></pre></td></tr></table></figure>
+<p>Add <script src="build/common.js"></script> before the script tag you added in the previous step and enjoy the free caching.</p>
+<ol>
+<li>Async loading</li>
+</ol>
+<p>CommonJS is synchronous but webpack provides a way to asynchronously specify dependencies. This is useful for client-side routers, where you want the router on every page, but you don’t want to have to download features until you actually need them.</p>
+<p>Specify the split point where you want to load asynchronously. For example:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if (window.location.pathname === &#39;/feed&#39;) &#123;&#10;  showLoadingState();&#10;  require.ensure([], function() &#123; // this syntax is weird but it works&#10;    hideLoadingState();&#10;    require(&#39;./feed&#39;).show(); // when this function is called, the module is guaranteed to be synchronously available.&#10;  &#125;);&#10;&#125; else if (window.location.pathname === &#39;/profile&#39;) &#123;&#10;  showLoadingState();&#10;  require.ensure([], function() &#123;&#10;    hideLoadingState();&#10;    require(&#39;./profile&#39;).show();&#10;  &#125;);&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>webpack will do the rest and generate extra chunk files and load them for you.</p>
+<p>webpack will assume that those files are in your root directory when you load then into a html script tag for example. You can use output.publicPath to configure that.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// webpack.config.js&#10;output: &#123;&#10;    path: &#34;/home/proj/public/assets&#34;, //path to where webpack will build your stuff&#10;    publicPath: &#34;/assets/&#34; //path that will be considered when requiring your files&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>Additional resources</p>
+<p>Take a look at a real world example on how a successful team is leveraging webpack: <a href="http://youtu.be/VkTCL6Nqm6Y">http://youtu.be/VkTCL6Nqm6Y</a> This is Pete Hunt at OSCon talking about webpack at Instagram.com</p>
+<p>FAQ</p>
+<p>webpack doesn’t seem modular</p>
+<p>webpack is extremely modular. What makes webpack great is that it lets plugins inject themselves into more places in the build process when compared to alternatives like browserify and requirejs. Many things that may seem built into the core are just plugins that are loaded by default and can be overridden (i.e. the CommonJS require() parser).</p>
+</style></p>
       
     </div>
 
@@ -301,17 +399,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/02/01/npm常用命令/" rel="next" title="npm常用命令">
-                <i class="fa fa-chevron-left"></i> npm常用命令
+              <a href="/2016/02/01/本地端连接git/" rel="next" title="本地端连接git">
+                <i class="fa fa-chevron-left"></i> 本地端连接git
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/02/01/webpack学习resources-2/" rel="prev" title="webpack学习resources[2]">
-                webpack学习resources[2] <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -337,8 +431,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/02/01/Communicate-Between-Components/"
-           data-title="Communicate Between Components" data-url="http://yoursite.com/2016/02/01/Communicate-Between-Components/">
+      <div class="ds-thread" data-thread-key="2016/02/01/webpack学习resources-3/"
+           data-title="webpack学习resources-3" data-url="http://yoursite.com/2016/02/01/webpack学习resources-3/">
       </div>
     
   </div>
