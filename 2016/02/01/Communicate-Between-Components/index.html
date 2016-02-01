@@ -57,22 +57,16 @@
 
 
 
-<meta name="description" content="yeoman教程http://www.jianshu.com/p/e12cab6ab852
-1-好的yeoman脚手架
-Installation&amp;#10;&amp;#10;# Make sure both is installed globally&amp;#10;npm install -g yo&amp;#10;npm install -g generator-react-webpack&amp;#10;&amp;#10;Setti">
+<meta name="description" content="Communicate Between ComponentsFor parent-child communication, simply pass props.For child-parent communication: Say your GroceryList component has a list of items generated through an array. When a li">
 <meta property="og:type" content="article">
-<meta property="og:title" content="yeoman教程">
-<meta property="og:url" content="http://yoursite.com/2016/02/01/yeoman教程/index.html">
+<meta property="og:title" content="Communicate Between Components">
+<meta property="og:url" content="http://yoursite.com/2016/02/01/Communicate-Between-Components/index.html">
 <meta property="og:site_name" content="Lucy's Blog">
-<meta property="og:description" content="yeoman教程http://www.jianshu.com/p/e12cab6ab852
-1-好的yeoman脚手架
-Installation&amp;#10;&amp;#10;# Make sure both is installed globally&amp;#10;npm install -g yo&amp;#10;npm install -g generator-react-webpack&amp;#10;&amp;#10;Setti">
-<meta property="og:updated_time" content="2016-02-01T02:52:50.000Z">
+<meta property="og:description" content="Communicate Between ComponentsFor parent-child communication, simply pass props.For child-parent communication: Say your GroceryList component has a list of items generated through an array. When a li">
+<meta property="og:updated_time" content="2016-02-01T02:57:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="yeoman教程">
-<meta name="twitter:description" content="yeoman教程http://www.jianshu.com/p/e12cab6ab852
-1-好的yeoman脚手架
-Installation&amp;#10;&amp;#10;# Make sure both is installed globally&amp;#10;npm install -g yo&amp;#10;npm install -g generator-react-webpack&amp;#10;&amp;#10;Setti">
+<meta name="twitter:title" content="Communicate Between Components">
+<meta name="twitter:description" content="Communicate Between ComponentsFor parent-child communication, simply pass props.For child-parent communication: Say your GroceryList component has a list of items generated through an array. When a li">
 
 
 
@@ -90,7 +84,7 @@ Installation&amp;#10;&amp;#10;# Make sure both is installed globally&amp;#10;npm
   };
 </script>
 
-  <title> yeoman教程 | Lucy's Blog </title>
+  <title> Communicate Between Components | Lucy's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -248,7 +242,7 @@ Installation&amp;#10;&amp;#10;# Make sure both is installed globally&amp;#10;npm
             
             
               
-                yeoman教程
+                Communicate Between Components
               
             
           </h1>
@@ -260,7 +254,7 @@ Installation&amp;#10;&amp;#10;# Make sure both is installed globally&amp;#10;npm
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-01T10:50:27+08:00" content="2016-02-01">
+            <time itemprop="dateCreated" datetime="2016-02-01T10:55:54+08:00" content="2016-02-01">
               2016-02-01
             </time>
           </span>
@@ -271,8 +265,8 @@ Installation&amp;#10;&amp;#10;# Make sure both is installed globally&amp;#10;npm
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/02/01/yeoman教程/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/yeoman教程/" itemprop="commentsCount"></span>
+                <a href="/2016/02/01/Communicate-Between-Components/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/Communicate-Between-Components/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -293,36 +287,9 @@ Installation&amp;#10;&amp;#10;# Make sure both is installed globally&amp;#10;npm
       
 
       
-        <p>yeoman教程<br><a href="http://www.jianshu.com/p/e12cab6ab852" target="_blank" rel="external">http://www.jianshu.com/p/e12cab6ab852</a></p>
-<p>1-好的yeoman脚手架</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Installation&#10;&#10;# Make sure both is installed globally&#10;npm install -g yo&#10;npm install -g generator-react-webpack&#10;&#10;Setting up projects&#10;&#10;# Create a new directory, and `cd` into it:&#10;mkdir my-new-project &#38;&#38; cd my-new-project&#10;&#10;# Run the generator&#10;yo react-webpack</span><br></pre></td></tr></table></figure>
-<p>Please make sure to edit your newly generated package.json file to set description, author information and the like.</p>
-<p>Generating new components</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># After setup of course :)# cd my-new-project&#10;yo react-webpack:component my/namespaced/components/name</span><br></pre></td></tr></table></figure>
-<p>The above command will create a new component, as well as its stylesheet and a basic testcase.</p>
-<p>Generating new stateless functional components</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yo react-webpack:component my/namespaced/components/name --stateless</span><br></pre></td></tr></table></figure>
-<p>Stateless functional components where introduced in React v0.14. They have a much shorter syntax than regular ones and no state or lifecycle methods at all. Please read the React 0.14 release notes to get more information about those components.</p>
-<p>Note: You will still be able to set properties for stateless components!</p>
-<p>Adding PostCSS plugins</p>
-<p>If you have enabled PostCSS at generation time, install your PostCSS plugins via npm and require it in postcss function incfg/base.js.</p>
-<p>Example for autoprefixer:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd my-new-project&#10;npm install autoprefixer&#10;&#10;&#10;Require in cfg/base.js&#10;&#10;...postcss: function () &#123;&#10;  return [&#10;    require(&#39;autoprefixer&#39;)(&#123;&#10;      browsers: [&#39;last 2 versions&#39;, &#39;ie &#62;= 8&#39;]&#10;    &#125;)&#10;  ];&#10;&#125;&#10;...</span><br></pre></td></tr></table></figure>
-<p>Usage</p>
-<p>The following commands are available in your project:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Start for development&#10;npm start # or&#10;npm run serve&#10;&#10;# Start the dev-server with the dist version&#10;npm run serve:dist&#10;&#10;# Just build the dist version and copy static files&#10;npm run dist&#10;&#10;# Run unit tests&#10;npm test&#10;&#10;# Lint all files in src (also automatically done AFTER tests are run)&#10;npm run lint&#10;&#10;# Clean up the dist directory&#10;npm run clean&#10;&#10;# Just copy the static assets&#10;npm run copy</span><br></pre></td></tr></table></figure>
-<p>Naming Components</p>
-<p>We have opted to follow @floydophone convention of uppercase for component file naming e.g. Component.js. I am open to suggestions if there is a general objection to this decision.</p>
-<p>Modules</p>
-<p>Each component is a module and can be required using the Webpack module system. Webpack uses Loaders which means you can also require CSS and a host of other file types. Read the Webpack documentation to find out more.</p>
-<p>Props</p>
-<p>Thanks to Edd Hannay for his Webpack optimisations, my local merge and testing meant his additions lost his signature (my fault, sorry). So, big thanks Edd.</p>
-<p>Contribute</p>
-<p>Contributions are welcomed. When submitting a bugfix, write a test that exposes the bug and fails before applying your fix. Submit the test alongside the fix.</p>
-<p>Running Tests</p>
-<p>npm test or node node_modules/.bin/mocha</p>
-<p>License</p>
-<p>BSD license</p>
+        <p>Communicate Between Components<br>For parent-child communication, simply pass props.<br>For child-parent communication: Say your GroceryList component has a list of items generated through an array. When a list item is clicked, you want to display its name:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var GroceryList = React.createClass(&#123;&#10;  handleClick: function(i) &#123;&#10;    console.log(&#39;You clicked: &#39; + this.props.items[i]);&#10;  &#125;,&#10;&#10;  render: function() &#123;&#10;    return (&#10;      &#60;div&#62;&#10;        &#123;this.props.items.map(function(item, i) &#123;&#10;          return (&#10;            &#60;div onClick=&#123;this.handleClick.bind(this, i)&#125; key=&#123;i&#125;&#62;&#123;item&#125;&#60;/div&#62;&#10;          );&#10;        &#125;, this)&#125;&#10;      &#60;/div&#62;&#10;    );&#10;  &#125;&#125;);&#10;&#10;ReactDOM.render(&#10;  &#60;GroceryList items=&#123;[&#39;Apple&#39;, &#39;Banana&#39;, &#39;Cranberry&#39;]&#125; /&#62;, mountNode);</span><br></pre></td></tr></table></figure>
+<p>Notice the use of bind(this, arg1, arg2, …): we’re simply passing more arguments tohandleClick. This is not a new React concept; it’s just JavaScript.<br>For communication between two components that don’t have a parent-child relationship, you can set up your own global event system. Subscribe to events in componentDidMount(), unsubscribe in componentWillUnmount(), and call setState() when you receive an event.Flux pattern is one of the possible ways to arrange this.</p>
 
       
     </div>
@@ -334,17 +301,13 @@ Installation&amp;#10;&amp;#10;# Make sure both is installed globally&amp;#10;npm
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/02/01/webpack学习resources-1/" rel="next" title="webpack学习resources[1]">
-                <i class="fa fa-chevron-left"></i> webpack学习resources[1]
+              <a href="/2016/02/01/npm常用命令/" rel="next" title="npm常用命令">
+                <i class="fa fa-chevron-left"></i> npm常用命令
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/02/01/npm常用命令/" rel="prev" title="npm常用命令">
-                npm常用命令 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -370,8 +333,8 @@ Installation&amp;#10;&amp;#10;# Make sure both is installed globally&amp;#10;npm
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/02/01/yeoman教程/"
-           data-title="yeoman教程" data-url="http://yoursite.com/2016/02/01/yeoman教程/">
+      <div class="ds-thread" data-thread-key="2016/02/01/Communicate-Between-Components/"
+           data-title="Communicate Between Components" data-url="http://yoursite.com/2016/02/01/Communicate-Between-Components/">
       </div>
     
   </div>
