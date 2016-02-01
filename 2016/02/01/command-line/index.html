@@ -57,25 +57,34 @@
 
 
 
-<meta name="description" content="1.     保证需要拥有交互效果     $(‘body’).delegate(‘.list’,’click’,function(){});2.     开启一个定时器,一定要记得关掉这个定时器     var timer = setInterval(function(){                    if () {
-     }else if(){
+<meta name="description" content="举例：下列命令包含前三个部分，用于删除 Junk 这个程序。
+###michelle$ rm -R /Applications/Junk.app
+切换到其他路径和目录
+如果你想将当前 command line 会话切换到其他目录，需要用到三个命令：pwd，ls和cd。
 
-     }else{">
+pwd的含义是“print working directory”，会显示当前目录的绝对路径。
+ls的含义是“list direc">
 <meta property="og:type" content="article">
-<meta property="og:title" content="小代码の记录">
-<meta property="og:url" content="http://yoursite.com/2016/02/01/小代码の记录/index.html">
+<meta property="og:title" content="command-line">
+<meta property="og:url" content="http://yoursite.com/2016/02/01/command-line/index.html">
 <meta property="og:site_name" content="Lucy's Blog">
-<meta property="og:description" content="1.     保证需要拥有交互效果     $(‘body’).delegate(‘.list’,’click’,function(){});2.     开启一个定时器,一定要记得关掉这个定时器     var timer = setInterval(function(){                    if () {
-     }else if(){
+<meta property="og:description" content="举例：下列命令包含前三个部分，用于删除 Junk 这个程序。
+###michelle$ rm -R /Applications/Junk.app
+切换到其他路径和目录
+如果你想将当前 command line 会话切换到其他目录，需要用到三个命令：pwd，ls和cd。
 
-     }else{">
-<meta property="og:updated_time" content="2016-02-01T02:44:44.000Z">
+pwd的含义是“print working directory”，会显示当前目录的绝对路径。
+ls的含义是“list direc">
+<meta property="og:updated_time" content="2016-02-01T03:02:47.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="小代码の记录">
-<meta name="twitter:description" content="1.     保证需要拥有交互效果     $(‘body’).delegate(‘.list’,’click’,function(){});2.     开启一个定时器,一定要记得关掉这个定时器     var timer = setInterval(function(){                    if () {
-     }else if(){
+<meta name="twitter:title" content="command-line">
+<meta name="twitter:description" content="举例：下列命令包含前三个部分，用于删除 Junk 这个程序。
+###michelle$ rm -R /Applications/Junk.app
+切换到其他路径和目录
+如果你想将当前 command line 会话切换到其他目录，需要用到三个命令：pwd，ls和cd。
 
-     }else{">
+pwd的含义是“print working directory”，会显示当前目录的绝对路径。
+ls的含义是“list direc">
 
 
 
@@ -93,7 +102,7 @@
   };
 </script>
 
-  <title> 小代码の记录 | Lucy's Blog </title>
+  <title> command-line | Lucy's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -251,7 +260,7 @@
             
             
               
-                小代码の记录
+                command-line
               
             
           </h1>
@@ -263,7 +272,7 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-01T10:44:31+08:00" content="2016-02-01">
+            <time itemprop="dateCreated" datetime="2016-02-01T11:01:38+08:00" content="2016-02-01">
               2016-02-01
             </time>
           </span>
@@ -274,8 +283,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/02/01/小代码の记录/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/小代码の记录/" itemprop="commentsCount"></span>
+                <a href="/2016/02/01/command-line/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/command-line/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -296,40 +305,32 @@
       
 
       
-        <p>1.<br>     保证需要拥有交互效果<br>     $(‘body’).delegate(‘.list’,’click’,function(){});<br>2.<br>     开启一个定时器,一定要记得关掉这个定时器<br>     var timer = setInterval(function(){<br>                    if () {</p>
-<pre><code>     }else if(){
+        <p>举例：下列命令包含前三个部分，用于删除 Junk 这个程序。</p>
+<p>###michelle$ rm -R /Applications/Junk.app</p>
+<p>切换到其他路径和目录</p>
+<p>如果你想将当前 command line 会话切换到其他目录，需要用到三个命令：pwd，ls和cd。</p>
+<ul>
+<li>pwd的含义是“print working directory”，会显示当前目录的绝对路径。</li>
+<li>ls的含义是“list directory contents”，它会列出当前目录的内容。这个命令还有其他参数可选。</li>
+<li>cd的含义是“change directory”，它会改变当前目录到你指定的目录。如果你不指定，则会返回你的 home folder。</li>
+</ul>
+<p>编辑文件和文件夹</p>
+<p>有许多基础的命令用来编辑文件和文件夹，包括mkdir, cp, mv, rm, rmdir以及vi。下面我们来简要地介绍一下这些命令。</p>
+<p>###mkdir</p>
+<p>“make diretory”的缩写，用来创建文件夹，语法为mkdir后接新文件夹的目录。可以用-p选项，来一起创建路径中不存在的文件夹（这样你就不用挨层创建了）。</p>
+<p>###cp</p>
+<p>“copy”的缩写，用来把文件从一处复制到另一处。语法为cp后接原始路径，后接目标路径。如果你想复制整个文件夹和所有内容，需要添加-R选项。如果指定的目标路径不含文件名，则 cp 命令会按原名复制。如果指定的目标路径包括文件名，则会复制为你指定的文件名。如果仅指定新文件名，则会在原处以新名称创建文件副本。注意，系统会自动替换同名文件而不出现提示。</p>
+<p>###mv</p>
+<p>“move”的缩写，用来移动文件。语法为mv后接原路径，后接新路径。mv 的指定路径规则和 cp 是一样的（没错，如果仅指定新文件名，它就成了重命名命令）。</p>
+<p>###rm</p>
+<p>“remove”的缩写，会永久删除文件。注意，command-line中没有废纸篓。语法为rm后接文件路径。然而，使用 rm 命令删除的文件有可能可以通过数据恢复工具恢复。如果希望安全删除文件，可以使用srm命令。</p>
+<p>###rmdir和rm -R</p>
+<p>rmdir是“remove directory”的缩写，这个命令会永久删除文件夹。再强调一遍，CLI 中木有废纸篓。语法为rmdir后接希望删除目录的路径。然而，rmdir 命令无法删除含有任何其他文件的文件夹，所以大多数情形下rmdir命令是不适用的。不过，你可以利用rm添加-R选项来删除文件夹及包含的所有文件。</p>
+<p>###vi</p>
+<p>代表“visual”（视觉的），然而这个名称相当具有讽刺意味：vi可能是可视化效果最差的文本编辑器了。然而，vi 是 command line 中最常见的文本编辑器。用vi打开文本文件，只需要输入vi后接文件路径即可。Mac OS X 还提供了nano，一个更加现代的文本编辑器。它也更加方便，例如在底部包含了一个作弊小条（=_=），上面有常用的快捷键列表（你就不用背下来它们了）。然而，vi却有时是默认的文本编辑器，所以掌握vi是很有用的。</p>
+<p>和less命令类似，vi命令会占用整个 Terminal 空间来显示文件内容。打开后，在“command模式”，vi 会等你输入一些预定义字符来告诉 vi 你想做什么。你也可以使用键盘上的箭头键单纯地浏览文件。你想编辑时，按A开始（会进入编辑模式）。文字会插入到光标处。如果你想保存，需要先退出编辑模式进入 command 模式。方法是按下esc键。回到 command 模式后，按住shift同时按两次Z来保存并退出。如果你不想保存，在 command 模式输入:quit!并按enter</p>
+<p>return直接退出。</p>
 
-     }else{
-          clearInterval(timer);
-     }
-},1000);
-</code></pre><p>3.<br>     当我在利用一个url的参数进行操作的时候<br>     var options_number = option.href.indexOf(‘?’),<br>                    options =  option.href.substr(options_number)<br>                    //“?app_id=01&amp;lang=zh&amp;device_id=F188AB23-D252-4013-93FA-EE1B9448EF29&amp;platform=ios&amp;channelID=AppStore&amp;themeid=0&amp;v=5.3.1&amp;auth=3.IqYrI2oO0owNFYGjipdLv3MUkJzfQtp1QMeCrAvnIoQ%3D”<br>4.判断是否滚动到底部<br>scroll:function(){<br>               var i = document,<br>                   d = screen.height,<br>                      h = i.documentElement.scrollTop == 0 ? i.body.scrollTop: i.documentElement.scrollTop,<br>                      f = i.documentElement.scrollTop == 0 ? i.body.scrollHeight: i.documentElement.scrollHeight,<br>                      _this = this;<br>                    if(h + d &gt;= f ){<br>                         //滚动到底部所要进行的操作<br>                    }<br>          }<br>5.通过滚动到底部加载更多的数据<br>//<a href="http://coin.seeyouyima.com/luck/draw-zero?app_id=01&amp;lang=zh&amp;device_id=F188AB23-D252-4013-93FA-EE1B9448EF29&amp;platform=ios&amp;channelID=AppStore&amp;themeid=0&amp;v=5.3.1&amp;auth=3.IqYrI2oO0owNFYGjipdLv3MUkJzfQtp1QMeCrAvnIoQ%3D" target="_blank" rel="external">http://coin.seeyouyima.com/luck/draw-zero?app_id=01&amp;lang=zh&amp;device_id=F188AB23-D252-4013-93FA-EE1B9448EF29&amp;platform=ios&amp;channelID=AppStore&amp;themeid=0&amp;v=5.3.1&amp;auth=3.IqYrI2oO0owNFYGjipdLv3MUkJzfQtp1QMeCrAvnIoQ%3D</a></p>
-<p><script><br>        var page=0;<br>        window.onscroll = function(){<br>            scroll();<br>        };<br>        function scroll(){<br>            var i = document,<br>                    d = screen.height,<br>                    h = i.documentElement.scrollTop == 0 ? i.body.scrollTop: i.documentElement.scrollTop,<br>                    f = i.documentElement.scrollTop == 0 ? i.body.scrollHeight: i.documentElement.scrollHeight,<br>                    _this = this;<br>            if(h + d &gt;= f &amp;&amp; $(‘.list-more’).html() != ‘没有更多数据了’){<br>                page+=1;<br>                getDate(page);<br>            }<br>        }<br>        function getDate(page){<br>            $.ajax({<br>                type:’GET’,<br>                dataType: ‘json’,<br>                url: href,<br>                data:{‘action’: ‘getData’ , ‘page’ : page},<br>                success:function(data){<br>                    if(data.data == undefined || data.data == null || data.data == ‘’){<br>                         html(‘没有更多数据了’);<br>                    }else{<br>                        html(‘加载中…’).show();<br>                        var html = ‘’;<br>                        $.each(data.data,function(commentIndex,comment){</p>
-<pre><code>                        html+=&apos;render the Data&apos;;
-                    });
-
-                    $(html).insertBefore($(&apos;.list-more&apos;));
-                    setTimeout(function(){
-                        _this.judge($(&apos;.list-message-time&apos;));//判断这个时候需要显示的是哪一种状态
-                    },0);
-                    option.list_more.html(&apos;加载更多数据&apos;)
-
-                }
-            },
-            error:function(xhr){
-                if (xhr.responseText) {
-                    var msg = JSON.parse(xhr.responseText);
-                    alert(msg)
-                }
-            }
-
-        })
-
-    }
-&lt;/script&gt;
-</code></pre><p>5.JSON.stringify 语法实例讲解<br>//<a href="http://www.cnblogs.com/ningvsban/p/3660654.html">http://www.cnblogs.com/ningvsban/p/3660654.html</a></p>
-<p>6.$.extend的方法<br>     var result=$.extend({},{name:”Tom”,age:21},{name:”Jerry”,sex:”Boy”})<br>     那么合并后的结果result={name:”Jerry”,age:21,sex:”Boy”}<br>7.判断是否是一个函数<br>        function isFunction(fn) {<br>            return (!!fn&amp;&amp;!fn.nodename&amp;&amp;fn.constructor!=String&amp;&amp;fn.constructor!=RegExp&amp;&amp;fn.constructor!=Array&amp;&amp;/function/i.test(fn+””));<br>        }</p>
-</script></p>
       
     </div>
 
@@ -340,13 +341,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/02/01/vim编辑器-vim基本命令/" rel="next" title="vim编辑器-vim基本命令">
+                <i class="fa fa-chevron-left"></i> vim编辑器-vim基本命令
+              </a>
+            
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/02/01/webpack学习resources-1/" rel="prev" title="webpack学习resources[1]">
-                webpack学习resources[1] <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -372,8 +373,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/02/01/小代码の记录/"
-           data-title="小代码の记录" data-url="http://yoursite.com/2016/02/01/小代码の记录/">
+      <div class="ds-thread" data-thread-key="2016/02/01/command-line/"
+           data-title="command-line" data-url="http://yoursite.com/2016/02/01/command-line/">
       </div>
     
   </div>
