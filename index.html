@@ -250,6 +250,111 @@
             
               
                 
+                <a class="post-title-link" href="/2016/02/01/how-include-gulp-webpack-to-struct-a-multi-page-app-1/" itemprop="url">
+                  how-include-gulp+webpack-to-struct-a-multi-page-app-1
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-01T11:04:21+08:00" content="2016-02-01">
+              2016-02-01
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/01/how-include-gulp-webpack-to-struct-a-multi-page-app-1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/how-include-gulp-webpack-to-struct-a-multi-page-app-1/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="how_include_gulp_+_webpack_to_struct_a_multi-page_app_1"><a href="#how_include_gulp_+_webpack_to_struct_a_multi-page_app_1" class="headerlink" title="how include gulp + webpack to struct a multi-page app 1"></a>how include gulp + webpack to struct a multi-page app 1</h1><h2 id="when_i_use_GULP_2Cthe_way_of_pack_is_to_wrap_all_the_-js_file_into_a_one__2C_and_all_the_-css_file_into_a_one__2C_and_every_page_just_include_one_-js"><a href="#when_i_use_GULP_2Cthe_way_of_pack_is_to_wrap_all_the_-js_file_into_a_one__2C_and_all_the_-css_file_into_a_one__2C_and_every_page_just_include_one_-js" class="headerlink" title="when i use GULP,the way of pack is to wrap all the .js file into a one , and all the .css file into a one , and every page just include one .js"></a>when i use GULP,the way of pack is to wrap all the .js file into a one , and all the .css file into a one , and every page just include one .js</h2><p>file and one .css file.</p>
+<p>this is what we say the style of  /<em>all in one</em>/,the ambition what we de is to decrease the <em>HTTP REQUEST</em>.<br>The way is very convenient for simple project.<br>But a better way to resolve the pack file what we look for is about request merge , just load what we need ,module develop , listening the update of files automatically , and the suporting the combination of pictures.<br>if we do the above things , we can improve the effect of the page.<br>the way to resolve the above Question is four process.<br>1.analyze the front-end static file dependence by tool.<br>2.the page load the entry file by module tool , and combine all dependency files into <em>combo request</em> .<br>3-back-end return <em>combo file</em>, and the browsery cache the module . if we execute the process 2 , just request those files that dont be cached.<br>4-we use <em>dependency analyze </em> and <em>back-end combo </em> to realize load just what we need and request combination.</p>
+<p>##the use of webpack<br>webpack is very convenient for React.<br>In React , component can include css or picture straightly , and what we write is just a require sentences and a config of loader.</p>
+<p>our project is a multi page item , that is every page is a .html file . and when we visit different page we load different Href.<br>the project derectory is like this:<br>in APP we put .html file.<br>in CSS we put .css file.<br>images we put some .png file.<br>in JS derectory have different folders , some are core file , some are lib file ,and the other are UI components.<br>and the file :MAIN.JS is the entry file.<br>the structure likes this :</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#9500;&#9472;&#9472; app&#10;&#9474;   &#9500;&#9472;&#9472; header.inc&#10;&#9474;   &#9500;&#9472;&#9472; help-charge.inc&#10;&#9474;   &#9500;&#9472;&#9472; index.html&#10;&#9474;   &#9500;&#9472;&#9472; news-detail.html&#10;&#9474;   &#9492;&#9472;&#9472; news-list.html&#10;&#9500;&#9472;&#9472; css&#10;&#9474;   &#9500;&#9472;&#9472; icon.less&#10;&#9474;   &#9492;&#9472;&#9472; slider.css&#10;&#9500;&#9472;&#9472; images&#10;&#9492;&#9472;&#9472; js&#10;    &#9500;&#9472;&#9472; core&#10;    &#9500;&#9472;&#9472; lib&#10;    &#9500;&#9472;&#9472; ui&#10;    &#9500;&#9472;&#9472; news-detail.js&#10;    &#9500;&#9472;&#9472; news-list.js&#10;    &#9492;&#9472;&#9472; main.js</span><br></pre></td></tr></table></figure>
+<p>the project we just use webpack to deal with the wrap of js , and the other tasks is to gulp.<br>the config like this :</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">module.exports = &#123;&#10;    devtool: &#34;source-map&#34;,    //&#29983;&#25104;sourcemap,&#20415;&#20110;&#24320;&#21457;&#35843;&#35797;&#10;    entry: getEntry(),         //&#33719;&#21462;&#39033;&#30446;&#20837;&#21475;js&#25991;&#20214;&#10;    output: &#123;&#10;        path: path.join(__dirname, &#34;dist/js/&#34;), //&#25991;&#20214;&#36755;&#20986;&#30446;&#24405;&#10;        publicPath: &#34;dist/js/&#34;,        //&#29992;&#20110;&#37197;&#32622;&#25991;&#20214;&#21457;&#24067;&#36335;&#24452;&#65292;&#22914;CDN&#25110;&#26412;&#22320;&#26381;&#21153;&#22120;&#10;        filename: &#34;[name].js&#34;,        //&#26681;&#25454;&#20837;&#21475;&#25991;&#20214;&#36755;&#20986;&#30340;&#23545;&#24212;&#22810;&#20010;&#25991;&#20214;&#21517;&#10;    &#125;,&#10;    module: &#123;&#10;        //&#21508;&#31181;&#21152;&#36733;&#22120;&#65292;&#21363;&#35753;&#21508;&#31181;&#25991;&#20214;&#26684;&#24335;&#21487;&#29992;require&#24341;&#29992;&#10;        loaders: [&#10;            // &#123; test: /\.css$/, loader: &#34;style-loader!css-loader&#34;&#125;,&#10;            // &#123; test: /\.less$/, loader: &#34;style-loader!csss-loader!less-loader&#34;&#125;&#10;        ]&#10;    &#125;,&#10;    resolve: &#123;&#10;        //&#37197;&#32622;&#21035;&#21517;&#65292;&#22312;&#39033;&#30446;&#20013;&#21487;&#32553;&#20943;&#24341;&#29992;&#36335;&#24452;&#10;        alias: &#123;&#10;            jquery: srcDir + &#34;/js/lib/jquery.min.js&#34;,&#10;            core: srcDir + &#34;/js/core&#34;,&#10;            ui: srcDir + &#34;/js/ui&#34;&#10;        &#125;&#10;    &#125;,&#10;    plugins: [&#10;        //&#25552;&#20379;&#20840;&#23616;&#30340;&#21464;&#37327;&#65292;&#22312;&#27169;&#22359;&#20013;&#20351;&#29992;&#26080;&#38656;&#29992;require&#24341;&#20837;&#10;        new webpack.ProvidePlugin(&#123;&#10;            jQuery: &#34;jquery&#34;,&#10;            $: &#34;jquery&#34;,&#10;            // nie: &#34;nie&#34;&#10;        &#125;),&#10;        //&#23558;&#20844;&#20849;&#20195;&#30721;&#25277;&#31163;&#20986;&#26469;&#21512;&#24182;&#20026;&#19968;&#20010;&#25991;&#20214;&#10;        new CommonsChunkPlugin(&#39;common.js&#39;),&#10;        //js&#25991;&#20214;&#30340;&#21387;&#32553;&#10;        new uglifyJsPlugin(&#123;&#10;            compress: &#123;&#10;                warnings: false&#10;            &#125;&#10;        &#125;)&#10;    ]&#10;&#125;;</span><br></pre></td></tr></table></figure>
+<p>config reference document :</p>
+<p>the way of packing :<br>the way of packing is that there is a entry file in every page .<br>in File , you can include other modules by REQUIRE , and the webpack will combine all modules into a file.<br>we can use function getEntry to get the entry file .</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">function getEntry() &#123;&#10;    var jsPath = path.resolve(srcDir, &#39;js&#39;);&#10;    var dirs = fs.readdirSync(jsPath);&#10;    var matchs = [], files = &#123;&#125;;&#10;    dirs.forEach(function (item) &#123;&#10;        matchs = item.match(/(.+)\.js$/);&#10;        if (matchs) &#123;&#10;            files[matchs[1]] = path.resolve(srcDir, &#39;js&#39;, item);&#10;        &#125;&#10;    &#125;);&#10;    return files;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>this way will output the absolute path .<br>for example :</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">entry&#65306;&#123;&#10;    news-detail: /../Document/project/.../news-detail.js&#10;&#125;&#10;`</span><br></pre></td></tr></table></figure>
+<p>then the output file will be created in [output.path] intu [name].js,that is [news-detail.js].<br>the file name will not be changed.<br>the usage of module is to add loaders ,then what the usage of loaders ?<br>if we want to include some js by require , e.g. css / image ,then we need config the loaders .<br>it is very convenient for React ,bucause in Component ,we can use module-css.</p>
+<p>resolve 中的alias可以用于定义别名，用过seajs等模块工具的都知道alias的作用，比如我们在这里定义了ui这个别名，那么在模块中想引用ui目录下的文件，就可以直接这样写</p>
+<p>require(‘ui/dialog.js’);<br>不用加上前面的更长的文件路径。</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/02/01/command-line/" itemprop="url">
                   command-line
                 </a>
@@ -1210,7 +1315,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">8</span>
+              <span class="site-state-item-count">9</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
