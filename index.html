@@ -227,15 +227,6 @@
 
     
     
-      
-      
-        
-        
-        
-      
-
-      
-    
 
     
       
@@ -329,6 +320,1048 @@
 
 
     
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/01/React-React-Native-的ES5-ES6写法对照/" itemprop="url">
+                  React/React Native 的ES5 ES6写法对照
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-01T12:04:07+08:00" content="2016-02-01">
+              2016-02-01
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/01/React-React-Native-的ES5-ES6写法对照/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/React-React-Native-的ES5-ES6写法对照/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#React/React Native 的ES5 ES6写法对照</p>
+<p>##模块引用<br>在ES5里，如果使用CommonJS标准，引入React包基本通过require进行，代码类似这样：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//ES5&#10;var React = require(&#34;react-native&#34;);&#10;var &#123;&#10;    Image,&#10;    Text,&#10;    PropTypes&#10;&#125; = React;  //&#24341;&#29992;&#19981;&#21516;&#30340;React Native&#32452;&#20214;</span><br></pre></td></tr></table></figure>
+<p>在ES6里，import写法更为标准</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//ES6&#10;import React, &#123;&#10;    Image,&#10;    Text,&#10;    PropTypes&#10;&#125; from &#39;react-native&#39;;</span><br></pre></td></tr></table></figure>
+<p>注意在React Native里，import直到0.12+才能正常运作。</p>
+<p>导出单个类<br>在ES5里，要导出一个类给别的模块用，一般通过module.exports来导出</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//ES5&#10;var MyComponent = React.createClass(&#123;&#10;    ...&#10;&#125;);&#10;module.exports = MyComponent;</span><br></pre></td></tr></table></figure>
+<p>在ES6里，通常用export default来实现相同的功能：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//ES6&#10;export default class MyComponent extends React.Component&#123;&#10;    ...&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>引用的时候也类似：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//ES5&#10;var MyComponent = require(&#39;./MyComponent.js&#39;);&#10;&#10;//ES6&#10;import MyComponent from &#39;./MyComponent.js&#39;;</span><br></pre></td></tr></table></figure>
+<p>定义组件<br>在ES5里，通常通过React.createClass来定义一个组件类，像这样：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//ES5&#10;var Photo = React.createClass(&#123;&#10;    render: function() &#123;&#10;        return (&#10;            &#60;Image source=&#123;this.props.source&#125; /&#62;&#10;        );&#10;    &#125;,&#10;&#125;);</span><br></pre></td></tr></table></figure>
+<p>在ES6里，我们通过定义一个继承自React.Component的class来定义一个组件类，像这样：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//ES6&#10;class Photo extends React.Component &#123;&#10;    render() &#123;&#10;        return (&#10;            &#60;Image source=&#123;this.props.source&#125; /&#62;&#10;        );&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>给组件定义方法<br>从上面的例子里可以看到，给组件定义方法不再用 名字: function()的写法，而是直接用名字()，在方法的最后也不能有逗号了。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//ES5&#10;var Photo = React.createClass(&#123;&#10;    componentWillMount: function()&#123;&#10;&#10;    &#125;,&#10;    render: function() &#123;&#10;        return (&#10;            &#60;Image source=&#123;this.props.source&#125; /&#62;&#10;        );&#10;    &#125;,&#10;&#125;);&#10;//ES6&#10;class Photo extends React.Component &#123;&#10;    componentWillMount() &#123;&#10;&#10;    &#125;&#10;    render() &#123;&#10;        return (&#10;            &#60;Image source=&#123;this.props.source&#125; /&#62;&#10;        );&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>定义组件的属性类型和默认属性<br>在ES5里，属性类型和默认属性分别通过propTypes成员和getDefaultProps方法来实现</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//ES5&#10;var Video = React.createClass(&#123;&#10;    getDefaultProps: function() &#123;&#10;        return &#123;&#10;            autoPlay: false,&#10;            maxLoops: 10,&#10;        &#125;;&#10;    &#125;,&#10;    propTypes: &#123;&#10;        autoPlay: React.PropTypes.bool.isRequired,&#10;        maxLoops: React.PropTypes.number.isRequired,&#10;        posterFrameSrc: React.PropTypes.string.isRequired,&#10;        videoSrc: React.PropTypes.string.isRequired,&#10;    &#125;,&#10;    render: function() &#123;&#10;        return (&#10;            &#60;View /&#62;&#10;        );&#10;    &#125;,&#10;&#125;);</span><br></pre></td></tr></table></figure>
+<p>在ES6里，可以统一使用static成员来实现</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//ES6&#10;class Video extends React.Component &#123;&#10;    static defaultProps = &#123;&#10;        autoPlay: false,&#10;        maxLoops: 10,&#10;    &#125;&#10;    static propTypes = &#123;&#10;        autoPlay: React.PropTypes.bool.isRequired,&#10;        maxLoops: React.PropTypes.number.isRequired,&#10;        posterFrameSrc: React.PropTypes.string.isRequired,&#10;        videoSrc: React.PropTypes.string.isRequired,&#10;    &#125;&#10;    render() &#123;&#10;        return (&#10;            &#60;View /&#62;&#10;        );&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>也有人这么写，虽然不推荐，但读到代码的时候你应当能明白它的意思：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//ES6&#10;class Video extends React.Component &#123;&#10;    render() &#123;&#10;        return (&#10;            &#60;View /&#62;&#10;        );&#10;    &#125;&#10;&#125;&#10;Video.defaultProps = &#123;&#10;    autoPlay: false,&#10;    maxLoops: 10,&#10;&#125;;&#10;Video.propTypes = &#123;&#10;    autoPlay: React.PropTypes.bool.isRequired,&#10;    maxLoops: React.PropTypes.number.isRequired,&#10;    posterFrameSrc: React.PropTypes.string.isRequired,&#10;    videoSrc: React.PropTypes.string.isRequired,&#10;&#125;;</span><br></pre></td></tr></table></figure>
+<p>注意: 对React开发者而言，static成员在IE10及之前版本不能被继承，而在IE11和其它浏览器上可以，这有时候会带来一些问题。React Native开发者可以不用担心这个问题。</p>
+<p>初始化state<br>ES5下情况类似，</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//ES5&#10;var Video = React.createClass(&#123;&#10;    getInitialState: function() &#123;&#10;        return &#123;&#10;            loopsRemaining: this.props.maxLoops,&#10;        &#125;;&#10;    &#125;,&#10;&#125;)</span><br></pre></td></tr></table></figure>
+<p>ES6下，有两种写法：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//ES6&#10;class Video extends React.Component &#123;&#10;    state = &#123;&#10;        loopsRemaining: this.props.maxLoops,&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>##不过我们推荐更易理解的在构造函数中初始化（这样你还可以根据需要做一些计算）：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//ES6&#10;class Video extends React.Component &#123;&#10;    constructor(props)&#123;&#10;        super(props);&#10;        this.state = &#123;&#10;            loopsRemaining: this.props.maxLoops,&#10;        &#125;;&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>把方法作为回调提供<br>很多习惯于ES6的用户反而不理解在ES5下可以这么做：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//ES5&#10;var PostInfo = React.createClass(&#123;&#10;    handleOptionsButtonClick: function(e) &#123;&#10;        // Here, &#39;this&#39; refers to the component instance.&#10;        this.setState(&#123;showOptionsModal: true&#125;);&#10;    &#125;,&#10;    render: function()&#123;&#10;        return (&#10;            &#60;TouchableHighlight onPress=&#123;this.handleOptionsButtonClick&#125;&#62;&#10;                &#60;Text&#62;&#123;this.props.label&#125;&#60;/Text&#62;&#10;            &#60;/TouchableHighlight&#62;&#10;        )&#10;    &#125;,&#10;&#125;);</span><br></pre></td></tr></table></figure>
+<p>##在ES5下，React.createClass会把所有的方法都bind一遍，这样可以提交到任意的地方作为回调函数，而this不会变化。但官方现在逐步认为这反而是不标准、不易理解的。</p>
+<p>##在ES6下，你需要通过bind来绑定this引用，或者使用箭头函数（它会绑定当前scope的this引用）来调用<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//ES6&#10;class PostInfo extends React.Component&#10;&#123;&#10;    handleOptionsButtonClick(e)&#123;&#10;        this.setState(&#123;showOptionsModal: true&#125;);&#10;    &#125;&#10;    render()&#123;&#10;        return (&#10;            &#60;TouchableHighlight&#10;                onPress=&#123;this.handleOptionsButtonClick.bind(this)&#125;&#10;                onPress=&#123;e=&#62;this.handleOptionsButtonClick(e)&#125;&#10;                &#62;&#10;                &#60;Text&#62;&#123;this.props.label&#125;&#60;/Text&#62;&#10;            &#60;/TouchableHighlight&#62;&#10;        )&#10;    &#125;,&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>箭头函数实际上是在这里定义了一个#临时的函数#，箭头函数的箭头=&gt;之前是一个空括号、单个的参数名、或用括号括起的多个参数名，而箭头之后可以是一个表达式（作为函数的返回值），或者是用花括号括起的函数体（需要自行通过return来返回值，否则返回的是undefined）。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// &#31661;&#22836;&#20989;&#25968;&#30340;&#20363;&#23376;&#10;()=&#62;1&#10;v=&#62;v+1&#10;(a,b)=&#62;a+b&#10;()=&#62;&#123;&#10;    alert(&#34;foo&#34;);&#10;&#125;&#10;e=&#62;&#123;&#10;    if (e == 0)&#123;&#10;        return 0;&#10;    &#125;&#10;    return 1000/e;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>需要注意的是，不论是bind还是箭头函数，每次被执行都返回的是一个新的函数引用，因此如果你还需要函数的引用去做一些别的事情（譬如卸载监听器），那么你必须自己保存这个引用</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// &#38169;&#35823;&#30340;&#20570;&#27861;&#10;class PauseMenu extends React.Component&#123;&#10;    componentWillMount()&#123;&#10;        AppStateIOS.addEventListener(&#39;change&#39;, this.onAppPaused.bind(this));&#10;    &#125;&#10;    componentDidUnmount()&#123;&#10;        AppStateIOS.removeEventListener(&#39;change&#39;, this.onAppPaused.bind(this));&#10;    &#125;&#10;    onAppPaused(event)&#123;&#10;    &#125;&#10;&#125;&#10;// &#27491;&#30830;&#30340;&#20570;&#27861;&#10;class PauseMenu extends React.Component&#123;&#10;    constructor(props)&#123;&#10;        super(props);&#10;        this._onAppPaused = this.onAppPaused.bind(this);&#10;    &#125;&#10;    componentWillMount()&#123;&#10;        AppStateIOS.addEventListener(&#39;change&#39;, this._onAppPaused);&#10;    &#125;&#10;    componentDidUnmount()&#123;&#10;        AppStateIOS.removeEventListener(&#39;change&#39;, this._onAppPaused);&#10;    &#125;&#10;    onAppPaused(event)&#123;&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>从这个帖子中我们还学习到一种新的做法：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// &#27491;&#30830;&#30340;&#20570;&#27861;&#10;class PauseMenu extends React.Component&#123;&#10;    componentWillMount()&#123;&#10;        AppStateIOS.addEventListener(&#39;change&#39;, this.onAppPaused);&#10;    &#125;&#10;    componentDidUnmount()&#123;&#10;        AppStateIOS.removeEventListener(&#39;change&#39;, this.onAppPaused);&#10;    &#125;&#10;    onAppPaused = (event) =&#62; &#123;&#10;        //&#25226;&#26041;&#27861;&#30452;&#25509;&#20316;&#20026;&#19968;&#20010;arrow function&#30340;&#23646;&#24615;&#26469;&#23450;&#20041;&#65292;&#21021;&#22987;&#21270;&#30340;&#26102;&#20505;&#23601;&#32465;&#23450;&#22909;&#20102;this&#25351;&#38024;&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>##Mixins<br>在ES5下，我们经常使用mixin来为我们的类添加一些新的方法，譬如PureRenderMixin<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var PureRenderMixin = require(&#39;react-addons-pure-render-mixin&#39;);&#10;React.createClass(&#123;&#10;  mixins: [PureRenderMixin],&#10;&#10;  render: function() &#123;&#10;    return &#60;div className=&#123;this.props.className&#125;&#62;foo&#60;/div&#62;;&#10;  &#125;&#10;&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>##ES6+带来的其它好处</p>
+<p>###解构&amp;属性延展<br>结合使用ES6+的解构和属性延展，我们给孩子传递一批属性更为方便了。这个例子把className以外的所有属性传递给div标签：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class AutoloadingPostsGrid extends React.Component &#123;&#10;    render() &#123;&#10;        var &#123;&#10;            className,&#10;            ...others,  // contains all properties of this.props except for className&#10;        &#125; = this.props;&#10;        return (&#10;            &#60;div className=&#123;className&#125;&#62;&#10;                &#60;PostsGrid &#123;...others&#125; /&#62;&#10;                &#60;button onClick=&#123;this.handleLoadMoreClick&#125;&#62;Load more&#60;/button&#62;&#10;            &#60;/div&#62;&#10;        );&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>下面这种写法，则是传递所有属性的同时，用覆盖新的className值：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#60; div &#123;...this.props&#125; className=&#34;override&#34;&#62;&#10;    &#8230;&#10;&#60;/div&#62;</span><br></pre></td></tr></table></figure>
+<p>这个例子则相反，如果属性中没有包含className，则提供默认的值，而如果属性中已经包含了，则使用属性中的值</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#60; div className=&#34;base&#34; &#123;...this.props&#125;&#62;&#10;    &#8230;&#10;&#60;/div&#62;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/01/webpack学习resources-4/" itemprop="url">
+                  webpack学习resources-4
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-01T12:03:13+08:00" content="2016-02-01">
+              2016-02-01
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/01/webpack学习resources-4/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/webpack学习resources-4/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#Lucy Tu 的webpack初探<br>目标:webpack的静态页面的项目工程的配置</p>
+<p>##初级阶段<br>在我刚入手前端这个领域的时候,我的做法是这样的:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#60;!DOCTYPE html&#62;&#10;&#60;html&#62;&#10;&#60;head&#62;&#10;    &#60;title&#62;webapp&#60;/title&#62;&#10;    &#60;link rel=&#34;stylesheet&#34; href=&#34;app.css&#34;&#62;&#10;&#60;/head&#62;&#10;&#60;body&#62;&#10;    &#60;h1&#62;app title&#60;/h1&#62;&#10;    &#60;script src=&#34;app.js&#34;&#62;&#60;/script&#62;&#10;&#60;/body&#62;&#10;&#60;/html&#62;</span><br></pre></td></tr></table></figure>
+<p>但是后来,我们的项目组开始引入了requirejs,还有grunt打包工具,我发现,文件的配置其实是一门学问.<br>在学习requirejs的时候,我开始有意识地去了解<br>[资源管理，包括资源获取、依赖处理、实时更新、按需加载、公共模块管理]等问题</p>
+<p><em>现在</em>以开发一个多页面型webapp为例，给出上面所提出的问题的解决方案。</p>
+<p>1-前端开发环境搭建</p>
+<p>主要目录结构</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">- webapp/               # webapp&#26681;&#30446;&#24405;&#10;  - src/                # &#24320;&#21457;&#30446;&#24405;&#10;    + css/              # css&#36164;&#28304;&#30446;&#24405;&#10;    + img/              # webapp&#22270;&#29255;&#36164;&#28304;&#30446;&#24405;&#10;    - js/               # webapp js&#38;jsx&#36164;&#28304;&#30446;&#24405;&#10;      - components/     # &#26631;&#20934;&#32452;&#20214;&#23384;&#25918;&#30446;&#24405;&#10;          - foo/        # &#32452;&#20214;foo&#10;            + css/      # &#32452;&#20214;foo&#30340;&#26679;&#24335;&#10;            + js/       # &#32452;&#20214;foo&#30340;&#36923;&#36753;&#10;            + tmpl/     # &#32452;&#20214;foo&#30340;&#27169;&#26495;&#10;            index.js    # &#32452;&#20214;foo&#30340;&#20837;&#21475;&#10;          + bar/        # &#32452;&#20214;bar&#10;      + lib/            # &#31532;&#19977;&#26041;&#32431;js&#24211;&#10;      ...               # &#26681;&#25454;&#39033;&#30446;&#38656;&#35201;&#20219;&#24847;&#28155;&#21152;&#30340;&#20195;&#30721;&#30446;&#24405;&#10;    + tmpl/             # webapp&#21069;&#31471;&#27169;&#26495;&#36164;&#28304;&#30446;&#24405;&#10;    a.html              # webapp&#20837;&#21475;&#25991;&#20214;a&#10;    b.html              # webapp&#20837;&#21475;&#25991;&#20214;b&#10;  - assets/             # &#32534;&#35793;&#36755;&#20986;&#30446;&#24405;&#65292;&#21363;&#21457;&#24067;&#30446;&#24405;&#10;    + js/               # &#32534;&#35793;&#36755;&#20986;&#30340;js&#30446;&#24405;&#10;    + img/              # &#32534;&#35793;&#36755;&#20986;&#30340;&#22270;&#29255;&#30446;&#24405;&#10;    + css/              # &#32534;&#35793;&#36755;&#20986;&#30340;css&#30446;&#24405;&#10;    a.html              # &#32534;&#35793;&#36755;&#20986;&#30340;&#20837;&#21475;a&#10;    b.html              # &#32534;&#35793;&#22788;&#29702;&#21518;&#30340;&#20837;&#21475;b&#10;  + mock/               # &#20551;&#25968;&#25454;&#30446;&#24405;&#10;  app.js                # &#26412;&#22320;server&#20837;&#21475;&#10;  routes.js             # &#26412;&#22320;&#36335;&#30001;&#37197;&#32622;&#10;  webpack.config.js     # webpack&#37197;&#32622;&#25991;&#20214;&#10;  gulpfile.js           # gulp&#20219;&#21153;&#37197;&#32622;&#10;  package.json          # &#39033;&#30446;&#37197;&#32622;&#10;  README.md             # &#39033;&#30446;&#35828;&#26126;</span><br></pre></td></tr></table></figure>
+<p>这是个经典的前端项目目录结构<br>项目结构在一定程度上约定了开发规范。<br><em>业务开发的同学只需关注src目录即可，开发时尽可能最小化模块粒度，这是异步加载的需要。</em><br><em>assets是整个工程的产出，无需关注里边的内容是什么，至于怎么打包和解决资源依赖的，往下看。</em></p>
+<p>##本地开发环境</p>
+<p>我们使用开源web框架搭建一个webserver，便于本地开发和调试，以及灵活地处理前端路由，<br>以koa为例，主要代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// app.js&#10;var http = require(&#39;http&#39;);&#10;var koa = require(&#39;koa&#39;);&#10;var serve = require(&#39;koa-static&#39;);&#10;&#10;var app = koa();&#10;var debug = process.env.NODE_ENV !== &#39;production&#39;;&#10;// &#24320;&#21457;&#29615;&#22659;&#21644;&#29983;&#20135;&#29615;&#22659;&#23545;&#24212;&#19981;&#21516;&#30340;&#30446;&#24405;&#10;var viewDir = debug ? &#39;src&#39; : &#39;assets&#39;;&#10;&#10;// &#22788;&#29702;&#38745;&#24577;&#36164;&#28304;&#21644;&#20837;&#21475;&#25991;&#20214;&#10;app.use(serve(path.resolve(__dirname, viewDir), &#123;&#10;    maxage: 0&#10;&#125;));&#10;&#10;app = http.createServer(app.callback());&#10;&#10;app.listen(3005, &#39;0.0.0.0&#39;, function() &#123;&#10;    console.log(&#39;app listen success.&#39;);&#10;&#125;);</span><br></pre></td></tr></table></figure>
+<p>运行node app启动本地server<br>浏览器输入<a href="http://localhost:8080/a.html即可看到页面内容，最基本的环境就算搭建完成。" target="_blank" rel="external">http://localhost:8080/a.html即可看到页面内容，最基本的环境就算搭建完成。</a></p>
+<p>##如果只是处理静态资源请求，可以有很多的替代方案，如Fiddler替换文件、本地起Nginx服务器等等。</p>
+<p>##搭建一个Web服务器，个性化地定制开发环境用于提升开发效率，如处理动态请求、dnsproxy（多用于解决移动端配置host的问题）等，总之local webserver拥有无限的可能。</p>
+<p>##定制动态请求</p>
+<p>我们的local server是localhost域，在ajax请求时为了突破前端同源策略的限制，<br>本地server需支持代理其他域下的api的功能，即proxy。同时还要支持对未完成的api进行mock的功能。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// app.js&#10;var router = require(&#39;koa-router&#39;)();&#10;var routes = require(&#39;./routes&#39;);&#10;routes(router, app);&#10;app.use(router.routes());&#10;// routes.js&#10;var proxy = require(&#39;koa-proxy&#39;);&#10;var list = require(&#39;./mock/list&#39;);&#10;module.exports = function(router, app) &#123;&#10;    // mock api&#10;    // &#21487;&#20197;&#26681;&#25454;&#38656;&#35201;&#20219;&#24847;&#23450;&#21046;&#25509;&#21475;&#30340;&#36820;&#22238;&#10;    router.get(&#39;/api/list&#39;, function*() &#123;&#10;        var query = this.query || &#123;&#125;;&#10;        var offset = query.offset || 0;&#10;        var limit = query.limit || 10;&#10;        var diff = limit - list.length;&#10;&#10;        if(diff &#60;= 0) &#123;&#10;            this.body = &#123;code: 0, data: list.slice(0, limit)&#125;;&#10;        &#125; else &#123;&#10;            var arr = list.slice(0, list.length);&#10;            var i = 0;&#10;&#10;            while(diff--) arr.push(arr[i++]);&#10;&#10;            this.body = &#123;code: 0, data: arr&#125;;&#10;        &#125;&#10;    &#125;);&#10;&#10;    // proxy api&#10;    router.get(&#39;/api/foo/bar&#39;, proxy(&#123;url: &#39;http://foo.bar.com&#39;&#125;));&#10;&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/01/react-button组件的开发/" itemprop="url">
+                  react-button组件的开发
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-01T12:02:07+08:00" content="2016-02-01">
+              2016-02-01
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/01/react-button组件的开发/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/react-button组件的开发/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#react-button组件的开发</p>
+<p>##目标:把button组件化开发</p>
+<p>##需求:<br>1-ui方面的样式<br>2-交互方面[button最主要的用途就是onclick事件再执行回调]</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var Button = React.createClass(&#123;&#10;    propTypes:&#123;&#10;        children: React.PropTypes.any,&#10;        className: React.PropTypes.string,&#10;        disabled: React.PropTypes.bool,&#10;        onClick: React.PropTypes.func,&#10;        style: React.PropTypes.object,&#10;        type: React.PropTypes.oneOf([&#39;submit&#39;, &#39;button&#39;])&#10;    &#125;,&#10;    getInitialState:function()&#123;&#10;        return &#123;&#10;            disabled:this.props.disabled,&#10;            className:&#39;btn-green&#39;,&#10;            type: this.props.type ? this.props.type : &#39;button&#39;,&#10;            text: null&#10;        &#125;&#10;    &#125;,&#10;    componentWillReceiveProps:function(newProps)&#123;&#10;        if (newProps.disabled !== this.props.disabled) &#123;&#10;            this.setState(&#123; disabled: newProps.disabled &#125;)&#10;        &#125;&#10;    &#125;,&#10;    text:function(text)&#123;&#10;        this.setState(&#123;&#10;            text:text&#10;        &#125;);&#10;    &#125;,&#10;    handleClick:function() &#123;&#10;        if (this.props.onClick) &#123;&#10;            this.props.onClick()&#10;        &#125;&#10;    &#125;,&#10;    render:function()&#123;&#10;        return (&#10;            &#60;button className=&#123;this.state.className&#125;&#10;                    disabled=&#123;this.state.disabled&#125;&#10;                    type=&#123;this.state.type&#125;&#10;                    style=&#123;this.props.style&#125;&#10;                    onClick=&#123;this.handleClick.bind(this)&#125;&#62;&#10;                &#123;this.state.text || this.props.children&#125;&#10;            &#60;/button&#62;&#10;        );&#10;    &#125;&#10;&#125;);</span><br></pre></td></tr></table></figure>
+<p>这里Button就视为一个模块或者组件，<br>它接收父组件的值来改变它的默认状态，<br>当没有值传入时，使用默认的内部值。<br>为了达到最开始那个button的效果，我们可以这么使用它：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">React.render(&#10;       &#60;div&#62;&#10;           &#60;Button size=&#39;large&#39; onClick=&#39;function()&#123;alert(&#39;click&#39;)&#125;&#39;&#62;&#10;       &#60;/div&#62;&#10;       , document.getElementById(&#39;container&#39;));</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/01/requirejs-config配置paths/" itemprop="url">
+                  requirejs.config配置paths
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-01T12:00:53+08:00" content="2016-02-01">
+              2016-02-01
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/01/requirejs-config配置paths/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/requirejs-config配置paths/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#requirejs.config配置paths</p>
+<p>##requirejs需要:<br>1-配置目录<br>2-配置文件</p>
+<p>假设我们的项目结构如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">index.html&#10;main.js&#10;libs&#10;    --haha.js&#10;    --cores&#10;        --cores1.js&#10;        --core2.js&#10;    --utils&#10;        --util1.js&#10;        --util2.js&#10;    --services&#10;        --service1.js&#10;        --service2.js</span><br></pre></td></tr></table></figure>
+<p>如果项目规模比较大，那么js文件将会非常多，<br>solution:按照目录进行组织和分组。</p>
+<p>在上面的代码中如果我们想使用core1.js、core2.js、util1.js、util2.js、service1.js、service2.js这6个模块。</p>
+<p>那么我可以在main.js中做如下配置：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">requirejs.config(&#123;&#10;    baseUrl: &#39;libs&#39;,&#10;    paths: &#123;&#10;        &#34;core1&#34;: &#39;cores/core1&#39;,&#10;        &#34;core2&#34;: &#39;cores/core2&#39;,&#10;        &#34;util1&#34;: &#39;utils/util1&#39;,&#10;        &#34;util2&#34;: &#39;utils/util2&#39;,&#10;        &#34;service1&#34;: &#39;services/service1&#39;,&#10;        &#34;service2&#34;: &#39;services/service2&#39;,&#10;    &#125;&#10;&#125;);</span><br></pre></td></tr></table></figure>
+<p>在页面使用的时候我们就只需要引入即可:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">require([&#34;core1&#34;,&#34;core2&#34;,&#34;util1&#34;,&#34;util2&#34;,&#34;service1&#34;,&#34;service2&#34;], function() &#123;&#10;&#10;    var core1 = require(&#34;core1&#34;);&#10;    var core2 = require(&#34;core2&#34;);&#10;    var util1 = require(&#34;util1&#34;);&#10;    var util2 = require(&#34;util2&#34;);&#10;    var service1 = require(&#34;service1&#34;);&#10;    var service2 = require(&#34;service2&#34;);&#10;&#10;&#125;);</span><br></pre></td></tr></table></figure>
+<p>通过在paths中配置每一个模块的模块id和文件路径的映射关系，requirejs能够正确的加载我们需要的模块。</p>
+<p>#但是,当js文件非常多的时候，这种配置方式显然非常繁琐，配置的工作量会非常大。</p>
+<p>我们也可以使用下面配置目录的方式，来加载需要的模块。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">requirejs.config(&#123;&#10;    baseUrl: &#39;libs&#39;,&#10;    paths: &#123;&#10;        &#34;cores&#34;: &#39;cores&#39;,&#10;        &#34;utils&#34;: &#39;utils&#39;,&#10;        &#34;services&#34;: &#39;services&#39;&#10;    &#125;&#10;&#125;);&#10;&#10;require([&#34;cores/core1&#34;,&#34;cores/core2&#34;,&#34;utils/util1&#34;,&#34;utils/util2&#34;,&#34;services/service1&#34;,&#34;services/service2&#34;], function() &#123;&#10;&#10;    var core1 = require(&#34;cores/core1&#34;);&#10;    var core2 = require(&#34;cores/core2&#34;);&#10;    var util1 = require(&#34;utils/util1&#34;);&#10;    var util2 = require(&#34;utils/util2&#34;);&#10;    var service1 = require(&#34;services/service1&#34;);&#10;    var service2 = require(&#34;services/service2&#34;);&#10;&#10;&#125;);</span><br></pre></td></tr></table></figure>
+<p>可以看到通过这种配置目录的方式，能够大大减少paths中配置项的数量。假如我们的core2.js依赖于模块util1.js，使用配置文件和配置目录的方式，core2.js代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//&#22312;main.js&#20013;&#37197;&#32622;&#20102;&#25991;&#20214;,&#35201;&#27714;&#19968;&#23450;&#35201;&#37197;&#32622;util1&#21040;&#27169;&#22359;&#25991;&#20214;&#30340;&#26144;&#23556;&#10;define([&#34;util1&#34;],function(util) &#123;&#10;&#10;    return &#123;name:&#34;haha:&#34;+util.name&#125;;&#10;&#10;&#125;);&#10;&#10;//&#22312;main.js&#20013;&#37197;&#32622;&#20102;&#30446;&#24405;,&#21482;&#38656;&#37197;&#32622;utils&#30446;&#24405;&#30340;&#26144;&#23556;&#21363;&#21487;&#10;define([&#34;utils/util1&#34;],function(util) &#123;&#10;    return &#123;name:&#34;haha:&#34;+util.name&#125;;&#10;&#125;);</span><br></pre></td></tr></table></figure>
+<ul>
+<li>可以看到配置目录的好处在于：<br>不需要在main.js中配置每一个模块id和模块js文件的映射关系，能够减少main.js中配置的数量。</li>
+<li>配置文件的好处在于：<br>模块id更加简单，”core1”显然比”cores/core1”更加简短。</li>
+</ul>
+<p>再看下面这段代码，<br>如果将”cores/core1”当做是一个模块的名字，那么下面代码加载的将是haha.js；<br>如果将”cores/core1”当成是目录+文件名，那么加载的将是core1.js。那requirejs加载的到底是哪儿一个js呢？</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">requirejs.config(&#123;&#10;    baseUrl: &#39;libs&#39;,&#10;    paths: &#123;&#10;        &#34;cores&#34;: &#39;cores&#39;,&#10;        &#34;utils&#34;: &#39;utils&#39;,&#10;        &#34;services&#34;: &#39;services&#39;,&#10;         &#34;cores/core1&#34;:&#34;haha&#34;&#10;    &#125;&#10;&#125;);&#10;&#10;require([&#34;cores/core1&#34;,&#34;cores/core2&#34;,&#34;utils/util1&#34;,&#34;utils/util2&#34;,&#34;services/service1&#34;,&#34;services/service2&#34;], function() &#123;&#10;&#10;    var core1 = require(&#34;cores/core1&#34;);&#10;    alert(core1.name);&#10;&#10;&#125;);</span><br></pre></td></tr></table></figure>
+<p>很容易验证：”cores/core1”被当成是一个模块的名字，加载的是haha.js而不是core1.js。</p>
+<p>现在我们可以总结下，requirejs是如何加载”path/module”这种格式的模块了。</p>
+<p>1.首先看requirejs.config()中paths是否配置了”path/module”这个配置项。如果配置了，”path/module”会被认为是一个普通的模块名。如果没有配置，那么执行第二步。</p>
+<p>2.将”path/module”看成是文件系统上的路径，通过目录和文件名来确定需要加载的模块。如果仍然没有找到，那么requirejs会报错。</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/01/参与组件化开发应该需要注意的一些事项/" itemprop="url">
+                  参与组件化开发应该需要注意的一些事项
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-01T11:58:09+08:00" content="2016-02-01">
+              2016-02-01
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/01/参与组件化开发应该需要注意的一些事项/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/参与组件化开发应该需要注意的一些事项/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#参与组件化开发应该需要注意的一些事项<br>1.需要写代码注释,方便自己和同事参考查阅<br>2.注意参数的可扩展性,如果之后添加新的需求时,可以很方便地继续扩展你的代码<br>3.这一点可以参考一下写的比较好的插件,他们是如何处理的。<br>4.最好要跟同事的代码的风格要统一。<br>5.组件做到模块化,好调用</p>
+<p>#autoComplete 搜索框自动完成功能</p>
+<p>需要用到的知识点在于:DOM, js, jquery等等。<br>很多网站都有用户名或者输入内容自动补全的功能，我实现的是比较简单的一种，即评论区用户名自动补全，在 @ 其他评论人的时候，文本框会自动筛选出所有评论着的名字。</p>
+<p>##需求分析</p>
+<p>开始做之前，需要做好需求分析，我们实现的功能是做什么的，要怎么去实现，用什么技术，都要考虑好。</p>
+<p>很显然,这个的事件逻辑是:<br>1-当我在input输入框中输入”@”的时候,[我可以通过调用ajax去获取到用户列表/利用当前页面的所有$user的值]<br>2-当我继续输入文字的时候,利用我所输入的文字去筛选出正确的用户</p>
+<p>##Autocomplete</p>
+<p>jqueryui Autocomplete</p>
+<p>以下是取自官方的示例代码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#60;script&#62;&#10;  $(function() &#123;&#10;    var availableTags = [&#10;      &#34;ActionScript&#34;,&#10;      &#34;AppleScript&#34;,&#10;      &#34;Asp&#34;,&#10;      &#34;BASIC&#34;,&#10;      &#34;C&#34;,&#10;      &#34;C++&#34;,&#10;      .....&#10;    ];&#10;    $( &#34;#tags&#34; ).autocomplete(&#123;&#10;      source: availableTags&#10;    &#125;);&#10;  &#125;);&#10;&#60;/script&#62;</span><br></pre></td></tr></table></figure>
+<p>此段代码的意思是：在网页页面加载完毕的时候，jQuery 告诉 DOM 替他做一些事情，即 function() 里面需要做的。 DOM 会去找一个叫 tags 的ID选择器，然后去执行自动补全，source 即是需要显示的列表内容。</p>
+<p>然后对应到我的需求，我需要给评论栏加上 tags 标签，source 对应的值是评论过的用户名列表，但是这个列表是未知的，我需要去服务器动态获取，幸运的是，autocomplete 的 source属性支持多种类型，一种是 Array，就像上面的 availableTags；一种是 String，说是 string，其实是一个 url 地址，jQuery 会根据这个地址发送一个 get 请求道服务器，然后返回一个 json 格式的数据，显然这种方式可以很好的满足我的需求。</p>
+<ul>
+<li>所以呢,我可以利用这个autocomplete插件去改造成我所需要的样子.<br>现在我们再来看一下,现在还存在的问题.</li>
+</ul>
+<p>1-虽然成功的匹配了输入内容，但是从列表中选取了用户名之后，文本框中的内容被替换了，而不是追加，这显然是错误的。</p>
+<p>2- 在没有输入 @ 符号的情况下，也出现了选择列表。</p>
+<p>现在还有一个问题,我需要去考虑的,那就是我真的需要在每一次”@”的时候,就触发ajax请求吗?这样会不会造成性能上的消耗?</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/01/恶补mac-terminal的命令行知识/" itemprop="url">
+                  恶补mac terminal的命令行知识
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-01T11:56:23+08:00" content="2016-02-01">
+              2016-02-01
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/01/恶补mac-terminal的命令行知识/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/恶补mac-terminal的命令行知识/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#恶补mac terminal的命令行知识</p>
+<p>##1-对于我来说最重要的几个命令行</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">ls[list] /path :     &#30475;&#30475;&#26576;&#20010;&#36335;&#24452;&#30340;&#20869;&#23481;&#12290;&#10;cd /path &#34920;&#31034;&#36716;&#21040;&#36319;&#30446;&#24405;&#19979;&#30340;path&#36335;&#24452;&#20013;&#10;cd path &#34920;&#31034;&#36716;&#21040;&#24403;&#21069;&#30446;&#24405;&#19979;&#30340;path&#36335;&#24452;&#20013;</span><br></pre></td></tr></table></figure>
+<p>##2-清理系统</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo periodic daily&#28982;&#21518;&#22238;&#36710;,&#36755;&#20837;&#31649;&#29702;&#21592;&#23494;&#30721;&#21363;&#21487;&#12290;&#10;&#22914;&#26524;&#25226;daily&#25442;&#25104;weekly&#65292;&#21017;&#36816;&#34892;&#30340;&#26159;&#27599;&#21608;&#30340;&#28165;&#29702;&#12290;&#10;&#25442;&#25104;monthly&#65292;&#23601;&#26159;&#20570;&#27599;&#26376;&#30340;&#28165;&#29702;&#12290;&#10;&#22914;&#26524;&#30452;&#25509;&#36755;&#20837;&#65306;sudo periodic daily weekly monthly &#28982;&#21518;&#22238;&#36710;,&#23601;&#31561;&#20110;&#25226;&#19977;&#20010;&#28165;&#38500;&#19968;&#36215;&#20570;&#20102;</span><br></pre></td></tr></table></figure>
+<p>##3-附录</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#21015;&#20986;&#25991;&#20214;   ----    ls&#10;&#36716;&#25442;&#30446;&#24405;   ----     cd&#10;&#24314;&#31435;&#26032;&#30446;&#24405; ----     mkdir&#10;&#25335;&#36125;&#25991;&#20214;   ----    cp&#10;&#31227;&#21160;&#25991;&#20214;  ----     mv&#10;&#21024;&#38500;&#25991;&#20214; ----      rm&#10;&#26356;&#25913;&#25991;&#20214;&#26435;&#38480; ----    chmod&#10;&#33050;&#26412;&#25991;&#20214;&#21517;  ----     sh</span><br></pre></td></tr></table></figure>
+<p>##4-如果你觉得这些知识不够的话,可以再去看一下别人写的命令行知识~</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/01/【转载】Web前端开发工程师编程能力飞升之路/" itemprop="url">
+                  【转载】Web前端开发工程师编程能力飞升之路
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-01T11:54:53+08:00" content="2016-02-01">
+              2016-02-01
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/01/【转载】Web前端开发工程师编程能力飞升之路/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/【转载】Web前端开发工程师编程能力飞升之路/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#【转载】Web前端开发工程师编程能力飞升之路</p>
+<p>##【背景】<br>如果你是刚进入web前端研发领域，想试试这潭水有多深，看这篇文章吧；<br>如果你是做了两三年web产品前端研发，迷茫找不着提高之路，看这篇文章吧；<br>如果你是四五年的前端开发高手，没有难题能难得住你的寂寞高手，来看这篇文章吧；</p>
+<p>web前端研发工程师，在国内是一个朝阳职业，自07-08年正式有这个职业以来，也不过三四年的时间。<br>这个领域没有学校的正规教育，没有行内成体系的理论指引，几乎所有从事这个职业的人都是靠自己自学成才。<br>自学成才，一条艰辛的坎坷路，我也是这样一路走来。<br>从2002年开始接触web前端研发至今已然有了9个年头，如今再回首，期间的走了很多弯路。<br>推已及人，如果能让那些后来者少走些弯路，辛甚辛甚！</p>
+<p>##【前言】</p>
+<p>所谓的天才，只不过是比平常人更快的掌握技能、完成工作罢了；<br>只要你找到了正确的方向，并辅以足够的时间，你一样能够踏上成功彼岸。</p>
+<p>本文将web前端研发编程能力划分了八个等级，每个等级都列举出了对应的特征及破级提升之方法，希望每位在看本文的同学先准确定位自己的等级（不要以你目前能力的最高点，而是以你当前能力的中档与之等级作对比，以免多走弯路），参考突破之法破之。</p>
+<p>所谓的级别，只是你面对需求时的一种态度：能够完成、能够完美地完成、能够超出预期地完成。<br>以追求完美的态度加以扎实的编程功力，那就是你的编程水平。<br>切记心浮气燥，级别够了，那级别里的东西自然就懂了。悟了就是悟了，没悟也没关系，静下心来，投入时间而已。</p>
+<p>一.【入门】</p>
+<p>能够解决一些问题的水平。<br>有一定的基础（比如最常见的html标签及其属性、事件、方法；最常见的css属性；基础的javascript编程能力），能够完成一些简单的web前端研发需求。<br>举个例子：删除一字符串中指定的字符。</p>
+<p>var str=”www.baidu.com/?page”;<br>str=str.replace(‘?page’,””);<br>alert(str);<br>str=str.substring(0,str.indexof(“/“));<br>alert(str);<br>首先不要苛责代码的对错严谨，毕竟每个程序员都有这样的一个过程；<br>其次，这两段代码在这个实例里没有什么大过错，可能会有瑕疵，但能够解决问题（删除指定的字符），这就是这个级别的特征。<br>再举个例子：<br><figure class="highlight"><table><tr><td class="code"><pre><span class="line">// &#35745;&#31639;&#31995;&#32479;&#24403;&#21069;&#26159;&#26143;&#26399;&#20960;&#10;var str = &#34;&#34;;&#10;var week = new date().getday();&#10;if (week == 0) &#123;&#10;        str = &#34;&#20170;&#22825;&#26159;&#26143;&#26399;&#26085;&#34;;&#10;&#125; else if (week == 1) &#123;&#10;        str = &#34;&#20170;&#22825;&#26159;&#26143;&#26399;&#19968;&#34;;&#10;&#125; else if (week == 2) &#123;&#10;        str = &#34;&#20170;&#22825;&#26159;&#26143;&#26399;&#20108;&#34;;&#10;&#125; else if (week == 3) &#123;&#10;        str = &#34;&#20170;&#22825;&#26159;&#26143;&#26399;&#19977;&#34;;&#10;&#125; else if (week == 4) &#123;&#10;        str = &#34;&#20170;&#22825;&#26159;&#26143;&#26399;&#22235;&#34;;&#10;&#125; else if (week == 5) &#123;&#10;        str = &#34;&#20170;&#22825;&#26159;&#26143;&#26399;&#20116;&#34;;&#10;&#125; else if (week == 6) &#123;&#10;        str = &#34;&#20170;&#22825;&#26159;&#26143;&#26399;&#20845;&#34;;&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// &#25110;&#32773;&#26356;&#22909;&#19968;&#20123;&#10;var str1 = &#34;&#20170;&#22825;&#26159;&#26143;&#26399;&#34;;&#10;var week = new date().getday();&#10;switch (week) &#123;&#10;        case 0 :&#10;                str1 += &#34;&#26085;&#34;;&#10;                break;&#10;        case 1 :&#10;                str1 += &#34;&#19968;&#34;;&#10;                break;&#10;        case 2 :&#10;                str1 += &#34;&#20108;&#34;;&#10;                break;&#10;        case 3 :&#10;                str1 += &#34;&#19977;&#34;;&#10;                break;&#10;        case 4 :&#10;                str1 += &#34;&#22235;&#34;;&#10;                break;&#10;        case 5 :&#10;                str1 += &#34;&#20116;&#34;;&#10;                break;&#10;        case 6 :&#10;                str1 += &#34;&#20845;&#34;;&#10;                break;&#10;&#125;&#10;alert(str);&#10;alert(str1);</span><br></pre></td></tr></table></figure>
+<p>入门”阶段是每个程序员的必经之路，只要”入门”，你就上路了。<br>所谓”师傅领进门，修行靠个人”，有了这个”入门”的基础，自己就可以摸索着前进了。</p>
+<p>##进阶之路</p>
+<p>将javascript、html、css之类的编码帮助手册里的每个方法/属性都通读几遍！<br>只有将基础打好，以后的路才能走的顺畅。<br>参考这些帮助文档，力争写出无瑕疵的代码。<br>这些编码文档建议不仅是在入门提高期看，在你以后每个阶段破阶的时候都应该看看，最基础的东西往往也是最给力的东西，有时能够给你带来意想不到的收获。</p>
+<p>##二.【登堂】</p>
+<p>能够正确地解决问题。<br>不管你是通过搜索网络，或者通过改造某些成品代码（jquery/dojo/ext/yui）案例，只要能够无错地完成需求。<br>同样以上面的那段”字符串剪裁”代码为例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var str=&#34;www.baidu.com/?page&#34;;&#10;str=str.replace(/?page/,&#34;&#34;);&#10;alert(str);</span><br></pre></td></tr></table></figure>
+<p>仅仅解决问题对于”登堂”阶段来说已经不是问题，这个级别所给出方案不能是漏洞百出。<br>以上面这段代码为例：replace方法的第一个参数虽然可以支持字符串，但最佳的类型是正则表达式；</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var a = new array(&#34;&#26085;&#34;, &#34;&#19968;&#34;, &#34;&#20108;&#34;, &#34;&#19977;&#34;, &#34;&#22235;&#34;, &#34;&#20116;&#34;, &#34;&#20845;&#34;);&#10;var week = new date().getday();&#10;var str = &#34;&#20170;&#22825;&#26159;&#26143;&#26399;&#34;+ a[week];&#10;alert(str);</span><br></pre></td></tr></table></figure>
+<p>对比”入门级”的代码，不管是从代码量、代码效率、代码优美性、代码思路来说，”登堂”级的这个日期处理代码都要优秀很多。</p>
+<p>进阶之路</p>
+<p>这个阶段虽然能够给出正确的解题方案，但是不一定是最优秀的方案。<br>如何才能得到最优秀的方案呢？首先就是积累各种能够解决需求的方案，然后再验证每个方案，在这些方案中选择最好的一种。<br>因此该阶段的进阶之路就是”行万里路，看万卷书”，积累各个需求的各个解决方案。</p>
+<p>你可以扎身在专业论坛（蓝色理想、无忧、csdn）里，通读所有的faq及帖子；<br>你可以打开搜索引擎，穷举所有的搜索结果。<br>自己建立测试环境一一验证这些代码：去揣摩每段代码的意图，去比较每段代码之间的差异。<br>这两条路可以让你快速完成原始积累，当你再面对大多数需求时能够说这些问题我以前做过，那你就水到渠成地晋阶了。</p>
+<p>##三.【入室】</p>
+<p>最强代码，知道所有能够解决需求的各种方案，能够选择使用最优秀的方案满足需求。<br>这个级别基本上产品开发编程中的代码主力。<br>给出的一招一式，招招都是绝招。<br>还以上面的那个例子为例，你能说出1、2、3之间的差别，以及适用于那种环境吗？<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var str=&#34;www.baidu.com/?page&#34;;&#10;// 1&#12289;&#23383;&#31526;&#20018;&#21098;&#35009;&#10;str.substring(0, str.indexof(&#34;?page&#34;));&#10;// 2&#12289;&#27491;&#21017;&#34920;&#36798;&#24335;&#10;str.replace(/?page/, &#34;&#34;);&#10;// 3&#12289;&#23383;&#31526;&#20018;&#20998;&#25286;&#12289;&#21512;&#24182;&#10;str.split(&#34;?page&#34;).join(&#34;&#34;);</span><br></pre></td></tr></table></figure></p>
+<p>能够解决问题的方法会有很多，但是对于程序员来说应该选择最优秀的。<br>上面这段代码从代码量来说”正则表达式”最优秀；<br>从代码执行效率来说： “字符串剪裁”法最高（chrome中”正则表达式”效率最高），split法最次；<br>从可扩展性上来说，”正则表达式”法最优。具体使用那种方案视具体的需求环境而定。</p>
+<p>“入室”阶段，程序员应该能够肯定的回答：对于这个需求而言，我的代码就是最优秀的代码。</p>
+<p>再以”今天是星期几”为例，”登堂”级的代码你敢说是最优秀的代码了吗？</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// &#35745;&#31639;&#31995;&#32479;&#24403;&#21069;&#26159;&#26143;&#26399;&#20960;&#10;var str = &#34;&#20170;&#22825;&#26159;&#26143;&#26399;&#34; + &#34;&#26085;&#19968;&#20108;&#19977;&#22235;&#20116;&#20845;&#34;.charat(new date().getday());</span><br></pre></td></tr></table></figure>
+<p>对比”登堂”级的示例代码，上面这段代码给你什么感受？程序员追求的就是完美。<br>”入室”级别追求的就是每一招每一式的完美无缺。</p>
+<p>从web前端编程来说，通过2年左右的努力，很多人能够达到这个水平，但是，很大一部分人的编程能力也就止步于此。<br>或限于产品的需求单一性，或限于需求开发的时间紧迫性，或限于人的惰性，能够完美地解决当前的需求就够了。</p>
+<p>由于长期处于技术平台期，技术上得不到提高，通常这个级别的工程师会比较燥。<br>技术上小有所成；或追求个人的突破；或追求产品差异性带来的新鲜感；或者只是想换个心情；因此很多此级别的工程师会经常换公司。</p>
+<p>戒骄戒躁：</p>
+<p>切勿以为自己能写一手漂亮的代码而自满；<br>切莫以为别人”尊称”你一声”大侠”你就以 “大侠”自居；<br>切莫以为自己积累了一些得意的代码就成了框架式开发。</p>
+<p>细节决定成败，优秀的方案并不能保证最终的成功。<br>还以”删除指定字符串”为例，原始字符串从格式上来看应该是了个url链接，在去除”pn=0″之后，最末尾处留了一个尾巴”?”；如果原始字符串是”<a href="http://www.xxx.com/?pn=0&amp;a=1″，去除”pn=0″之后" target="_blank" rel="external">http://www.xxx.com/?pn=0&amp;a=1″，去除”pn=0″之后</a> ? 和 &amp; 两个符号紧贴一起，这更是明显的bug。</p>
+<p>##进阶之路</p>
+<p>此阶段进阶之路就是：切勿心浮气躁；你不再被需求牵着走，而是你牵着需求走。<br>注重细节，注意那些当前需求里没有明文给出的细节：代码性能的差异、运行平台（浏览器）的差异、需求的隐性扩展、代码的向后兼容等等。</p>
+<p>再通读几遍html/css/javascript帮助文档。</p>
+<p>我建议这个级别的工程师做一做webtreeview控件，要求总节点量一万左右操作流畅，你的晋升之路就在这个控件的编码过程中。</p>
+<p>##四.【入微】</p>
+<p>最强解决方案。<br>你能够走在需求的前面，将当前需求里有的、没有直接提出来的、现在暂时没有但将来可能有的等等，及前端编程潜规则等各个方方面面都综合考虑，给出最优方案。以一招胜万招。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var str = &#34;http://www.xxx.com/?pn=0&#34;;   // &#21024;&#38500;&#25351;&#23450;&#23383;&#31526; pn=0&#10;// &#25105;&#23558;&#36825;&#20010;&#23383;&#31526;&#20018;&#37324;&#25152;&#21487;&#33021;&#24819;&#21040;&#30340;&#21508;&#31181;&#24773;&#20917;&#37117;&#21015;&#20030;&#20986;&#26469;&#10;var a = [&#10;         &#34;http://www.xxx.com/vmpn=?pn=0&#34;// pn= &#21487;&#33021;&#20986;&#29616;&#22312; ? &#21069;&#10;        , &#34;http://www.xxx.com/vmpn=?pn=&#34;// url&#37324;&#20801;&#35768;pn &#20540;&#20026;&#31354;&#10;        , &#34;http://www.xxx.com/vmpn=?pn=0&#38;a=1&#34;// url &#37324;&#21487;&#26377;&#22810;&#20010;&#23383;&#27573;&#10;        , &#34;http://www.xxx.com/vmpn=?a=1&#38;pn=0&#34;// &#21487;&#33021;&#25490;&#22312;&#26368;&#21518;&#10;        , &#34;http://www.xxx.com/vmpn=?a=1&#38;pn=0&#38;pn=1&#34;// &#21487;&#33021;&#26377;&#22810;&#20010; pn &#23383;&#27573;&#10;        , &#34;http://www.xxx.com/vmpn=?a=1&#38;pn=0&#38;b=2&#34;// &#21487;&#33021;&#22312;&#20013;&#38388;&#10;        , &#34;http://www.xxx.com/vmpn=?a=1&#38;pn=0&#38;pn=1&#38;b=1&#34;  // &#21487;&#33021;&#22312;&#20013;&#38388;&#25104;&#32452;&#10;        , &#34;http://www.xxx.com/vmpn=?a=1&#38;pn=0&#38;b=1&#38;pn=1&#34;  // &#21487;&#33021;&#38646;&#26143;&#20998;&#24067;&#10;];&#10;/* &#38656;&#27714;&#30340;&#19981;&#35328;&#20043;&#31192;&#65306;&#10;? &#33509;&#20986;&#29616;&#22312;&#23383;&#31526;&#20018;&#26368;&#23614;&#21017;&#35201;&#21435;&#20043;&#10;? &#38; &#20004;&#20010;&#31526;&#21495;&#19981;&#21487;&#37325;&#21472;&#10;*/&#10;var reg = /((\?)(pn=[^&#38;]*&#38;)+(?!pn=))|(((\?|&#38;)pn=[^&#38;]*)+$)|(&#38;pn=[^&#38;]*)/g;&#10;&#10;for (var i = 0; i &#60; a.length; i++) &#123;&#10;    alert(a + &#34;\n&#34; + a.replace(reg, &#34;$2&#34;));&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>这个阶段已经不再追求一招一式，对你来说不是使用什么创新绝招解决需求，而是给出成熟稳重的方案，从根上解决问题。<br>针对某个当前需求你的代码可能不是最优，但是针对此类的需求你的代码却是最优秀的代码。</p>
+<p>进阶之路</p>
+<p>很多web前端研发工程师在做了3-4年之后就会进入一个瓶颈期：产品开发需求是小菜一碟，没有新鲜的可以挑战的东西；<br>代码开发中的稀奇的解题方法都已经尝试过。<br>没有了可挑战的难题，失去了探索的激情，也就没有了再上升的动力，好不容易走过”入室”级别的人又会有八九成止步于此。或转做技术领导人，或转到其它的领域，或换公司。</p>
+<p>这些人的上升之路在哪里呢？</p>
+<p>这个阶段单单依靠技巧和数量的累积已经没有什么效果了，突破之路在第5层《化蝶》里会详细说明，我建议你在这个阶段末尾着重关注编程理论：面向对象/过程、代码组织形式、编译、代码规范、其它的框架设计等等。</p>
+<p>我建议这个级别的工程师做一做webeditor控件，不要求完整功能，但是该控件里的模块划分、代码组织、编程思想做到位，给出一个系统的解决方案。</p>
+<p>五.【化蝶】</p>
+<p>破茧重生，这个层次关注的是编程语言本身，而不再关心产品需求。<br>什么是茧？产品需求就是茧。当你一招胜万招，打遍天下需求之时，你如果还拘泥于需求开发，那就是你限于茧中而不自知。要么就在这个茧里默默地老去，要么就破开茧获得新生。</p>
+<p>还是以那个”字符串剪裁”的老例子：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">/**&#10;* &#22312;&#25340;&#25509;&#27491;&#21017;&#34920;&#36798;&#24335;&#23383;&#31526;&#20018;&#26102;&#65292;&#28040;&#38500;&#21407;&#23383;&#31526;&#20018;&#20013;&#29305;&#27530;&#23383;&#31526;&#23545;&#27491;&#21017;&#34920;&#36798;&#24335;&#30340;&#24178;&#25200;&#10;* @author:meizz&#10;* @version: 2010/12/16&#10;* @param               &#123;string&#125;        str     &#34987;&#27491;&#21017;&#34920;&#36798;&#24335;&#23383;&#31526;&#20018;&#20445;&#25252;&#32534;&#30721;&#30340;&#23383;&#31526;&#20018;&#10;* @return              &#123;string&#125;                &#34987;&#20445;&#25252;&#22788;&#29702;&#36807;&#21518;&#30340;&#23383;&#31526;&#20018;&#10;*/&#10;function escapereg(str) &#123;&#10;        return str.replace(new regexp(&#34;([.*+?^=!:\x24&#123;&#125;()|[\\]\/\\\\])&#34;, &#34;g&#34;), &#34;\\\x241&#34;);&#10;&#125;&#10;&#10;/**&#10;* &#21024;&#38500;url&#23383;&#31526;&#20018;&#20013;&#25351;&#23450;&#30340; query&#10;* @author:meizz&#10;* @version:2010/12/16&#10;* @param               &#123;string&#125;        url     url&#23383;&#31526;&#20018;&#10;* @param               &#123;string&#125;        key     &#34987;&#21024;&#38500;&#30340;query&#21517;&#10;* @return              &#123;string&#125;                &#34987;&#21024;&#38500;&#25351;&#23450; query &#21518;&#30340;url&#23383;&#31526;&#20018;&#10;*/&#10;&#10;function delurlquery(url, key) &#123;&#10;        key = escapereg(key);&#10;        var reg = new regexp(&#34;((\\?)(&#34;+ key +&#34;=[^&#38;]*&#38;)+(?!&#34;+ key +&#10;  &#34;=))|(((\\?|&#38;)&#34;+ key +&#34;=[^&#38;]*)+$)|(&#38;&#34;+ key +&#34;=[^&#38;]*)&#34;, &#34;g&#34;);&#10;        return url.replace(reg, &#34;\x241&#34;)&#10;&#125;&#10;// &#24212;&#29992;&#23454;&#20363;&#10;var str = &#34;http://www.xxx.com/?pn=0&#34;;   // &#21024;&#38500;&#25351;&#23450;&#23383;&#31526; pn=0&#10;delurlquery(str, &#34;pn&#34;);</span><br></pre></td></tr></table></figure>
+<p>这段代码相对于层次4《入微》有什么区别吗？从代码实现上来说没有太大的区别，但是从思路上来说却有着本质的区别：1、不再是就事论事，头疼医头，而是把一类问题抽象理论化，一招破万招；2、有封装的概念，不再是每次从零开始，而是站在半山腰开始爬。</p>
+<p>在web前端研发队伍里也有很大一部分人《入室》层次时就自我感觉良好，直接跨跃到《化蝶》，积累自己的代码库，抽象化问题。但没有基础，缺少强大的后劲，即使能够破茧也经受不了风吹雨打。一份不成熟的架构设计对团队开发带来的危害远大于它带来的好处，这种例子在业界屡见不鲜。不要拔苗助长，不要不会走就想着跑，夯实基础，水到渠成地成长，厚积薄发，强力地破茧而出。</p>
+<p>进阶之路</p>
+<p>你已经从原始积累，到厚积薄发，到破茧而出之后，你所关注的应该不再是一招一式、一个项目、一个模块，而应该是一种思路，一种理论。你可以做以下几个步骤以突破到更高层次：再仔细看几遍html/css/javascript接口帮助文档；选择一门强语言（c++/c#/java等）观察理解这些语言的组织结构，语言设计；看看原型链，链式语法编程，泛型，接口编程，dom遥控器等等；仔细阅读成熟的web前端开发框架的设计文档，看他们为什么要这样设计。</p>
+<p>六.【大侠】</p>
+<p>这里所说的大侠，不是大家互相吹捧的”大侠”，而是实至名归的高手。这个级别的人完全有能力写出不差于bindows/jquery/ext/yui/dojo的同等级别规模的前端开发框架。应用成熟的开发框架指导、解决问题。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// &#24211;&#25991;&#20214; /mz/string/escapereg.js&#10;/**&#10;* &#22312;&#25340;&#25509;&#27491;&#21017;&#34920;&#36798;&#24335;&#23383;&#31526;&#20018;&#26102;&#65292;&#28040;&#38500;&#21407;&#23383;&#31526;&#20018;&#20013;&#29305;&#27530;&#23383;&#31526;&#23545;&#27491;&#21017;&#34920;&#36798;&#24335;&#30340;&#24178;&#25200;&#10;* @author:meizz&#10;* @version: 2010/12/16&#10;* @param               &#123;string&#125;        str     &#34987;&#27491;&#21017;&#34920;&#36798;&#24335;&#23383;&#31526;&#20018;&#20445;&#25252;&#32534;&#30721;&#30340;&#23383;&#31526;&#20018;&#10;* @return              &#123;string&#125;                &#34987;&#20445;&#25252;&#22788;&#29702;&#36807;&#21518;&#30340;&#23383;&#31526;&#20018;&#10;*/&#10;mz.string.escapereg = function (str) &#123;&#10;        return str.replace(new regexp(&#34;([.*+?^=!:\x24&#123;&#125;()|[\\]\/\\\\])&#34;, &#34;g&#34;), &#34;\\\x241&#34;);&#10;&#125;&#10;&#10;// &#24211;&#25991;&#20214; /mz/url/delquery.js&#10;/// include mz.string.escapereg;&#10;/**&#10;* &#21024;&#38500;url&#23383;&#31526;&#20018;&#20013;&#25351;&#23450;&#30340; query&#10;* @author:meizz&#10;* @version:2010/12/16&#10;* @param               &#123;string&#125;        url     url&#23383;&#31526;&#20018;&#10;* @param               &#123;string&#125;        key     &#34987;&#21024;&#38500;&#30340;query&#21517;&#10;* @return              &#123;string&#125;                &#34987;&#21024;&#38500;&#25351;&#23450; query &#21518;&#30340;url&#23383;&#31526;&#20018;&#10;*/&#10;mz.url.delquery = function (url, key) &#123;&#10;        key = mz.string.escapereg(key);&#10;        var reg = new regexp(&#34;((\\?)(&#34;+ key +&#34;=[^&#38;]*&#38;)+(?!&#34;+ key +&#10;  &#34;=))|(((\\?|&#38;)&#34;+ key +&#34;=[^&#38;]*)+$)|(&#38;&#34;+ key +&#34;=[^&#38;]*)&#34;, &#34;g&#34;);&#10;        return url.replace(reg, &#34;\x241&#34;)&#10;&#125;&#10;&#10;// &#24212;&#29992;&#23454;&#20363;&#10;/// include mz.url.delquery;&#10;var str = &#34;http://www.xxx.com/?pn=0&#34;;   // &#21024;&#38500;&#25351;&#23450;&#23383;&#31526; pn=0&#10;mz.url.delquery(str, &#34;pn&#34;);</span><br></pre></td></tr></table></figure>
+<p>自成体系，有基础，也有理论高度。<br>知道为什么这样设计，也知道什么样的设计最好。比如这个例子可以有这样的封装：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// &#24211;&#25991;&#20214; /mz/url/delquery.js&#10;/// include mz.string.escapereg;&#10;/**&#10;* &#21024;&#38500;url&#23383;&#31526;&#20018;&#20013;&#25351;&#23450;&#30340; query&#10;* @author:meizz&#10;* @version:2010/12/16&#10;* @param               &#123;string&#125;        url     url&#23383;&#31526;&#20018;&#10;* @param               &#123;string&#125;        key     &#34987;&#21024;&#38500;&#30340;query&#21517;&#10;* @return              &#123;string&#125;                &#34987;&#21024;&#38500;&#25351;&#23450; query &#21518;&#30340;url&#23383;&#31526;&#20018;&#10;*/&#10;string.prototype.delquery = function ( key) &#123;&#10;        key = mz.string.escapereg(key);&#10;        var reg = new regexp(&#34;((\\?)(&#34;+ key +&#34;=[^&#38;]*&#38;)+(?!&#34;+ key +&#10;  &#34;=))|(((\\?|&#38;)&#34;+ key +&#34;=[^&#38;]*)+$)|(&#38;&#34;+ key +&#34;=[^&#38;]*)&#34;, &#34;g&#34;);&#10;        return this.replace(reg, &#34;\x241&#34;)&#10;&#125;&#10;&#10;// &#24212;&#29992;&#23454;&#20363;&#10;/// include mz.url.delquery;&#10;var str = &#34;http://www.xxx.com/?pn=0&#34;;   // &#21024;&#38500;&#25351;&#23450;&#23383;&#31526; pn=0&#10;str.delquery(&#34;pn&#34;);</span><br></pre></td></tr></table></figure>
+<p>而为什么不采用下面的那种封装呢？经过了《知微》和《化蝶》你就懂了。</p>
+<p>进阶出路</p>
+<p>道法自然，从根上去寻找突破的契机。<br>你可以研读html解析引擎设计与实现，js解析引擎设计与实现，其它语言的代码解析与编译实现等等。<br>或者出些书。低级别的人写的书要么是一大抄，空无一物；要么是害人。</p>
+<p>七.【宗师】</p>
+<p>这个级别的人已然到了无招胜有招的境界。<br>项目开发中的难题？没有难题！运行平台的差异？从根本上搞定！代码规范、开发模式，早已经被抛在身后。这个级别的人已经不再关注于某个前端开发框架，而是应对具体的环境给出最佳的理论指导。</p>
+<p>这个级别的人所注意的应该是以最合理的系统架构引领着整个团队的进步，在什么样的场景下该用什么样的架构设计。3个、10个、50个、100个人的团队最应该用哪种模式？等你到了宗师级别，你再来回答吧。</p>
+<p>进阶出路</p>
+<p>每一个宗师就是一个高山，就是一个领域里的神，但是你仅满足于在一群比你弱的群体展现你的强大吗？如果还你是止步原地，那总会有人乘着飞机、宇宙飞船从你的头领掠过，高处不胜寒！</p>
+<p>要突破这片领域，那就必须跳出这片领域。要想突破web前端研发的宗师级，那就跳出web前端吧，上面还有web开发。即使你是web前端的宗师，但没有快速的数据响应，没有高速的网络架构，没有优美的系统支持，你又能如何？所以突破之路就是把目光投到整条web开发的链条中去。</p>
+<p>八.【飞升】</p>
+<p>其实严格来说，飞升已经不是原领域的范围了。在web研发领域，对于这个层次的有一个很好听的称谓：架构师。当然那些”伪架构师”另当别论。</p>
+<p>一法通，万法通。在其它的技术领域，也可以按照《入门》《登堂》《入室》《入微》《化蝶》《大侠》《宗师》来划分等级；一样也可以按照我这里所写的每个级别的【进阶之路】来快速提升。</p>
+<p>祝贺你再获辉煌！</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/01/用Navigation-Timing测量页面加载速度/" itemprop="url">
+                  用Navigation Timing测量页面加载速度
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-01T11:53:50+08:00" content="2016-02-01">
+              2016-02-01
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/01/用Navigation-Timing测量页面加载速度/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/用Navigation-Timing测量页面加载速度/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#用Navigation Timing测量页面加载速度<br>用户无法忍受加载慢的页面。<br>谷歌实验的数据表明用户能感知到的速度单位是100毫秒，而页面每慢100毫秒，将会对用户产生越不利的影响。<br>但我们应该怎样来监控页面的加载速度呢？“页面加载”到底意味着什么？</p>
+<p>##Navigation Timing 是用于在web上准确测量性能的JavaScript接口。<br>它提供了一种非常简单的方法去获取更准确、详细的时间统计信息。<br>现在Internet Explorer 9, Google Chrome and in Firefox已经支持了这个接口。</p>
+<p>##这篇文章主要是描述 Navigation Timing 这个接口以及简单展示通过这个接口能获取到哪些时间数据。</p>
+<p>###怎么用这个接口？</p>
+<blockquote>
+<p>这个接口在可以通过window.performance这个对象属性获取到：</p>
+</blockquote>
+<p>navigation：描述用户是怎样进入这个页面的<br>timing：关于页面加载的一些时间数据<br>Chrome同时提供了performance.memory这个属性，用于获取当前Javascript使用内存的一些数据情况。</p>
+<p>使用这个接口的最简单方法是直接在浏览器的Javascrpt console面板中输出window.performance这个对象就可以看到。</p>
+<p>##Console面板</p>
+<p>比Javascript Date更好的替代方案<br>以往前端开发者习惯使用js的Date对象去进行页面时间性能监控。举个简单的例子，在页面的最初始地方加入下面代码：</p>
+<p>var start = Date.now();<br>然后在页面的最后加上这样的代码：</p>
+<p>console.log(“Page load took “ + (Date.now() - start) + “milliseconds”);<br>用这种Javascript行内代码去测算性能是有一定的限制的，而且并不可靠：</p>
+<p>这种方式的代码写在页面里面，所以它本身会影响页面的加载时间。<br>（Navigation Timing接口可以在页面完成之后获取加载时间，而它不影响页面的加载时间）<br>Javascript的时间本来就不准确<br>最糟糕的是，在页面开始加载之前，Date对象根本不能使用，所以无法测算到网络延迟的时间<br>换句话说，用户无论是点击一个链接或者直接在浏览器打开某个URL，这种写在页面内测量方式都不能测算到完整的性能时间。<br>因为往往我们需要分析的性能包括DNS查询、页面重定向、服务器响应时间等在内的时间，而这些是在页面加载前（也就是页面的监控代码执行前）就已经发生了的。<br>当然你可以利用cookies去进行页面之间跳转的时间测量，但前提是这两个页面必须要在同个域名之内。<br>最关键的是，用cookie这种方式不能测算到用户第一次访问页面的情况，而用户第一次访问的性能情况往往是最重要的。<br>【译者注：cookie的方式大概就是用户进行跳页面之前，将当前时间种入cookie，在目的页面成功打开的时候，从cookie中取出值，再跟当前时间进行对比。所以说第一次访问的时候并不能测算】</p>
+<p>###接口的参数都代表了什么？<br>每一个performance.timing属性展示了每一个导航事件或加载事件的时间，它代表当前的时间与1970年1月1日0点0分相差的毫秒数。<br>关于值为0的属性，表示该事件并未发生（比如secureConnectionStart 或者 redirectStart）。</p>
+<p>在Microsoft’s performance.timing的文档里有对各个事件的解释，当然，你也可以到W3C里看更正式的文档。<br>IE9除了secureConnectionStart这个事件之外其他都支持，另外还支持一个特殊的msFirstPaint事件，它表示在loadEventEnd之后，页面开始展示时候的时间。</p>
+<p>如果你要使用loadEventEnd，请确保在页面的load事件之后再去获取它，比如：</p>
+<p>window.onload = function(){<br>    setTimeout(function(){<br>        var t = performance.timing;<br>        console.log(t.loadEventEnd - t.responseEnd);<br>    }, 0);<br>}</p>
+<p>##如何使用这些数据？</p>
+<blockquote>
+<p>将接口提供的一些数据进行组合之后，就能得到一些我们想要的信息：</p>
+<p>网络耗时【译者注：也就是白屏时间】 responseEnd-fetchStart<br>从服务器接受到页面到页面加载完成的时间【译者注：页面渲染、绑定事件的时间】 loadEventEnd-responseEnd<br>总体时间 loadEventEnd-navigationStart<br>这些数据可以通过各种不同的组合，去反映不同阶段的耗时，比如 redirectEnd-redirectStart 可以表示页面重定向的时间。</p>
+</blockquote>
+<p>###获知页面以怎样的方式打开<br>我们都知道，可以有很多种打开一个页面，performance.navigation的来临可以帮助我们进行这方面的分析，这个接口只有两个属性：</p>
+<p>redirectCount：记录文档进行重定向的请求次数<br>type：记录页面是通过那种导航方式被加载的<br>type是一个枚举值，它可能是以下三个值之一：</p>
+<p>0：通过点击一个链接或者直接在浏览器中输入一个网址<br>1：页面刷新<br>2：通过浏览历史后退或前进</p>
+<p>##总结<br>与用Date对象去监测时间不一样的是，Navigation Timing提供的接口可以在不影响页面加载的情况下更准确地监测页面时间。<br>这让我们可以在更真实的环境下测量页面加载的延时，利用它在大量的真实用户中收集数据，而不再是在开发者的环境下去模拟各种页面的延时。</p>
+<blockquote>
+<p>举个例子，在页面完成加载之后，我们可以利用XHR把performance.timing的数据传输到服务器端。<br>这种方式的统计非常实时，但是效率不是特别高。<br>另外，时间数据还可以以页面和用户为单位存在localStorage中，并且阶段性地打包传输到服务器中。<br>通过这种方式，可以很方便地建立一个关于页面性能的历史数据系统。</p>
+</blockquote>
+<p>##Navigation Timing的未来<br>Navigation Timing提供了非常有用的工具帮助开发者去监测和调整页面性能，<br>但接口最引人注目的是在web的统计上，他提供了更丰富的、准确的、非侵入式的报告。</p>
+<p>更好的数据报告能帮助我们更好的理解页面的各种延迟时间。这将让我们的网站基础更有效，网络应用更快速，<br>在web上的体验越来越好。</p>
+<p>想要获取更多这个接口怎么用，<br>你可以去看看这篇文章作者开发的Google Chrome的拓展程序Page Speed Test。<br>里面的表格展示了目前以及历史上所有的页面的性能指标。</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/02/01/z-index-与-position-之间的关系/" itemprop="url">
+                  z-index 与 position 之间的关系
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-01T11:52:45+08:00" content="2016-02-01">
+              2016-02-01
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/01/z-index-与-position-之间的关系/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/z-index-与-position-之间的关系/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#z-index 与 position 之间的关系</p>
+<p>##层级遮盖 bug 出现的原因<br>IE6/7 对 z-index 的表现跟 IE8 及以上浏览器不一致.<br>position 值为非 static 时, 如果不设置 z-index 属性, IE6/7 下 z-index 默认为 0, 而 IE8 及以上浏览器 z-index 为 auto, 且 zindex:auto 的元素不参与堆叠优先级比较.</p>
+<p>##z-index 与 position 之间的关系<br>对于同级元素, 默认 (或 position:static) 情况下文档流后面的元素会覆盖前面的.<br>对于同级元素, position 不为 static 且 z-index 存在的情况下 z-index 大的元素会覆盖 z-index 小的元素, 即 z-index 越大优先级越高.<br>IE6/7 下 position 不为 static, 且 z-index 不存在时 z-index 为 0, 除此之外的浏览器 z-index 为 auto.<br>z-index 为 auto 的元素不参与层级关系的比较, 由向上遍历至此且 z-index 不为 auto 的元素来参与比较.</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
 
   </section>
 
@@ -367,7 +1400,7 @@
       <section class="site-overview sidebar-panel  sidebar-panel-active ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
-               src="/images/default_avatar.jpg"
+               src="/images/avatar.jpg"
                alt="tuluxmu" />
           <p class="site-author-name" itemprop="name">tuluxmu</p>
           <p class="site-description motion-element" itemprop="description">Front-end engineer。</p>
