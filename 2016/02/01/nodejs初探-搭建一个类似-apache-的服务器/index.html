@@ -1,0 +1,1023 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="#nodejs初探 搭建一个类似 apache 的服务器
+#针对于项目而言我们需要明白的是
+
+项目大多数的文件都是属于静态文件，只有数据部分存在动态请求。
+数据部分的请求都呈现为RESTful的特性。
+所以项目主要包含两个部分就是静态服务器和RESTful服务器。###section one :创建一个静态服务器
+
+1.创建一个以 app.js 为入口的文件
+app.js
+
+var PORT =">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nodejs初探 搭建一个类似 apache 的服务器">
+<meta property="og:url" content="http://yoursite.com/2016/02/01/nodejs初探-搭建一个类似-apache-的服务器/index.html">
+<meta property="og:site_name" content="Lucy's Blog">
+<meta property="og:description" content="#nodejs初探 搭建一个类似 apache 的服务器
+#针对于项目而言我们需要明白的是
+
+项目大多数的文件都是属于静态文件，只有数据部分存在动态请求。
+数据部分的请求都呈现为RESTful的特性。
+所以项目主要包含两个部分就是静态服务器和RESTful服务器。###section one :创建一个静态服务器
+
+1.创建一个以 app.js 为入口的文件
+app.js
+
+var PORT =">
+<meta property="og:updated_time" content="2016-02-01T03:44:34.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nodejs初探 搭建一个类似 apache 的服务器">
+<meta name="twitter:description" content="#nodejs初探 搭建一个类似 apache 的服务器
+#针对于项目而言我们需要明白的是
+
+项目大多数的文件都是属于静态文件，只有数据部分存在动态请求。
+数据部分的请求都呈现为RESTful的特性。
+所以项目主要包含两个部分就是静态服务器和RESTful服务器。###section one :创建一个静态服务器
+
+1.创建一个以 app.js 为入口的文件
+app.js
+
+var PORT =">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> nodejs初探 搭建一个类似 apache 的服务器 | Lucy's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?your-analytics-id";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Lucy's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Stay Hungry</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+      
+        <li class="menu-item menu-item-search">
+          <a href="#" class="st-search-show-outputs">
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'your-swiftype-key','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                nodejs初探 搭建一个类似 apache 的服务器
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-01T11:44:16+08:00" content="2016-02-01">
+              2016-02-01
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/01/nodejs初探-搭建一个类似-apache-的服务器/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/nodejs初探-搭建一个类似-apache-的服务器/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>#nodejs初探 搭建一个类似 apache 的服务器</p>
+<p>#针对于项目而言<br>我们需要明白的是</p>
+<ul>
+<li>项目大多数的文件都是属于静态文件，只有数据部分存在动态请求。</li>
+<li>数据部分的请求都呈现为RESTful的特性。</li>
+<li>所以项目主要包含两个部分就是静态服务器和RESTful服务器。<br>###section one :创建一个静态服务器</li>
+</ul>
+<p>1.创建一个以 app.js 为入口的文件</p>
+<p>app.js</p>
+<pre>
+var PORT = 8000;
+var http = require('http');
+var server = http.createServer(function (request, response) {
+    // TODO
+});
+server.listen(PORT);
+console.log("Server runing at port: " + PORT + ".");
+</pre>
+###静态文件服务器的功能:
+
+* 浏览器发送URL，服务端解析URL，对应到硬盘上的文件。
+* 如果文件存在，返回200状态码，并发送文件到浏览器端；如果文件不存在，返回404状态码，发送一个404的文件到浏览器端。
+
+### section two :实现路由的功能
+
+* 添加url模块是必要的，然后解析pathname。
+
+以下是实现代码：
+
+<pre>
+var server = http.createServer(function (request, response) {
+    var pathname = url.parse(request.url).pathname;
+    response.write(pathname);
+    response.end();
+});
+
+</pre>
+
+<p>###读取静态文件</p>
+<p>为了不让用户在浏览器端通过请求/app.js查看到我们的代码，我们设定用户只能请求assets目录下的文件。<br>服务器会将路径信息映射到assets目录。</p>
+<p>文件读取就跟fs(file system)这个模块有关系。<br>同样，涉及到了路径处理，path模块也是需要的。</p>
+<p>我们通过path模块的path.exists方法来判断静态文件是否存在磁盘上。<br>加入不存在我们直接响应给客户端404错误。</p>
+<p>如果文件存在则调用fs.readFile方法读取文件。<br>如果发生错误，我们响应给客户端500错误，表明存在内部错误。<br>正常状态下则发送读取到的文件给客户端，表明200状态。</p>
+<pre>
+var server = http.createServer(function (request, response) {
+    var pathname = url.parse(request.url).pathname;
+    var realPath = "assets" + pathname;
+    path.exists(realPath, function (exists) {
+        if (!exists) {
+            response.writeHead(404, {
+                'Content-Type': 'text/plain'
+            });
+
+            response.write("This request URL " + pathname + " was not found on this server.");
+            response.end();
+        } else {
+            fs.readFile(realPath, "binary", function (err, file) {
+                if (err) {
+                    response.writeHead(500, {
+                        'Content-Type': 'text/plain'
+                    });
+
+                    response.end(err);
+                } else {
+                    response.writeHead(200, {
+                        'Content-Type': 'text/html'
+                    });
+
+                    response.write(file, "binary");
+
+                    response.end();
+                }
+            });
+        }
+    });
+});
+</pre>
+
+<p>以上这段简单的代码加上一个assets目录，就构成了我们最基本的静态文件服务器。</p>
+<p>那么眼尖的你且看看，这个最基本的静态文件服务器存在哪些问题呢？<br>答案是MIME类型支持。因为我们的服务器同时要存放html, css, js, png, gif, jpg等等文件。<br>并非每一种文件的MIME类型都是text/html的。</p>
+<p>###MIME类型支持</p>
+<p>像其他服务器一样，支持MIME的话，就得一张映射表。</p>
+<pre>
+
+exports.types = {
+    "css": "text/css",
+    "gif": "image/gif",
+    "html": "text/html",
+    "ico": "image/x-icon",
+    "jpeg": "image/jpeg",
+    "jpg": "image/jpeg",
+    "js": "text/javascript",
+    "json": "application/json",
+    "pdf": "application/pdf",
+    "png": "image/png",
+    "svg": "image/svg+xml",
+    "swf": "application/x-shockwave-flash",
+    "tiff": "image/tiff",
+    "txt": "text/plain",
+    "wav": "audio/x-wav",
+    "wma": "audio/x-ms-wma",
+    "wmv": "video/x-ms-wmv",
+    "xml": "text/xml"
+};I</pre>
+以上代码另存在mime.js文件中。
+
+我们要做的是引入这个 MIME.js 文件。
+< pre>
+var mime = require("./mime").types;
+
+我们通过path.extname来获取文件的后缀名。由于extname返回值包含”.”，所以通过slice方法来剔除掉”.”，对于没有后缀名的文件，我们一律认为是unknown。
+<pre>
+var ext = path.extname(realPath);
+ext = ext ? ext.slice(1) : 'unknown';
+</pre>
+接下来我们很容易得到真正的MIME类型了。
+<pre>
+var contentType = mime[ext] || "text/plain";
+response.writeHead(200, {'Content-Type': contentType});
+response.write(file, "binary");
+response.end();
+</pre>
+对于未知的类型，我们一律返回text/plain类型。
+
+###缓存支持/控制
+
+在MIME支持之后，静态文件服务器看起来已经很完美了。
+任何静态文件只要丢进assets目录之后就可以万事大吉不管了。
+看起来已经达到了Apache作为静态文件服务器的相同效果了。
+
+*但是，我们发现用户在每次请求的时候，服务器每次都要调用fs.readFile方法去读取硬盘上的文件的。当服务器的请求量一上涨，硬盘IO会吃不消。*
+在解决这个问题之前，
+###我们有必要了解一番前端浏览器缓存的一些机制和提高性能的方案。
+
+* GZip压缩文件可以减少响应的大小，能够达到节省带宽的目的。
+* 浏览器缓存中存有文件副本的时候，不能确定有效的时候，会生成一个条件get请求。
+* 在请求的头中会包含 If-Modified-Since。
+* 如果服务器端文件在这个时间后发生过修改，则发送整个文件给前端。
+* 如果没有修改，则返回304状态码。并不发送整个文件给前端。
+* 如果副本有效，这个get请求都会省掉。判断有效的最主要的方法是服务端响应的时候带上Expires的头。
+* 浏览器会判断Expires头，直到制定的日期过期，才会发起新的请求。
+*另一个可以达到相同目的的方法是返回Cache-Control: max-age=xxxx。*
+
+为了简化问题，我们只做如下这几件事情：
+
+为指定几种后缀的文件，在响应时添加Expires头和Cache-Control: max-age头。超时日期设置为1年。
+由于这是静态文件服务器，为所有请求，响应时返回Last-Modified头。
+为带If-Modified-Since的请求头，做日期检查，如果没有修改，则返回304。若修改，则返回文件。
+对于以上的静态文件服务器，Node给的响应头是十分简单的：
+<pre>
+Connection: keep-alive
+Content-Type: text/html
+Transfer-Encoding: chunked
+<pre>
+对于指定后缀文件和过期日期，为了保证可配置。那么建立一个config.js文件是应该的。
+<pre>
+exports.Expires = {
+    fileMatch: /^(gif|png|jpg|js|css)$/ig,
+    maxAge: 60 * 60 * 24 * 365
+};
+</pre>
+引入config.js文件。
+
+<pre>var config = require("./config");</pre>
+我们在相应之前判断后缀名是否符合我们要添加过期时间头的条件。
+<pre>
+var ext = path.extname(realPath);
+ext = ext ? ext.slice(1) : 'unknown';
+if (ext.match(config.Expires.fileMatch)) {
+    var expires = new Date();
+    expires.setTime(expires.getTime() + config.Expires.maxAge * 1000);
+    response.setHeader("Expires", expires.toUTCString());
+    response.setHeader("Cache-Control", "max-age=" + config.Expires.maxAge);
+}
+</pre>
+这次的响应头中多了两个header。
+<pre>
+Cache-Control: max-age=31536000
+Connection: keep-alive
+Content-Type: image/png
+Expires: Fri, 09 Nov 2012 12:55:41 GMT
+Transfer-Encoding: chunked
+<pre>
+浏览器在发送请求之前由于检测到Cache-Control和Expires
+*（Cache-Control的优先级高于Expires，但有的浏览器不支持Cache-Control，这时采用Expires）*，如果没有过期，则不会发送请求，而直接从缓存中读取文件。
+
+接下来我们为所有请求的响应都添加Last-Modified头。
+
+读取文件的最后修改时间是通过fs模块的fs.stat()方法来实现的。
+
+<pre>
+fs.stat(realPath, function (err, stat) {
+    var lastModified = stat.mtime.toUTCString();
+    response.setHeader("Last-Modified", lastModified);
+});
+</pre>
+我们同时也要检测浏览器是否发送了If-Modified-Since请求头。如果发送而且跟文件的修改时间相同的话，我们返回304状态。
+
+if (request.headers[ifModifiedSince] && lastModified == request.headers[ifModifiedSince]) {
+    response.writeHead(304, "Not Modified");
+    response.end();
+}
+如果没有发送或者跟磁盘上的文件修改时间不相符合，则发送回磁盘上的最新文件。
+
+通过Expires和Last-Modified两个方案以及与浏览器之间的通力合作，会节省相当大的一部分网络流量，同时也会降低部分硬盘IO的请求。如果在这之前还存在CDN的话，整个方案就比较完美了。
+
+由于Expires和Max-Age都是由浏览器来进行判断的，如果判断成功，http请求都不会发送到服务端的，这里只能通过fiddler和浏览器配合进行测试。但是Last-Modified却是可以通过curl来进行测试的。
+<pre>
+curl --header "If-Modified-Since: Fri, 11 Nov 2011 19:14:51 GMT" -i http://localhost:8000
+
+HTTP/1.1 304 Not Modified
+Content-Type: text/html
+Last-Modified: Fri, 11 Nov 2011 19:14:51 GMT
+Connection: keep-alive
+</pre>
+*注意，我们看到这个304请求的响应是不带body信息的。所以，达到我们节省带宽的需求。只需几行代码，就可以省下许多的带宽费用。*
+
+###GZip启用
+*可以减少流量和带宽*
+######要用到gzip，就需要zlib模块，该模块在Node的0.5.8版本开始原生支持。
+
+<pre>var zlib = require("zlib");</pre>
+
+<p>对于图片一类的文件，不需要进行gzip压缩，所以我们在config.js中配置一个启用压缩的列表。</p>
+<pre>
+exports.Compress = {
+    match: /css|js|html/ig
+};
+</pre>
+这里为了防止大文件，也为了满足zlib模块的调用模式，将读取文件改为流的形式进行读取。
+<pre>
+var raw = fs.createReadStream(realPath);
+var acceptEncoding = request.headers['accept-encoding'] || "";
+var matched = ext.match(config.Compress.match);
+if (matched && acceptEncoding.match(/\bgzip\b/)) {
+    response.writeHead(200, "Ok", {
+        'Content-Encoding': 'gzip'
+    });
+    raw.pipe(zlib.createGzip()).pipe(response);
+} else if (matched && acceptEncoding.match(/\bdeflate\b/)) {
+    response.writeHead(200, "Ok", {
+        'Content-Encoding': 'deflate'
+    });
+    raw.pipe(zlib.createDeflate()).pipe(response);
+} else {
+    response.writeHead(200, "Ok");
+    raw.pipe(response);
+}
+</pre>
+
+<p>###Welcome页的锦上添花</p>
+<p>再来回忆一下Apache的常见行为。</p>
+<ul>
+<li>当进入一个目录路径的时候，会去寻找index.html页面，如果index.html文件不存在，则返回目录索引。</li>
+<li>目录索引这里我们暂不考虑，如果用户请求的路径是/结尾的，我们就自动为其添加上index.html文件。</li>
+<li>如果这个文件不存在，继续返回404错误。</li>
+<li>如果用户请求了一个目录路径，而且没有带上/。那么我们为其添加上/index.html，再重新做解析。</li>
+</ul>
+<p>那么不喜欢硬编码的你，肯定是要把这个文件配置进config.js。这样你就可以选择各种后缀作为welcome页面。</p>
+<p>exports.Welcome = {<br>    file: “index.html”<br>};<br>那么第一步，为/结尾的请求，自动添加上”index.html”。</p>
+<p>if (pathname.slice(-1) === “/“) {<br>    pathname = pathname + config.Welcome.file;<br>}<br>第二步，如果请求了一个目录路径，并且没有以/结尾。那么我们需要做判断。如果当前读取的路径是目录，就需要添加上/和index.html</p>
+<p>if (stats.isDirectory()) {<br>    realPath = path.join(realPath, “/“, config.Welcome.file);<br>}<br>由于我们目前的结构发生了一点点变化。所以需要重构一下函数。而且，fs.stat方法具有比fs.exsits方法更多的功能。我们直接替代掉它。</p>
+<p>就这样。一个各方面都比较完整的静态文件服务器就这样打造完毕。</p>
+</pre></pre></pre></pre>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/01/node-js-在node-js中连接MongoDB/" rel="next" title="node.js 在node.js中连接MongoDB">
+                <i class="fa fa-chevron-left"></i> node.js 在node.js中连接MongoDB
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/02/01/Flux-快速上手/" rel="prev" title="Flux 快速上手">
+                Flux 快速上手 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/02/01/nodejs初探-搭建一个类似-apache-的服务器/"
+           data-title="nodejs初探 搭建一个类似 apache 的服务器" data-url="http://yoursite.com/2016/02/01/nodejs初探-搭建一个类似-apache-的服务器/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/default_avatar.jpg"
+               alt="tuluxmu" />
+          <p class="site-author-name" itemprop="name">tuluxmu</p>
+          <p class="site-description motion-element" itemprop="description">Front-end engineer。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/tuluxmu" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> github
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tuluxmu</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"your-duoshuo-shortname"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+
+  
+  
+
+
+</body>
+</html>

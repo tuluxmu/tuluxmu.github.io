@@ -1,0 +1,766 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="#用Navigation Timing测量页面加载速度用户无法忍受加载慢的页面。谷歌实验的数据表明用户能感知到的速度单位是100毫秒，而页面每慢100毫秒，将会对用户产生越不利的影响。但我们应该怎样来监控页面的加载速度呢？“页面加载”到底意味着什么？
+##Navigation Timing 是用于在web上准确测量性能的JavaScript接口。它提供了一种非常简单的方法去获取更准确、详细的时间统">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用Navigation Timing测量页面加载速度">
+<meta property="og:url" content="http://yoursite.com/2016/02/01/用Navigation-Timing测量页面加载速度/index.html">
+<meta property="og:site_name" content="Lucy's Blog">
+<meta property="og:description" content="#用Navigation Timing测量页面加载速度用户无法忍受加载慢的页面。谷歌实验的数据表明用户能感知到的速度单位是100毫秒，而页面每慢100毫秒，将会对用户产生越不利的影响。但我们应该怎样来监控页面的加载速度呢？“页面加载”到底意味着什么？
+##Navigation Timing 是用于在web上准确测量性能的JavaScript接口。它提供了一种非常简单的方法去获取更准确、详细的时间统">
+<meta property="og:updated_time" content="2016-02-01T03:54:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用Navigation Timing测量页面加载速度">
+<meta name="twitter:description" content="#用Navigation Timing测量页面加载速度用户无法忍受加载慢的页面。谷歌实验的数据表明用户能感知到的速度单位是100毫秒，而页面每慢100毫秒，将会对用户产生越不利的影响。但我们应该怎样来监控页面的加载速度呢？“页面加载”到底意味着什么？
+##Navigation Timing 是用于在web上准确测量性能的JavaScript接口。它提供了一种非常简单的方法去获取更准确、详细的时间统">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> 用Navigation Timing测量页面加载速度 | Lucy's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?your-analytics-id";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Lucy's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Stay Hungry</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+      
+        <li class="menu-item menu-item-search">
+          <a href="#" class="st-search-show-outputs">
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'your-swiftype-key','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                用Navigation Timing测量页面加载速度
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-01T11:53:50+08:00" content="2016-02-01">
+              2016-02-01
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/01/用Navigation-Timing测量页面加载速度/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/用Navigation-Timing测量页面加载速度/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>#用Navigation Timing测量页面加载速度<br>用户无法忍受加载慢的页面。<br>谷歌实验的数据表明用户能感知到的速度单位是100毫秒，而页面每慢100毫秒，将会对用户产生越不利的影响。<br>但我们应该怎样来监控页面的加载速度呢？“页面加载”到底意味着什么？</p>
+<p>##Navigation Timing 是用于在web上准确测量性能的JavaScript接口。<br>它提供了一种非常简单的方法去获取更准确、详细的时间统计信息。<br>现在Internet Explorer 9, Google Chrome and in Firefox已经支持了这个接口。</p>
+<p>##这篇文章主要是描述 Navigation Timing 这个接口以及简单展示通过这个接口能获取到哪些时间数据。</p>
+<p>###怎么用这个接口？</p>
+<blockquote>
+<p>这个接口在可以通过window.performance这个对象属性获取到：</p>
+</blockquote>
+<p>navigation：描述用户是怎样进入这个页面的<br>timing：关于页面加载的一些时间数据<br>Chrome同时提供了performance.memory这个属性，用于获取当前Javascript使用内存的一些数据情况。</p>
+<p>使用这个接口的最简单方法是直接在浏览器的Javascrpt console面板中输出window.performance这个对象就可以看到。</p>
+<p>##Console面板</p>
+<p>比Javascript Date更好的替代方案<br>以往前端开发者习惯使用js的Date对象去进行页面时间性能监控。举个简单的例子，在页面的最初始地方加入下面代码：</p>
+<p>var start = Date.now();<br>然后在页面的最后加上这样的代码：</p>
+<p>console.log(“Page load took “ + (Date.now() - start) + “milliseconds”);<br>用这种Javascript行内代码去测算性能是有一定的限制的，而且并不可靠：</p>
+<p>这种方式的代码写在页面里面，所以它本身会影响页面的加载时间。<br>（Navigation Timing接口可以在页面完成之后获取加载时间，而它不影响页面的加载时间）<br>Javascript的时间本来就不准确<br>最糟糕的是，在页面开始加载之前，Date对象根本不能使用，所以无法测算到网络延迟的时间<br>换句话说，用户无论是点击一个链接或者直接在浏览器打开某个URL，这种写在页面内测量方式都不能测算到完整的性能时间。<br>因为往往我们需要分析的性能包括DNS查询、页面重定向、服务器响应时间等在内的时间，而这些是在页面加载前（也就是页面的监控代码执行前）就已经发生了的。<br>当然你可以利用cookies去进行页面之间跳转的时间测量，但前提是这两个页面必须要在同个域名之内。<br>最关键的是，用cookie这种方式不能测算到用户第一次访问页面的情况，而用户第一次访问的性能情况往往是最重要的。<br>【译者注：cookie的方式大概就是用户进行跳页面之前，将当前时间种入cookie，在目的页面成功打开的时候，从cookie中取出值，再跟当前时间进行对比。所以说第一次访问的时候并不能测算】</p>
+<p>###接口的参数都代表了什么？<br>每一个performance.timing属性展示了每一个导航事件或加载事件的时间，它代表当前的时间与1970年1月1日0点0分相差的毫秒数。<br>关于值为0的属性，表示该事件并未发生（比如secureConnectionStart 或者 redirectStart）。</p>
+<p>在Microsoft’s performance.timing的文档里有对各个事件的解释，当然，你也可以到W3C里看更正式的文档。<br>IE9除了secureConnectionStart这个事件之外其他都支持，另外还支持一个特殊的msFirstPaint事件，它表示在loadEventEnd之后，页面开始展示时候的时间。</p>
+<p>如果你要使用loadEventEnd，请确保在页面的load事件之后再去获取它，比如：</p>
+<p>window.onload = function(){<br>    setTimeout(function(){<br>        var t = performance.timing;<br>        console.log(t.loadEventEnd - t.responseEnd);<br>    }, 0);<br>}</p>
+<p>##如何使用这些数据？</p>
+<blockquote>
+<p>将接口提供的一些数据进行组合之后，就能得到一些我们想要的信息：</p>
+<p>网络耗时【译者注：也就是白屏时间】 responseEnd-fetchStart<br>从服务器接受到页面到页面加载完成的时间【译者注：页面渲染、绑定事件的时间】 loadEventEnd-responseEnd<br>总体时间 loadEventEnd-navigationStart<br>这些数据可以通过各种不同的组合，去反映不同阶段的耗时，比如 redirectEnd-redirectStart 可以表示页面重定向的时间。</p>
+</blockquote>
+<p>###获知页面以怎样的方式打开<br>我们都知道，可以有很多种打开一个页面，performance.navigation的来临可以帮助我们进行这方面的分析，这个接口只有两个属性：</p>
+<p>redirectCount：记录文档进行重定向的请求次数<br>type：记录页面是通过那种导航方式被加载的<br>type是一个枚举值，它可能是以下三个值之一：</p>
+<p>0：通过点击一个链接或者直接在浏览器中输入一个网址<br>1：页面刷新<br>2：通过浏览历史后退或前进</p>
+<p>##总结<br>与用Date对象去监测时间不一样的是，Navigation Timing提供的接口可以在不影响页面加载的情况下更准确地监测页面时间。<br>这让我们可以在更真实的环境下测量页面加载的延时，利用它在大量的真实用户中收集数据，而不再是在开发者的环境下去模拟各种页面的延时。</p>
+<blockquote>
+<p>举个例子，在页面完成加载之后，我们可以利用XHR把performance.timing的数据传输到服务器端。<br>这种方式的统计非常实时，但是效率不是特别高。<br>另外，时间数据还可以以页面和用户为单位存在localStorage中，并且阶段性地打包传输到服务器中。<br>通过这种方式，可以很方便地建立一个关于页面性能的历史数据系统。</p>
+</blockquote>
+<p>##Navigation Timing的未来<br>Navigation Timing提供了非常有用的工具帮助开发者去监测和调整页面性能，<br>但接口最引人注目的是在web的统计上，他提供了更丰富的、准确的、非侵入式的报告。</p>
+<p>更好的数据报告能帮助我们更好的理解页面的各种延迟时间。这将让我们的网站基础更有效，网络应用更快速，<br>在web上的体验越来越好。</p>
+<p>想要获取更多这个接口怎么用，<br>你可以去看看这篇文章作者开发的Google Chrome的拓展程序Page Speed Test。<br>里面的表格展示了目前以及历史上所有的页面的性能指标。</p>
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/01/z-index-与-position-之间的关系/" rel="next" title="z-index 与 position 之间的关系">
+                <i class="fa fa-chevron-left"></i> z-index 与 position 之间的关系
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/02/01/【转载】Web前端开发工程师编程能力飞升之路/" rel="prev" title="【转载】Web前端开发工程师编程能力飞升之路">
+                【转载】Web前端开发工程师编程能力飞升之路 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/02/01/用Navigation-Timing测量页面加载速度/"
+           data-title="用Navigation Timing测量页面加载速度" data-url="http://yoursite.com/2016/02/01/用Navigation-Timing测量页面加载速度/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/default_avatar.jpg"
+               alt="tuluxmu" />
+          <p class="site-author-name" itemprop="name">tuluxmu</p>
+          <p class="site-description motion-element" itemprop="description">Front-end engineer。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/tuluxmu" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> github
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tuluxmu</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"your-duoshuo-shortname"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+
+  
+  
+
+
+</body>
+</html>

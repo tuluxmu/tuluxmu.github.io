@@ -1,0 +1,784 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css"/>
+
+
+
+
+  <link href="//fonts.googleapis.com/css?family=Lato:300,400,700,400italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=0.5.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=0.5.0" />
+
+
+
+
+
+
+<meta name="description" content="#React/React Native 的ES5 ES6写法对照
+##模块引用在ES5里，如果使用CommonJS标准，引入React包基本通过require进行，代码类似这样：
+//ES5&amp;#10;var React = require(&amp;#34;react-native&amp;#34;);&amp;#10;var &amp;#123;&amp;#10;    Image,&amp;#10;    Text,&amp;#10;    Pro">
+<meta property="og:type" content="article">
+<meta property="og:title" content="React/React Native 的ES5 ES6写法对照">
+<meta property="og:url" content="http://yoursite.com/2016/02/01/React-React-Native-的ES5-ES6写法对照/index.html">
+<meta property="og:site_name" content="Lucy's Blog">
+<meta property="og:description" content="#React/React Native 的ES5 ES6写法对照
+##模块引用在ES5里，如果使用CommonJS标准，引入React包基本通过require进行，代码类似这样：
+//ES5&amp;#10;var React = require(&amp;#34;react-native&amp;#34;);&amp;#10;var &amp;#123;&amp;#10;    Image,&amp;#10;    Text,&amp;#10;    Pro">
+<meta property="og:updated_time" content="2016-02-01T04:06:23.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="React/React Native 的ES5 ES6写法对照">
+<meta name="twitter:description" content="#React/React Native 的ES5 ES6写法对照
+##模块引用在ES5里，如果使用CommonJS标准，引入React包基本通过require进行，代码类似这样：
+//ES5&amp;#10;var React = require(&amp;#34;react-native&amp;#34;);&amp;#10;var &amp;#123;&amp;#10;    Image,&amp;#10;    Text,&amp;#10;    Pro">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> React/React Native 的ES5 ES6写法对照 | Lucy's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?your-analytics-id";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">Lucy's Blog</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">Stay Hungry</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu menu-left">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-home fa-fw"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-archive fa-fw"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-tags fa-fw"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+      
+      
+        <li class="menu-item menu-item-search">
+          <a href="#" class="st-search-show-outputs">
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            搜索
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <form class="site-search-form">
+  <input type="text" id="st-search-input" class="st-search-input st-default-search-input" />
+</form>
+
+<script type="text/javascript">
+  (function(w,d,t,u,n,s,e){w['SwiftypeObject']=n;w[n]=w[n]||function(){
+    (w[n].q=w[n].q||[]).push(arguments);};s=d.createElement(t);
+    e=d.getElementsByTagName(t)[0];s.async=1;s.src=u;e.parentNode.insertBefore(s,e);
+  })(window,document,'script','//s.swiftypecdn.com/install/v2/st.js','_st');
+
+  _st('install', 'your-swiftype-key','2.0.0');
+</script>
+
+
+
+    </div>
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                React/React Native 的ES5 ES6写法对照
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-01T12:04:07+08:00" content="2016-02-01">
+              2016-02-01
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/01/React-React-Native-的ES5-ES6写法对照/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/React-React-Native-的ES5-ES6写法对照/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>#React/React Native 的ES5 ES6写法对照</p>
+<p>##模块引用<br>在ES5里，如果使用CommonJS标准，引入React包基本通过require进行，代码类似这样：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//ES5&#10;var React = require(&#34;react-native&#34;);&#10;var &#123;&#10;    Image,&#10;    Text,&#10;    PropTypes&#10;&#125; = React;  //&#24341;&#29992;&#19981;&#21516;&#30340;React Native&#32452;&#20214;</span><br></pre></td></tr></table></figure>
+<p>在ES6里，import写法更为标准</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//ES6&#10;import React, &#123;&#10;    Image,&#10;    Text,&#10;    PropTypes&#10;&#125; from &#39;react-native&#39;;</span><br></pre></td></tr></table></figure>
+<p>注意在React Native里，import直到0.12+才能正常运作。</p>
+<p>导出单个类<br>在ES5里，要导出一个类给别的模块用，一般通过module.exports来导出</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//ES5&#10;var MyComponent = React.createClass(&#123;&#10;    ...&#10;&#125;);&#10;module.exports = MyComponent;</span><br></pre></td></tr></table></figure>
+<p>在ES6里，通常用export default来实现相同的功能：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//ES6&#10;export default class MyComponent extends React.Component&#123;&#10;    ...&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>引用的时候也类似：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//ES5&#10;var MyComponent = require(&#39;./MyComponent.js&#39;);&#10;&#10;//ES6&#10;import MyComponent from &#39;./MyComponent.js&#39;;</span><br></pre></td></tr></table></figure>
+<p>定义组件<br>在ES5里，通常通过React.createClass来定义一个组件类，像这样：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//ES5&#10;var Photo = React.createClass(&#123;&#10;    render: function() &#123;&#10;        return (&#10;            &#60;Image source=&#123;this.props.source&#125; /&#62;&#10;        );&#10;    &#125;,&#10;&#125;);</span><br></pre></td></tr></table></figure>
+<p>在ES6里，我们通过定义一个继承自React.Component的class来定义一个组件类，像这样：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//ES6&#10;class Photo extends React.Component &#123;&#10;    render() &#123;&#10;        return (&#10;            &#60;Image source=&#123;this.props.source&#125; /&#62;&#10;        );&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>给组件定义方法<br>从上面的例子里可以看到，给组件定义方法不再用 名字: function()的写法，而是直接用名字()，在方法的最后也不能有逗号了。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//ES5&#10;var Photo = React.createClass(&#123;&#10;    componentWillMount: function()&#123;&#10;&#10;    &#125;,&#10;    render: function() &#123;&#10;        return (&#10;            &#60;Image source=&#123;this.props.source&#125; /&#62;&#10;        );&#10;    &#125;,&#10;&#125;);&#10;//ES6&#10;class Photo extends React.Component &#123;&#10;    componentWillMount() &#123;&#10;&#10;    &#125;&#10;    render() &#123;&#10;        return (&#10;            &#60;Image source=&#123;this.props.source&#125; /&#62;&#10;        );&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>定义组件的属性类型和默认属性<br>在ES5里，属性类型和默认属性分别通过propTypes成员和getDefaultProps方法来实现</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//ES5&#10;var Video = React.createClass(&#123;&#10;    getDefaultProps: function() &#123;&#10;        return &#123;&#10;            autoPlay: false,&#10;            maxLoops: 10,&#10;        &#125;;&#10;    &#125;,&#10;    propTypes: &#123;&#10;        autoPlay: React.PropTypes.bool.isRequired,&#10;        maxLoops: React.PropTypes.number.isRequired,&#10;        posterFrameSrc: React.PropTypes.string.isRequired,&#10;        videoSrc: React.PropTypes.string.isRequired,&#10;    &#125;,&#10;    render: function() &#123;&#10;        return (&#10;            &#60;View /&#62;&#10;        );&#10;    &#125;,&#10;&#125;);</span><br></pre></td></tr></table></figure>
+<p>在ES6里，可以统一使用static成员来实现</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//ES6&#10;class Video extends React.Component &#123;&#10;    static defaultProps = &#123;&#10;        autoPlay: false,&#10;        maxLoops: 10,&#10;    &#125;&#10;    static propTypes = &#123;&#10;        autoPlay: React.PropTypes.bool.isRequired,&#10;        maxLoops: React.PropTypes.number.isRequired,&#10;        posterFrameSrc: React.PropTypes.string.isRequired,&#10;        videoSrc: React.PropTypes.string.isRequired,&#10;    &#125;&#10;    render() &#123;&#10;        return (&#10;            &#60;View /&#62;&#10;        );&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>也有人这么写，虽然不推荐，但读到代码的时候你应当能明白它的意思：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//ES6&#10;class Video extends React.Component &#123;&#10;    render() &#123;&#10;        return (&#10;            &#60;View /&#62;&#10;        );&#10;    &#125;&#10;&#125;&#10;Video.defaultProps = &#123;&#10;    autoPlay: false,&#10;    maxLoops: 10,&#10;&#125;;&#10;Video.propTypes = &#123;&#10;    autoPlay: React.PropTypes.bool.isRequired,&#10;    maxLoops: React.PropTypes.number.isRequired,&#10;    posterFrameSrc: React.PropTypes.string.isRequired,&#10;    videoSrc: React.PropTypes.string.isRequired,&#10;&#125;;</span><br></pre></td></tr></table></figure>
+<p>注意: 对React开发者而言，static成员在IE10及之前版本不能被继承，而在IE11和其它浏览器上可以，这有时候会带来一些问题。React Native开发者可以不用担心这个问题。</p>
+<p>初始化state<br>ES5下情况类似，</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//ES5&#10;var Video = React.createClass(&#123;&#10;    getInitialState: function() &#123;&#10;        return &#123;&#10;            loopsRemaining: this.props.maxLoops,&#10;        &#125;;&#10;    &#125;,&#10;&#125;)</span><br></pre></td></tr></table></figure>
+<p>ES6下，有两种写法：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//ES6&#10;class Video extends React.Component &#123;&#10;    state = &#123;&#10;        loopsRemaining: this.props.maxLoops,&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>##不过我们推荐更易理解的在构造函数中初始化（这样你还可以根据需要做一些计算）：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//ES6&#10;class Video extends React.Component &#123;&#10;    constructor(props)&#123;&#10;        super(props);&#10;        this.state = &#123;&#10;            loopsRemaining: this.props.maxLoops,&#10;        &#125;;&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>把方法作为回调提供<br>很多习惯于ES6的用户反而不理解在ES5下可以这么做：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//ES5&#10;var PostInfo = React.createClass(&#123;&#10;    handleOptionsButtonClick: function(e) &#123;&#10;        // Here, &#39;this&#39; refers to the component instance.&#10;        this.setState(&#123;showOptionsModal: true&#125;);&#10;    &#125;,&#10;    render: function()&#123;&#10;        return (&#10;            &#60;TouchableHighlight onPress=&#123;this.handleOptionsButtonClick&#125;&#62;&#10;                &#60;Text&#62;&#123;this.props.label&#125;&#60;/Text&#62;&#10;            &#60;/TouchableHighlight&#62;&#10;        )&#10;    &#125;,&#10;&#125;);</span><br></pre></td></tr></table></figure>
+<p>##在ES5下，React.createClass会把所有的方法都bind一遍，这样可以提交到任意的地方作为回调函数，而this不会变化。但官方现在逐步认为这反而是不标准、不易理解的。</p>
+<p>##在ES6下，你需要通过bind来绑定this引用，或者使用箭头函数（它会绑定当前scope的this引用）来调用<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//ES6&#10;class PostInfo extends React.Component&#10;&#123;&#10;    handleOptionsButtonClick(e)&#123;&#10;        this.setState(&#123;showOptionsModal: true&#125;);&#10;    &#125;&#10;    render()&#123;&#10;        return (&#10;            &#60;TouchableHighlight&#10;                onPress=&#123;this.handleOptionsButtonClick.bind(this)&#125;&#10;                onPress=&#123;e=&#62;this.handleOptionsButtonClick(e)&#125;&#10;                &#62;&#10;                &#60;Text&#62;&#123;this.props.label&#125;&#60;/Text&#62;&#10;            &#60;/TouchableHighlight&#62;&#10;        )&#10;    &#125;,&#10;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>箭头函数实际上是在这里定义了一个#临时的函数#，箭头函数的箭头=&gt;之前是一个空括号、单个的参数名、或用括号括起的多个参数名，而箭头之后可以是一个表达式（作为函数的返回值），或者是用花括号括起的函数体（需要自行通过return来返回值，否则返回的是undefined）。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// &#31661;&#22836;&#20989;&#25968;&#30340;&#20363;&#23376;&#10;()=&#62;1&#10;v=&#62;v+1&#10;(a,b)=&#62;a+b&#10;()=&#62;&#123;&#10;    alert(&#34;foo&#34;);&#10;&#125;&#10;e=&#62;&#123;&#10;    if (e == 0)&#123;&#10;        return 0;&#10;    &#125;&#10;    return 1000/e;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>需要注意的是，不论是bind还是箭头函数，每次被执行都返回的是一个新的函数引用，因此如果你还需要函数的引用去做一些别的事情（譬如卸载监听器），那么你必须自己保存这个引用</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// &#38169;&#35823;&#30340;&#20570;&#27861;&#10;class PauseMenu extends React.Component&#123;&#10;    componentWillMount()&#123;&#10;        AppStateIOS.addEventListener(&#39;change&#39;, this.onAppPaused.bind(this));&#10;    &#125;&#10;    componentDidUnmount()&#123;&#10;        AppStateIOS.removeEventListener(&#39;change&#39;, this.onAppPaused.bind(this));&#10;    &#125;&#10;    onAppPaused(event)&#123;&#10;    &#125;&#10;&#125;&#10;// &#27491;&#30830;&#30340;&#20570;&#27861;&#10;class PauseMenu extends React.Component&#123;&#10;    constructor(props)&#123;&#10;        super(props);&#10;        this._onAppPaused = this.onAppPaused.bind(this);&#10;    &#125;&#10;    componentWillMount()&#123;&#10;        AppStateIOS.addEventListener(&#39;change&#39;, this._onAppPaused);&#10;    &#125;&#10;    componentDidUnmount()&#123;&#10;        AppStateIOS.removeEventListener(&#39;change&#39;, this._onAppPaused);&#10;    &#125;&#10;    onAppPaused(event)&#123;&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>从这个帖子中我们还学习到一种新的做法：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// &#27491;&#30830;&#30340;&#20570;&#27861;&#10;class PauseMenu extends React.Component&#123;&#10;    componentWillMount()&#123;&#10;        AppStateIOS.addEventListener(&#39;change&#39;, this.onAppPaused);&#10;    &#125;&#10;    componentDidUnmount()&#123;&#10;        AppStateIOS.removeEventListener(&#39;change&#39;, this.onAppPaused);&#10;    &#125;&#10;    onAppPaused = (event) =&#62; &#123;&#10;        //&#25226;&#26041;&#27861;&#30452;&#25509;&#20316;&#20026;&#19968;&#20010;arrow function&#30340;&#23646;&#24615;&#26469;&#23450;&#20041;&#65292;&#21021;&#22987;&#21270;&#30340;&#26102;&#20505;&#23601;&#32465;&#23450;&#22909;&#20102;this&#25351;&#38024;&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>##Mixins<br>在ES5下，我们经常使用mixin来为我们的类添加一些新的方法，譬如PureRenderMixin<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var PureRenderMixin = require(&#39;react-addons-pure-render-mixin&#39;);&#10;React.createClass(&#123;&#10;  mixins: [PureRenderMixin],&#10;&#10;  render: function() &#123;&#10;    return &#60;div className=&#123;this.props.className&#125;&#62;foo&#60;/div&#62;;&#10;  &#125;&#10;&#125;);</span><br></pre></td></tr></table></figure></p>
+<p>##ES6+带来的其它好处</p>
+<p>###解构&amp;属性延展<br>结合使用ES6+的解构和属性延展，我们给孩子传递一批属性更为方便了。这个例子把className以外的所有属性传递给div标签：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">class AutoloadingPostsGrid extends React.Component &#123;&#10;    render() &#123;&#10;        var &#123;&#10;            className,&#10;            ...others,  // contains all properties of this.props except for className&#10;        &#125; = this.props;&#10;        return (&#10;            &#60;div className=&#123;className&#125;&#62;&#10;                &#60;PostsGrid &#123;...others&#125; /&#62;&#10;                &#60;button onClick=&#123;this.handleLoadMoreClick&#125;&#62;Load more&#60;/button&#62;&#10;            &#60;/div&#62;&#10;        );&#10;    &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>下面这种写法，则是传递所有属性的同时，用覆盖新的className值：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#60; div &#123;...this.props&#125; className=&#34;override&#34;&#62;&#10;    &#8230;&#10;&#60;/div&#62;</span><br></pre></td></tr></table></figure>
+<p>这个例子则相反，如果属性中没有包含className，则提供默认的值，而如果属性中已经包含了，则使用属性中的值</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#60; div className=&#34;base&#34; &#123;...this.props&#125;&#62;&#10;    &#8230;&#10;&#60;/div&#62;</span><br></pre></td></tr></table></figure>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/02/01/webpack学习resources-4/" rel="next" title="webpack学习resources-4">
+                <i class="fa fa-chevron-left"></i> webpack学习resources-4
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/02/01/2015年工作总结/" rel="prev" title="2015年工作总结">
+                2015年工作总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/02/01/React-React-Native-的ES5-ES6写法对照/"
+           data-title="React/React Native 的ES5 ES6写法对照" data-url="http://yoursite.com/2016/02/01/React-React-Native-的ES5-ES6写法对照/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/default_avatar.jpg"
+               alt="tuluxmu" />
+          <p class="site-author-name" itemprop="name">tuluxmu</p>
+          <p class="site-description motion-element" itemprop="description">Front-end engineer。</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">分类</span>
+              
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">0</span>
+              <span class="site-state-item-name">标签</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/tuluxmu" target="_blank">
+                  
+                    <i class="fa fa-globe"></i> github
+                  
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+          <div class="cc-license motion-element" itemprop="license">
+            <a href="http://creativecommons.org/licenses/by-nc-sa/4.0" class="cc-opacity" target="_blank">
+              <img src="/images/cc-by-nc-sa.svg" alt="Creative Commons" />
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator">
+            <i class="fa fa-angle-double-up"></i>
+          </div>
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator">
+            <i class="fa fa-angle-double-down"></i>
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="icon-next-heart fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">tuluxmu</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+
+
+      </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  
+
+
+  
+
+
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=0.5.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=0.5.0"></script>
+
+
+
+  
+  
+
+  
+  
+<script type="text/javascript" src="/js/src/scrollspy.js?v=0.5.0"></script>
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 1 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = NexT.utils.escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    NexT.motion.middleWares.sidebar = function () {
+      var $tocContent = $('.post-toc-content');
+
+      if (CONFIG.sidebar === 'post') {
+        if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+          NexT.utils.displaySidebar();
+        }
+      }
+    };
+  });
+</script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=0.5.0"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"your-duoshuo-shortname"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+  
+
+
+
+
+
+  
+  
+
+  
+  
+
+
+</body>
+</html>
