@@ -57,25 +57,19 @@
 
 
 
-<meta name="description" content="webpack-howto
-Goal of this guide
-This is a cookbook of how to get things done with webpack. This includes most things we use at Instagram and nothing we don’t use.
-My advice: start with this as your w">
+<meta name="description" content="#the use of React Mixin
+the function of React Mixin is to include some same functionwhy we use Minxin ?we know that it is too bad to use same code everywhere.so if we want to add same code in differen">
 <meta property="og:type" content="article">
-<meta property="og:title" content="webpack学习resources-3">
-<meta property="og:url" content="http://yoursite.com/2016/02/01/webpack学习resources-3/index.html">
+<meta property="og:title" content="the use of React Mixin">
+<meta property="og:url" content="http://yoursite.com/2016/02/01/the-use-of-React-Mixin/index.html">
 <meta property="og:site_name" content="Lucy's Blog">
-<meta property="og:description" content="webpack-howto
-Goal of this guide
-This is a cookbook of how to get things done with webpack. This includes most things we use at Instagram and nothing we don’t use.
-My advice: start with this as your w">
-<meta property="og:updated_time" content="2016-02-01T03:11:21.000Z">
+<meta property="og:description" content="#the use of React Mixin
+the function of React Mixin is to include some same functionwhy we use Minxin ?we know that it is too bad to use same code everywhere.so if we want to add same code in differen">
+<meta property="og:updated_time" content="2016-02-01T03:15:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="webpack学习resources-3">
-<meta name="twitter:description" content="webpack-howto
-Goal of this guide
-This is a cookbook of how to get things done with webpack. This includes most things we use at Instagram and nothing we don’t use.
-My advice: start with this as your w">
+<meta name="twitter:title" content="the use of React Mixin">
+<meta name="twitter:description" content="#the use of React Mixin
+the function of React Mixin is to include some same functionwhy we use Minxin ?we know that it is too bad to use same code everywhere.so if we want to add same code in differen">
 
 
 
@@ -93,7 +87,7 @@ My advice: start with this as your w">
   };
 </script>
 
-  <title> webpack学习resources-3 | Lucy's Blog </title>
+  <title> the use of React Mixin | Lucy's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -251,7 +245,7 @@ My advice: start with this as your w">
             
             
               
-                webpack学习resources-3
+                the use of React Mixin
               
             
           </h1>
@@ -263,7 +257,7 @@ My advice: start with this as your w">
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-01T11:08:34+08:00" content="2016-02-01">
+            <time itemprop="dateCreated" datetime="2016-02-01T11:14:57+08:00" content="2016-02-01">
               2016-02-01
             </time>
           </span>
@@ -274,8 +268,8 @@ My advice: start with this as your w">
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/02/01/webpack学习resources-3/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/webpack学习resources-3/" itemprop="commentsCount"></span>
+                <a href="/2016/02/01/the-use-of-React-Mixin/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/the-use-of-React-Mixin/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -296,99 +290,28 @@ My advice: start with this as your w">
       
 
       
-        <p>webpack-howto</p>
-<p>Goal of this guide</p>
-<p>This is a cookbook of how to get things done with webpack. This includes most things we use at Instagram and nothing we don’t use.</p>
-<p>My advice: start with this as your webpack docs, then look at the official docs for clarification.</p>
-<p>Prerequisites</p>
-<ul>
-<li>You know browserify, RequireJS or something similar</li>
-<li>You see the value in:<ul>
-<li>Bundle splitting</li>
-<li>Async loading</li>
-<li>Packaging static assets like images and CSS</li>
-</ul>
-</li>
-</ul>
-<ol>
-<li>Why webpack?</li>
-</ol>
-<ul>
-<li><p>It’s like browserify but can split your app into multiple files. If you have multiple pages in a single-page app, the user only downloads code for just that page. If they go to another page, they don’t redownload common code.</p>
-</li>
-<li><p>It often replaces grunt or gulp because it can build and bundle CSS, preprocessed CSS, compile-to-JS languages and images, among other things.</p>
-</li>
-</ul>
-<p>It supports AMD and CommonJS, among other module systems (Angular, ES6). If you don’t know what to use, use CommonJS.</p>
-<ol>
-<li>Webpack for Browserify people</li>
-</ol>
-<p>These are equivalent:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">browserify main.js &#62; bundle.js&#10;&#10;&#10;&#10;webpack main.js bundle.js</span><br></pre></td></tr></table></figure>
-<p>However, webpack is more powerful than Browserify, so you generally want to make a webpack.config.js to keep things organized:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// webpack.config.js&#10;module.exports = &#123;&#10;  entry: &#39;./main.js&#39;,&#10;  output: &#123;&#10;    filename: &#39;bundle.js&#39;&#10;  &#125;&#10;&#125;;</span><br></pre></td></tr></table></figure>
-<p>This is just JS, so feel free to put Real Code in there.</p>
-<ol>
-<li>How to invoke webpack</li>
-</ol>
-<p>Switch to the directory containing webpack.config.js and run:</p>
-<ul>
-<li>webpack for building once for development</li>
-<li>webpack -p for building once for production (minification)</li>
-<li>webpack –watch for continuous incremental build in development (fast!)</li>
-<li>webpack -d to include source maps</li>
-</ul>
-<ol>
-<li>Compile-to-JS languages</li>
-</ol>
-<p>webpack’s equivalent of browserify transforms and RequireJS plugins is a loader. Here’s how you can teach webpack to load CoffeeScript and Facebook JSX+ES6 support (you must npm install babel-loader coffee-loader):</p>
-<p>See also the babel-loader installation instructions for additional dependencies (tl;dr run npm install babel-core babel-preset-es2015 babel-preset-react).</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// webpack.config.js&#10;module.exports = &#123;&#10;  entry: &#39;./main.js&#39;,&#10;  output: &#123;&#10;    filename: &#39;bundle.js&#39;&#10;  &#125;,&#10;  module: &#123;&#10;    loaders: [&#10;      &#123; test: /\.coffee$/, loader: &#39;coffee-loader&#39; &#125;,&#10;      &#123;&#10;        test: /\.js$/,&#10;        loader: &#39;babel-loader&#39;,&#10;        query: &#123;&#10;          presets: [&#39;es2015&#39;, &#39;react&#39;]&#10;        &#125;&#10;      &#125;&#10;    ]&#10;  &#125;&#10;&#125;;</span><br></pre></td></tr></table></figure>
-<p>To enable requiring files without specifying the extension, you must add a resolve.extensions parameter specifying which files webpack searches for:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// webpack.config.js&#10;module.exports = &#123;&#10;  entry: &#39;./main.js&#39;,&#10;  output: &#123;&#10;    filename: &#39;bundle.js&#39;&#10;  &#125;,&#10;  module: &#123;&#10;    loaders: [&#10;      &#123; test: /\.coffee$/, loader: &#39;coffee-loader&#39; &#125;,&#10;      &#123;&#10;        test: /\.js$/,&#10;        loader: &#39;babel-loader&#39;,&#10;        query: &#123;&#10;          presets: [&#39;es2015&#39;, &#39;react&#39;]&#10;        &#125;&#10;      &#125;&#10;    ]&#10;  &#125;,&#10;  resolve: &#123;&#10;    // you can now require(&#39;file&#39;) instead of require(&#39;file.coffee&#39;)&#10;    extensions: [&#39;&#39;, &#39;.js&#39;, &#39;.json&#39;, &#39;.coffee&#39;]&#10;  &#125;&#10;&#125;;</span><br></pre></td></tr></table></figure>
-<ol>
-<li>Stylesheets and images</li>
-</ol>
-<p>First update your code to require() your static assets (named as they would with node’s require()):</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">require(&#39;./bootstrap.css&#39;);&#10;require(&#39;./myapp.less&#39;);&#10;&#10;var img = document.createElement(&#39;img&#39;);&#10;img.src = require(&#39;./glyph.png&#39;);</span><br></pre></td></tr></table></figure>
-<p>When you require CSS (or less, etc), webpack inlines the CSS as a string inside the JS bundle and require() will insert a<style> tag into the page. When you require images, webpack inlines a URL to the image into the bundle and returns it from require().</p>
-<p>But you need to teach webpack to do this (again, with loaders):</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// webpack.config.js&#10;module.exports = &#123;&#10;  entry: &#39;./main.js&#39;,&#10;  output: &#123;&#10;    path: &#39;./build&#39;, // This is where images AND js will go&#10;    publicPath: &#39;http://mycdn.com/&#39;, // This is used to generate URLs to e.g. images&#10;    filename: &#39;bundle.js&#39;&#10;  &#125;,&#10;  module: &#123;&#10;    loaders: [&#10;      &#123; test: /\.less$/, loader: &#39;style-loader!css-loader!less-loader&#39; &#125;, // use ! to chain loaders&#10;      &#123; test: /\.css$/, loader: &#39;style-loader!css-loader&#39; &#125;,&#10;      &#123;test: /\.(png|jpg)$/, loader: &#39;url-loader?limit=8192&#39;&#125; // inline base64 URLs for &#60;=8k images, direct URLs for the rest&#10;    ]&#10;  &#125;&#10;&#125;;</span><br></pre></td></tr></table></figure>
-<ol>
-<li>Feature flags</li>
-</ol>
-<p>We have code we want to gate only to our dev environments (like logging) and our internal dogfooding servers (like unreleased features we’re testing with employees). In your code, refer to magic globals:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if (__DEV__) &#123;&#10;  console.warn(&#39;Extra logging&#39;);&#10;&#125;&#10;// ...&#10;if (__PRERELEASE__) &#123;&#10;  showSecretFeature();&#10;&#125;</span><br></pre></td></tr></table></figure>
-<p>Then teach webpack those magic globals:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// webpack.config.js&#10;&#10;// definePlugin takes raw strings and inserts them, so you can put strings of JS if you want.&#10;var definePlugin = new webpack.DefinePlugin(&#123;&#10;  __DEV__: JSON.stringify(JSON.parse(process.env.BUILD_DEV || &#39;true&#39;)),&#10;  __PRERELEASE__: JSON.stringify(JSON.parse(process.env.BUILD_PRERELEASE || &#39;false&#39;))&#10;&#125;);&#10;&#10;module.exports = &#123;&#10;  entry: &#39;./main.js&#39;,&#10;  output: &#123;&#10;    filename: &#39;bundle.js&#39;&#10;  &#125;,&#10;  plugins: [definePlugin]&#10;&#125;;</span><br></pre></td></tr></table></figure>
-<p>Then you can build with BUILD_DEV=1 BUILD_PRERELEASE=1 webpack from the console. Note that since webpack -p runs uglify dead-code elimination, anything wrapped in one of these blocks will be stripped out, so you won’t leak secret features or strings.</p>
-<ol>
-<li>Multiple entrypoints</li>
-</ol>
-<p>Let’s say you have a profile page and a feed page. You don’t want to make the user download the code for the feed if they just want the profile. So make multiple bundles: create one “main module” (called an entrypoint) per page:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// webpack.config.js&#10;module.exports = &#123;&#10;  entry: &#123;&#10;    Profile: &#39;./profile.js&#39;,&#10;    Feed: &#39;./feed.js&#39;&#10;  &#125;,&#10;  output: &#123;&#10;    path: &#39;build&#39;,&#10;    filename: &#39;[name].js&#39; // Template based on keys in entry above&#10;  &#125;&#10;&#125;;</span><br></pre></td></tr></table></figure>
-<p>For profile, insert <script src="build/Profile.js"></script> into your page. Do a similar thing for feed.</p>
-<ol>
-<li>Optimizing common code</li>
-</ol>
-<p>Feed and Profile share a lot in common (like React and the common stylesheets and components). webpack can figure out what they have in common and make a shared bundle that can be cached between pages:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// webpack.config.js&#10;&#10;var webpack = require(&#39;webpack&#39;);&#10;&#10;var commonsPlugin =&#10;  new webpack.optimize.CommonsChunkPlugin(&#39;common.js&#39;);&#10;&#10;module.exports = &#123;&#10;  entry: &#123;&#10;    Profile: &#39;./profile.js&#39;,&#10;    Feed: &#39;./feed.js&#39;&#10;  &#125;,&#10;  output: &#123;&#10;    path: &#39;build&#39;,&#10;    filename: &#39;[name].js&#39; // Template based on keys in entry above&#10;  &#125;,&#10;  plugins: [commonsPlugin]&#10;&#125;;</span><br></pre></td></tr></table></figure>
-<p>Add <script src="build/common.js"></script> before the script tag you added in the previous step and enjoy the free caching.</p>
-<ol>
-<li>Async loading</li>
-</ol>
-<p>CommonJS is synchronous but webpack provides a way to asynchronously specify dependencies. This is useful for client-side routers, where you want the router on every page, but you don’t want to have to download features until you actually need them.</p>
-<p>Specify the split point where you want to load asynchronously. For example:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">if (window.location.pathname === &#39;/feed&#39;) &#123;&#10;  showLoadingState();&#10;  require.ensure([], function() &#123; // this syntax is weird but it works&#10;    hideLoadingState();&#10;    require(&#39;./feed&#39;).show(); // when this function is called, the module is guaranteed to be synchronously available.&#10;  &#125;);&#10;&#125; else if (window.location.pathname === &#39;/profile&#39;) &#123;&#10;  showLoadingState();&#10;  require.ensure([], function() &#123;&#10;    hideLoadingState();&#10;    require(&#39;./profile&#39;).show();&#10;  &#125;);&#10;&#125;</span><br></pre></td></tr></table></figure>
-<p>webpack will do the rest and generate extra chunk files and load them for you.</p>
-<p>webpack will assume that those files are in your root directory when you load then into a html script tag for example. You can use output.publicPath to configure that.</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// webpack.config.js&#10;output: &#123;&#10;    path: &#34;/home/proj/public/assets&#34;, //path to where webpack will build your stuff&#10;    publicPath: &#34;/assets/&#34; //path that will be considered when requiring your files&#10;&#125;</span><br></pre></td></tr></table></figure>
-<p>Additional resources</p>
-<p>Take a look at a real world example on how a successful team is leveraging webpack: <a href="http://youtu.be/VkTCL6Nqm6Y">http://youtu.be/VkTCL6Nqm6Y</a> This is Pete Hunt at OSCon talking about webpack at Instagram.com</p>
-<p>FAQ</p>
-<p>webpack doesn’t seem modular</p>
-<p>webpack is extremely modular. What makes webpack great is that it lets plugins inject themselves into more places in the build process when compared to alternatives like browserify and requirejs. Many things that may seem built into the core are just plugins that are loaded by default and can be overridden (i.e. the CommonJS require() parser).</p>
-</style></p>
+        <p>#the use of React Mixin</p>
+<h2 id="the_function_of_React_Mixin_is_to_include_some_same_function"><a href="#the_function_of_React_Mixin_is_to_include_some_same_function" class="headerlink" title="the function of React Mixin is to include some same function"></a>the function of React Mixin is to include some same function</h2><h2 id="why_we_use_Minxin__3F"><a href="#why_we_use_Minxin__3F" class="headerlink" title="why we use Minxin ?"></a>why we use Minxin ?</h2><p>we know that it is too bad to use same code everywhere.<br>so if we want to add same code in different components,we need pack these codes with Mixin ,and import the place where you nedd.</p>
+<h2 id="write_a_sample_of_Mixin"><a href="#write_a_sample_of_Mixin" class="headerlink" title="write a sample of Mixin"></a>write a sample of Mixin</h2><p>if we write an app, and in some cases , we need set attribute Name in different components.<br>Now,we dont need write many getDefaultProps .<br>We can define mixin.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var DefaultNameMixin = &#123;&#10;    getDefaultProps: function () &#123;&#10;        return &#123;name: &#34;Skippy&#34;&#125;;&#10;    &#125;&#10;&#125;;</span><br></pre></td></tr></table></figure>
+<p>It is not so special , and it is just a simple object.<br>Include it into React Component.<br>To use mixin,we need add attr Minxins , then we wrap what we write ,and we treat it as a value of that attribute.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var ComponentOne = React.createClass(&#123;&#10;    mixins: [DefaultNameMixin],&#10;    render: function() &#123;&#10;    return &#60;h2&#62;Hello &#123;this.props.name&#125;&#60;/h2&#62;;&#10;    &#125;&#10;&#125;);&#10;&#10;React.renderComponent(&#60;ComponentOne /&#62;, document.body);</span><br></pre></td></tr></table></figure>
+<p>##we can use it many times.<br>in other component:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var ComponentTwo = React.createClass(&#123;&#10;    mixins: [DefaultNameMixin],&#10;    render: function () &#123;&#10;        return (&#10;            &#60;div&#62;&#10;                &#60;h4&#62;&#123;this.props.name&#125;&#60;/h4&#62;&#10;                &#60;p&#62;Favorite food: &#123;this.props.food&#125;&#60;/p&#62;&#10;            &#60;/div&#62;&#10;        );&#10;    &#125;&#10;&#125;);</span><br></pre></td></tr></table></figure>
+<p>#the life week will be called everytime.<br>if the minxin you write include life week ,dont be worried.<br>you still use them in life week and it will be called.<br>Except for these cases:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">render&#65306;&#21253;&#21547;&#22810;&#20010;render&#26041;&#27861;&#26159;&#19981;&#34892;&#30340;&#12290;React &#20250;&#36305;&#20986;&#24322;&#24120;&#65306;&#10;Uncaught Error: Invariant Violation: ReactCompositeComponentInterface:&#10;You are attempting to define `render` on your component more than once.&#10;This conflict may be due to a mixin.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var UselessMixin = &#123;&#10;    componentDidMount: function () &#123;&#10;      console.log(&#34;asdas&#34;);&#10;    &#125;&#10;&#125;;&#10;&#10;var LolMixin = &#123;&#10;   mixins: [UselessMixin]&#10;&#125;;&#10;&#10;var PantsOpinion = React.createClass(&#123;&#10;   mixins: [LolMixin],&#10;   render: function () &#123;&#10;       return (&#60;p&#62;I dislike pants&#60;/p&#62;);&#10;   &#125;&#10;&#125;);&#10;&#10;React.renderComponent(&#60;PantsOpinion /&#62;, document.body);</span><br></pre></td></tr></table></figure>
+<p>console.log shows asdas.</p>
+<p>##array of Mixins.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var DefaultNameMixin = &#123;&#10;    getDefaultProps: function () &#123;&#10;        return &#123;name: &#34;Lizie&#34;&#125;;&#10;    &#125;&#10;&#125;;&#10;&#10;var DefaultFoodMixin = &#123;&#10;    getDefaultProps: function () &#123;&#10;        return &#123;food: &#34;Pancakes&#34;&#125;;&#10;    &#125;&#10;&#125;;&#10;&#10;var ComponentTwo = React.createClass(&#123;&#10;    mixins: [DefaultNameMixin, DefaultFoodMixin],&#10;    render: function () &#123;&#10;        return (&#60;div&#62;&#10;                &#60;h4&#62;&#123;this.props.name&#125;&#60;/h4&#62;&#10;                &#60;p&#62;Favorite food: &#123;this.props.food&#125;&#60;/p&#62;&#10;            &#60;/div&#62;);&#10;    &#125;&#10;&#125;);</span><br></pre></td></tr></table></figure>
+<p>Note:<br>if we set Props == State ?<br>it will happen error.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Uncaught Error: Invariant Violation: mergeObjectsWithNoDuplicateKeys():&#10;Tried to merge two objects with the same key: name</span><br></pre></td></tr></table></figure>
+<p>if we set same function ?<br>it will happen error.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var LogOnMountMixin = &#123;&#10;    componentDidMount: function () &#123;&#10;        console.log(&#34;mixin mount method&#34;);&#10;        this.logBlah()&#10;    &#125;,&#10;    // add a logBlah method here...&#10;    logBlah: function () &#123;&#10;        console.log(&#34;blah&#34;);&#10;    &#125;&#10;&#125;;&#10;&#10;var MoreLogOnMountMixin = &#123;&#10;    componentDidMount: function () &#123;&#10;        console.log(&#34;another mixin mount method&#34;);&#10;    &#125;,&#10;    // ... and again here.&#10;    logBlah: function () &#123;&#10;        console.log(&#34;something other than blah&#34;);&#10;    &#125;&#10;&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Uncaught Error: Invariant Violation: ReactCompositeComponentInterface:&#10;You are attempting to define `logBlah` on your component more than once.&#10;This conflict may be due to a mixin.</span><br></pre></td></tr></table></figure>
+<h1 id="the_order_of_the_life_week"><a href="#the_order_of_the_life_week" class="headerlink" title="the order of the life week."></a>the order of the life week.</h1><p>1st we call is Minxin.<br>2nd we call some function in component.<br>and the order in minxin is from left to right.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var LogOnMountMixin = &#123;&#10;    componentDidMount: function () &#123;&#10;        console.log(&#34;mixin mount method&#34;);&#10;    &#125;&#10;&#125;;&#10;&#10;var MoreLogOnMountMixin = &#123;&#10;    componentDidMount: function () &#123;&#10;        console.log(&#34;another mixin mount method&#34;);&#10;    &#125;&#10;&#125;;&#10;var ComponentOne = React.createClass(&#123;&#10;    mixins: [MoreLogOnMountMixin, LogOnMountMixin],&#10;    componentDidMount: function () &#123;&#10;        console.log(&#34;component one mount method&#34;);&#10;    &#125;,&#10;    ...&#10;&#10;var ComponentTwo = React.createClass(&#123;&#10;    mixins: [LogOnMountMixin, MoreLogOnMountMixin],&#10;    componentDidMount: function () &#123;&#10;        console.log(&#34;component two mount method&#34;);&#10;    &#125;,&#10;    ...</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">another mixin mount method&#10;mixin mount method&#10;component one mount method&#10;&#10;mixin mount method&#10;another mixin mount method&#10;component two mount method</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -399,17 +322,13 @@ My advice: start with this as your w">
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/02/01/本地端连接git/" rel="next" title="本地端连接git">
-                <i class="fa fa-chevron-left"></i> 本地端连接git
+              <a href="/2016/02/01/Javascript-中的神器-Promise/" rel="next" title="Javascript 中的神器-Promise">
+                <i class="fa fa-chevron-left"></i> Javascript 中的神器-Promise
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/02/01/Javascript-中的神器-Promise/" rel="prev" title="Javascript 中的神器-Promise">
-                Javascript 中的神器-Promise <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -435,8 +354,8 @@ My advice: start with this as your w">
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/02/01/webpack学习resources-3/"
-           data-title="webpack学习resources-3" data-url="http://yoursite.com/2016/02/01/webpack学习resources-3/">
+      <div class="ds-thread" data-thread-key="2016/02/01/the-use-of-React-Mixin/"
+           data-title="the use of React Mixin" data-url="http://yoursite.com/2016/02/01/the-use-of-React-Mixin/">
       </div>
     
   </div>
@@ -543,7 +462,7 @@ My advice: start with this as your w">
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#the_function_of_React_Mixin_is_to_include_some_same_function"><span class="nav-number">1.</span> <span class="nav-text">the function of React Mixin is to include some same function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#why_we_use_Minxin__3F"><span class="nav-number">2.</span> <span class="nav-text">why we use Minxin ?</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#write_a_sample_of_Mixin"><span class="nav-number">3.</span> <span class="nav-text">write a sample of Mixin</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#the_order_of_the_life_week"><span class="nav-number"></span> <span class="nav-text">the order of the life week.</span></a></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator">

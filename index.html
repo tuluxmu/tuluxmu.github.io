@@ -250,6 +250,117 @@
             
               
                 
+                <a class="post-title-link" href="/2016/02/01/the-use-of-React-Mixin/" itemprop="url">
+                  the use of React Mixin
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-01T11:14:57+08:00" content="2016-02-01">
+              2016-02-01
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/01/the-use-of-React-Mixin/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/the-use-of-React-Mixin/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#the use of React Mixin</p>
+<h2 id="the_function_of_React_Mixin_is_to_include_some_same_function"><a href="#the_function_of_React_Mixin_is_to_include_some_same_function" class="headerlink" title="the function of React Mixin is to include some same function"></a>the function of React Mixin is to include some same function</h2><h2 id="why_we_use_Minxin__3F"><a href="#why_we_use_Minxin__3F" class="headerlink" title="why we use Minxin ?"></a>why we use Minxin ?</h2><p>we know that it is too bad to use same code everywhere.<br>so if we want to add same code in different components,we need pack these codes with Mixin ,and import the place where you nedd.</p>
+<h2 id="write_a_sample_of_Mixin"><a href="#write_a_sample_of_Mixin" class="headerlink" title="write a sample of Mixin"></a>write a sample of Mixin</h2><p>if we write an app, and in some cases , we need set attribute Name in different components.<br>Now,we dont need write many getDefaultProps .<br>We can define mixin.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var DefaultNameMixin = &#123;&#10;    getDefaultProps: function () &#123;&#10;        return &#123;name: &#34;Skippy&#34;&#125;;&#10;    &#125;&#10;&#125;;</span><br></pre></td></tr></table></figure>
+<p>It is not so special , and it is just a simple object.<br>Include it into React Component.<br>To use mixin,we need add attr Minxins , then we wrap what we write ,and we treat it as a value of that attribute.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var ComponentOne = React.createClass(&#123;&#10;    mixins: [DefaultNameMixin],&#10;    render: function() &#123;&#10;    return &#60;h2&#62;Hello &#123;this.props.name&#125;&#60;/h2&#62;;&#10;    &#125;&#10;&#125;);&#10;&#10;React.renderComponent(&#60;ComponentOne /&#62;, document.body);</span><br></pre></td></tr></table></figure>
+<p>##we can use it many times.<br>in other component:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var ComponentTwo = React.createClass(&#123;&#10;    mixins: [DefaultNameMixin],&#10;    render: function () &#123;&#10;        return (&#10;            &#60;div&#62;&#10;                &#60;h4&#62;&#123;this.props.name&#125;&#60;/h4&#62;&#10;                &#60;p&#62;Favorite food: &#123;this.props.food&#125;&#60;/p&#62;&#10;            &#60;/div&#62;&#10;        );&#10;    &#125;&#10;&#125;);</span><br></pre></td></tr></table></figure>
+<p>#the life week will be called everytime.<br>if the minxin you write include life week ,dont be worried.<br>you still use them in life week and it will be called.<br>Except for these cases:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">render&#65306;&#21253;&#21547;&#22810;&#20010;render&#26041;&#27861;&#26159;&#19981;&#34892;&#30340;&#12290;React &#20250;&#36305;&#20986;&#24322;&#24120;&#65306;&#10;Uncaught Error: Invariant Violation: ReactCompositeComponentInterface:&#10;You are attempting to define `render` on your component more than once.&#10;This conflict may be due to a mixin.</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var UselessMixin = &#123;&#10;    componentDidMount: function () &#123;&#10;      console.log(&#34;asdas&#34;);&#10;    &#125;&#10;&#125;;&#10;&#10;var LolMixin = &#123;&#10;   mixins: [UselessMixin]&#10;&#125;;&#10;&#10;var PantsOpinion = React.createClass(&#123;&#10;   mixins: [LolMixin],&#10;   render: function () &#123;&#10;       return (&#60;p&#62;I dislike pants&#60;/p&#62;);&#10;   &#125;&#10;&#125;);&#10;&#10;React.renderComponent(&#60;PantsOpinion /&#62;, document.body);</span><br></pre></td></tr></table></figure>
+<p>console.log shows asdas.</p>
+<p>##array of Mixins.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var DefaultNameMixin = &#123;&#10;    getDefaultProps: function () &#123;&#10;        return &#123;name: &#34;Lizie&#34;&#125;;&#10;    &#125;&#10;&#125;;&#10;&#10;var DefaultFoodMixin = &#123;&#10;    getDefaultProps: function () &#123;&#10;        return &#123;food: &#34;Pancakes&#34;&#125;;&#10;    &#125;&#10;&#125;;&#10;&#10;var ComponentTwo = React.createClass(&#123;&#10;    mixins: [DefaultNameMixin, DefaultFoodMixin],&#10;    render: function () &#123;&#10;        return (&#60;div&#62;&#10;                &#60;h4&#62;&#123;this.props.name&#125;&#60;/h4&#62;&#10;                &#60;p&#62;Favorite food: &#123;this.props.food&#125;&#60;/p&#62;&#10;            &#60;/div&#62;);&#10;    &#125;&#10;&#125;);</span><br></pre></td></tr></table></figure>
+<p>Note:<br>if we set Props == State ?<br>it will happen error.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Uncaught Error: Invariant Violation: mergeObjectsWithNoDuplicateKeys():&#10;Tried to merge two objects with the same key: name</span><br></pre></td></tr></table></figure>
+<p>if we set same function ?<br>it will happen error.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var LogOnMountMixin = &#123;&#10;    componentDidMount: function () &#123;&#10;        console.log(&#34;mixin mount method&#34;);&#10;        this.logBlah()&#10;    &#125;,&#10;    // add a logBlah method here...&#10;    logBlah: function () &#123;&#10;        console.log(&#34;blah&#34;);&#10;    &#125;&#10;&#125;;&#10;&#10;var MoreLogOnMountMixin = &#123;&#10;    componentDidMount: function () &#123;&#10;        console.log(&#34;another mixin mount method&#34;);&#10;    &#125;,&#10;    // ... and again here.&#10;    logBlah: function () &#123;&#10;        console.log(&#34;something other than blah&#34;);&#10;    &#125;&#10;&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Uncaught Error: Invariant Violation: ReactCompositeComponentInterface:&#10;You are attempting to define `logBlah` on your component more than once.&#10;This conflict may be due to a mixin.</span><br></pre></td></tr></table></figure>
+<h1 id="the_order_of_the_life_week"><a href="#the_order_of_the_life_week" class="headerlink" title="the order of the life week."></a>the order of the life week.</h1><p>1st we call is Minxin.<br>2nd we call some function in component.<br>and the order in minxin is from left to right.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var LogOnMountMixin = &#123;&#10;    componentDidMount: function () &#123;&#10;        console.log(&#34;mixin mount method&#34;);&#10;    &#125;&#10;&#125;;&#10;&#10;var MoreLogOnMountMixin = &#123;&#10;    componentDidMount: function () &#123;&#10;        console.log(&#34;another mixin mount method&#34;);&#10;    &#125;&#10;&#125;;&#10;var ComponentOne = React.createClass(&#123;&#10;    mixins: [MoreLogOnMountMixin, LogOnMountMixin],&#10;    componentDidMount: function () &#123;&#10;        console.log(&#34;component one mount method&#34;);&#10;    &#125;,&#10;    ...&#10;&#10;var ComponentTwo = React.createClass(&#123;&#10;    mixins: [LogOnMountMixin, MoreLogOnMountMixin],&#10;    componentDidMount: function () &#123;&#10;        console.log(&#34;component two mount method&#34;);&#10;    &#125;,&#10;    ...</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">another mixin mount method&#10;mixin mount method&#10;component one mount method&#10;&#10;mixin mount method&#10;another mixin mount method&#10;component two mount method</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/02/01/Javascript-中的神器-Promise/" itemprop="url">
                   Javascript 中的神器-Promise
                 </a>
@@ -1320,126 +1431,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/01/yeoman教程/" itemprop="url">
-                  yeoman教程
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-01T10:50:27+08:00" content="2016-02-01">
-              2016-02-01
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/01/yeoman教程/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/yeoman教程/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>yeoman教程<br><a href="http://www.jianshu.com/p/e12cab6ab852" target="_blank" rel="external">http://www.jianshu.com/p/e12cab6ab852</a></p>
-<p>1-好的yeoman脚手架</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Installation&#10;&#10;# Make sure both is installed globally&#10;npm install -g yo&#10;npm install -g generator-react-webpack&#10;&#10;Setting up projects&#10;&#10;# Create a new directory, and `cd` into it:&#10;mkdir my-new-project &#38;&#38; cd my-new-project&#10;&#10;# Run the generator&#10;yo react-webpack</span><br></pre></td></tr></table></figure>
-<p>Please make sure to edit your newly generated package.json file to set description, author information and the like.</p>
-<p>Generating new components</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># After setup of course :)# cd my-new-project&#10;yo react-webpack:component my/namespaced/components/name</span><br></pre></td></tr></table></figure>
-<p>The above command will create a new component, as well as its stylesheet and a basic testcase.</p>
-<p>Generating new stateless functional components</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yo react-webpack:component my/namespaced/components/name --stateless</span><br></pre></td></tr></table></figure>
-<p>Stateless functional components where introduced in React v0.14. They have a much shorter syntax than regular ones and no state or lifecycle methods at all. Please read the React 0.14 release notes to get more information about those components.</p>
-<p>Note: You will still be able to set properties for stateless components!</p>
-<p>Adding PostCSS plugins</p>
-<p>If you have enabled PostCSS at generation time, install your PostCSS plugins via npm and require it in postcss function incfg/base.js.</p>
-<p>Example for autoprefixer:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd my-new-project&#10;npm install autoprefixer&#10;&#10;&#10;Require in cfg/base.js&#10;&#10;...postcss: function () &#123;&#10;  return [&#10;    require(&#39;autoprefixer&#39;)(&#123;&#10;      browsers: [&#39;last 2 versions&#39;, &#39;ie &#62;= 8&#39;]&#10;    &#125;)&#10;  ];&#10;&#125;&#10;...</span><br></pre></td></tr></table></figure>
-<p>Usage</p>
-<p>The following commands are available in your project:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Start for development&#10;npm start # or&#10;npm run serve&#10;&#10;# Start the dev-server with the dist version&#10;npm run serve:dist&#10;&#10;# Just build the dist version and copy static files&#10;npm run dist&#10;&#10;# Run unit tests&#10;npm test&#10;&#10;# Lint all files in src (also automatically done AFTER tests are run)&#10;npm run lint&#10;&#10;# Clean up the dist directory&#10;npm run clean&#10;&#10;# Just copy the static assets&#10;npm run copy</span><br></pre></td></tr></table></figure>
-<p>Naming Components</p>
-<p>We have opted to follow @floydophone convention of uppercase for component file naming e.g. Component.js. I am open to suggestions if there is a general objection to this decision.</p>
-<p>Modules</p>
-<p>Each component is a module and can be required using the Webpack module system. Webpack uses Loaders which means you can also require CSS and a host of other file types. Read the Webpack documentation to find out more.</p>
-<p>Props</p>
-<p>Thanks to Edd Hannay for his Webpack optimisations, my local merge and testing meant his additions lost his signature (my fault, sorry). So, big thanks Edd.</p>
-<p>Contribute</p>
-<p>Contributions are welcomed. When submitting a bugfix, write a test that exposes the bug and fails before applying your fix. Submit the test alongside the fix.</p>
-<p>Running Tests</p>
-<p>npm test or node node_modules/.bin/mocha</p>
-<p>License</p>
-<p>BSD license</p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1486,7 +1477,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">12</span>
+              <span class="site-state-item-count">13</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
