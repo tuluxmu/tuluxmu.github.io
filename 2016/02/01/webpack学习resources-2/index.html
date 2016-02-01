@@ -57,22 +57,28 @@
 
 
 
-<meta name="description" content="yeoman教程http://www.jianshu.com/p/e12cab6ab852
-1-好的yeoman脚手架
-Installation&amp;#10;&amp;#10;# Make sure both is installed globally&amp;#10;npm install -g yo&amp;#10;npm install -g generator-react-webpack&amp;#10;&amp;#10;Setti">
+<meta name="description" content="webpack安装Webpack首先得有Node.js
+然后通过npm install -g webpack安装webpack，当然也可以通过gulp来处理webpack任务，如果使用gulp的话就npm install –save-dev gulp-webpack
+配置Webpack
+Webpack的构建过程需要一个配置文件，一个典型的配置文件大概就是这样
+var webpack = requi">
 <meta property="og:type" content="article">
-<meta property="og:title" content="yeoman教程">
-<meta property="og:url" content="http://yoursite.com/2016/02/01/yeoman教程/index.html">
+<meta property="og:title" content="webpack学习resources[2]">
+<meta property="og:url" content="http://yoursite.com/2016/02/01/webpack学习resources-2/index.html">
 <meta property="og:site_name" content="Lucy's Blog">
-<meta property="og:description" content="yeoman教程http://www.jianshu.com/p/e12cab6ab852
-1-好的yeoman脚手架
-Installation&amp;#10;&amp;#10;# Make sure both is installed globally&amp;#10;npm install -g yo&amp;#10;npm install -g generator-react-webpack&amp;#10;&amp;#10;Setti">
-<meta property="og:updated_time" content="2016-02-01T02:52:50.000Z">
+<meta property="og:description" content="webpack安装Webpack首先得有Node.js
+然后通过npm install -g webpack安装webpack，当然也可以通过gulp来处理webpack任务，如果使用gulp的话就npm install –save-dev gulp-webpack
+配置Webpack
+Webpack的构建过程需要一个配置文件，一个典型的配置文件大概就是这样
+var webpack = requi">
+<meta property="og:updated_time" content="2016-02-01T02:58:53.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="yeoman教程">
-<meta name="twitter:description" content="yeoman教程http://www.jianshu.com/p/e12cab6ab852
-1-好的yeoman脚手架
-Installation&amp;#10;&amp;#10;# Make sure both is installed globally&amp;#10;npm install -g yo&amp;#10;npm install -g generator-react-webpack&amp;#10;&amp;#10;Setti">
+<meta name="twitter:title" content="webpack学习resources[2]">
+<meta name="twitter:description" content="webpack安装Webpack首先得有Node.js
+然后通过npm install -g webpack安装webpack，当然也可以通过gulp来处理webpack任务，如果使用gulp的话就npm install –save-dev gulp-webpack
+配置Webpack
+Webpack的构建过程需要一个配置文件，一个典型的配置文件大概就是这样
+var webpack = requi">
 
 
 
@@ -90,7 +96,7 @@ Installation&amp;#10;&amp;#10;# Make sure both is installed globally&amp;#10;npm
   };
 </script>
 
-  <title> yeoman教程 | Lucy's Blog </title>
+  <title> webpack学习resources[2] | Lucy's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -248,7 +254,7 @@ Installation&amp;#10;&amp;#10;# Make sure both is installed globally&amp;#10;npm
             
             
               
-                yeoman教程
+                webpack学习resources[2]
               
             
           </h1>
@@ -260,7 +266,7 @@ Installation&amp;#10;&amp;#10;# Make sure both is installed globally&amp;#10;npm
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-01T10:50:27+08:00" content="2016-02-01">
+            <time itemprop="dateCreated" datetime="2016-02-01T10:58:22+08:00" content="2016-02-01">
               2016-02-01
             </time>
           </span>
@@ -271,8 +277,8 @@ Installation&amp;#10;&amp;#10;# Make sure both is installed globally&amp;#10;npm
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/02/01/yeoman教程/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/yeoman教程/" itemprop="commentsCount"></span>
+                <a href="/2016/02/01/webpack学习resources-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/webpack学习resources-2/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -293,36 +299,23 @@ Installation&amp;#10;&amp;#10;# Make sure both is installed globally&amp;#10;npm
       
 
       
-        <p>yeoman教程<br><a href="http://www.jianshu.com/p/e12cab6ab852" target="_blank" rel="external">http://www.jianshu.com/p/e12cab6ab852</a></p>
-<p>1-好的yeoman脚手架</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Installation&#10;&#10;# Make sure both is installed globally&#10;npm install -g yo&#10;npm install -g generator-react-webpack&#10;&#10;Setting up projects&#10;&#10;# Create a new directory, and `cd` into it:&#10;mkdir my-new-project &#38;&#38; cd my-new-project&#10;&#10;# Run the generator&#10;yo react-webpack</span><br></pre></td></tr></table></figure>
-<p>Please make sure to edit your newly generated package.json file to set description, author information and the like.</p>
-<p>Generating new components</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># After setup of course :)# cd my-new-project&#10;yo react-webpack:component my/namespaced/components/name</span><br></pre></td></tr></table></figure>
-<p>The above command will create a new component, as well as its stylesheet and a basic testcase.</p>
-<p>Generating new stateless functional components</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">yo react-webpack:component my/namespaced/components/name --stateless</span><br></pre></td></tr></table></figure>
-<p>Stateless functional components where introduced in React v0.14. They have a much shorter syntax than regular ones and no state or lifecycle methods at all. Please read the React 0.14 release notes to get more information about those components.</p>
-<p>Note: You will still be able to set properties for stateless components!</p>
-<p>Adding PostCSS plugins</p>
-<p>If you have enabled PostCSS at generation time, install your PostCSS plugins via npm and require it in postcss function incfg/base.js.</p>
-<p>Example for autoprefixer:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd my-new-project&#10;npm install autoprefixer&#10;&#10;&#10;Require in cfg/base.js&#10;&#10;...postcss: function () &#123;&#10;  return [&#10;    require(&#39;autoprefixer&#39;)(&#123;&#10;      browsers: [&#39;last 2 versions&#39;, &#39;ie &#62;= 8&#39;]&#10;    &#125;)&#10;  ];&#10;&#125;&#10;...</span><br></pre></td></tr></table></figure>
-<p>Usage</p>
-<p>The following commands are available in your project:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"># Start for development&#10;npm start # or&#10;npm run serve&#10;&#10;# Start the dev-server with the dist version&#10;npm run serve:dist&#10;&#10;# Just build the dist version and copy static files&#10;npm run dist&#10;&#10;# Run unit tests&#10;npm test&#10;&#10;# Lint all files in src (also automatically done AFTER tests are run)&#10;npm run lint&#10;&#10;# Clean up the dist directory&#10;npm run clean&#10;&#10;# Just copy the static assets&#10;npm run copy</span><br></pre></td></tr></table></figure>
-<p>Naming Components</p>
-<p>We have opted to follow @floydophone convention of uppercase for component file naming e.g. Component.js. I am open to suggestions if there is a general objection to this decision.</p>
-<p>Modules</p>
-<p>Each component is a module and can be required using the Webpack module system. Webpack uses Loaders which means you can also require CSS and a host of other file types. Read the Webpack documentation to find out more.</p>
-<p>Props</p>
-<p>Thanks to Edd Hannay for his Webpack optimisations, my local merge and testing meant his additions lost his signature (my fault, sorry). So, big thanks Edd.</p>
-<p>Contribute</p>
-<p>Contributions are welcomed. When submitting a bugfix, write a test that exposes the bug and fails before applying your fix. Submit the test alongside the fix.</p>
-<p>Running Tests</p>
-<p>npm test or node node_modules/.bin/mocha</p>
-<p>License</p>
-<p>BSD license</p>
+        <p>webpack<br>安装Webpack首先得有Node.js</p>
+<p>然后通过npm install -g webpack安装webpack，当然也可以通过gulp来处理webpack任务，如果使用gulp的话就npm install –save-dev gulp-webpack</p>
+<p>配置Webpack</p>
+<p>Webpack的构建过程需要一个配置文件，一个典型的配置文件大概就是这样</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var webpack = require(&#39;webpack&#39;);&#10;var commonsPlugin = new webpack.optimize.CommonsChunkPlugin(&#39;common.js&#39;);&#10;&#10;module.exports = &#123;&#10;    entry: &#123;&#10;        entry1: &#39;./entry/entry1.js&#39;,&#10;        entry2: &#39;./entry/entry2.js&#39;&#10;    &#125;,&#10;    output: &#123;&#10;        path: __dirname,&#10;        filename: &#39;[name].entry.js&#39;&#10;    &#125;,&#10;    resolve: &#123;&#10;        extensions: [&#39;&#39;, &#39;.js&#39;, &#39;.jsx&#39;]&#10;    &#125;,&#10;    module: &#123;&#10;        loaders: [&#123;&#10;            test: /\.js$/,&#10;            loader: &#39;babel-loader&#39;&#10;        &#125;, &#123;&#10;            test: /\.jsx$/,&#10;            loader: &#39;babel-loader!jsx-loader?harmony&#39;&#10;        &#125;]&#10;    &#125;,&#10;    plugins: [commonsPlugin]&#10;&#125;;</span><br></pre></td></tr></table></figure>
+<p>这里对Webpack的打包行为做了配置，主要分为几个部分：</p>
+<ul>
+<li>entry：指定打包的入口文件，每有一个键值对，就是一个入口文件</li>
+<li>output：配置打包结果，path定义了输出的文件夹，filename则定义了打包结果文件的名称，filename里面的[name]会由entry中的键（这里是entry1和entry2）替换</li>
+<li>resolve：定义了解析模块路径时的配置，常用的就是extensions，可以用来指定模块的后缀，这样在引入模块时就不需要写后缀了，会自动补全</li>
+<li>module：定义了对模块的处理逻辑，这里可以用loaders定义了一系列的加载器，以及一些正则。当需要加载的文件匹配test的正则时，就会调用后面的loader对文件进行处理，这正是webpack强大的原因。比如这里定义了凡是.js结尾的文件都是用babel-loader做处理，而.jsx结尾的文件会先经过jsx-loader处理，然后经过babel-loader处理。当然这些loader也需要通过npm install安装</li>
+<li>plugins: 这里定义了需要使用的插件，比如commonsPlugin在打包多个入口文件时会提取出公用的部分，生成common.js</li>
+</ul>
+<p>执行打包</p>
+<p>如果通过npm install -g webpack方式安装webpack的话，可以通过命令行直接执行打包命令，比如这样：</p>
+<p>$webpack –config webpack.config.js</p>
+<p>这样就会读取当前目录下的webpack.config.js作为配置文件执行打包操作</p>
 
       
     </div>
@@ -334,17 +327,13 @@ Installation&amp;#10;&amp;#10;# Make sure both is installed globally&amp;#10;npm
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/02/01/webpack学习resources-1/" rel="next" title="webpack学习resources[1]">
-                <i class="fa fa-chevron-left"></i> webpack学习resources[1]
+              <a href="/2016/02/01/Communicate-Between-Components/" rel="next" title="Communicate Between Components">
+                <i class="fa fa-chevron-left"></i> Communicate Between Components
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/02/01/npm常用命令/" rel="prev" title="npm常用命令">
-                npm常用命令 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -370,8 +359,8 @@ Installation&amp;#10;&amp;#10;# Make sure both is installed globally&amp;#10;npm
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/02/01/yeoman教程/"
-           data-title="yeoman教程" data-url="http://yoursite.com/2016/02/01/yeoman教程/">
+      <div class="ds-thread" data-thread-key="2016/02/01/webpack学习resources-2/"
+           data-title="webpack学习resources[2]" data-url="http://yoursite.com/2016/02/01/webpack学习resources-2/">
       </div>
     
   </div>
