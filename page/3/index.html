@@ -250,6 +250,99 @@
             
               
                 
+                <a class="post-title-link" href="/2016/02/01/Hoisting/" itemprop="url">
+                  Hoisting
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-01T11:25:22+08:00" content="2016-02-01">
+              2016-02-01
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/01/Hoisting/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/Hoisting/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#Hoisting<br>Understanding hoisting will help you organize your function scope. Just remember, variable declaration and function definition are hoisted to the top. Variable definition is not, even if you declare and define a variable on the same line. Also, variable declaration is letting the system know that the variable exists while definition is assigning it a value.</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#10;function doTheThing() &#123;&#10;  // ReferenceError: notDeclared is not defined&#10;  console.log(notDeclared);&#10;&#10;  // Outputs: undefined&#10;  console.log(definedLater);&#10;  var definedLater;&#10;&#10;  definedLater = &#39;I am defined!&#39;&#10;  // Outputs: &#39;I am defined!&#39;&#10;  console.log(definedLater)&#10;&#10;  // Outputs: undefined&#10;  console.log(definedSimulateneously);&#10;  var definedSimulateneously = &#39;I am defined!&#39;&#10;  // Outputs: &#39;I am defined!&#39;&#10;  console.log(definedSimulateneously)&#10;&#10;  // Outputs: &#39;I did it!&#39;&#10;  doSomethingElse();&#10;&#10;  function doSomethingElse()&#123;&#10;    console.log(&#39;I did it!&#39;);&#10;  &#125;&#10;&#10;  // TypeError: undefined is not a function&#10;  functionVar();&#10;&#10;  var functionVar = function()&#123;&#10;    console.log(&#39;I did it!&#39;);&#10;  &#125;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>To make things easier to read, declare all of your variables at the top of your function scope so it is clear which scope the variables are coming from. Define your variables before you need to use them. Define your functions at the bottom of your scope to keep them out of your way.</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/02/01/the-use-of-React-Mixin/" itemprop="url">
                   the use of React Mixin
                 </a>
@@ -1327,110 +1420,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/01/npm常用命令/" itemprop="url">
-                  npm常用命令
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-01T10:53:39+08:00" content="2016-02-01">
-              2016-02-01
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/01/npm常用命令/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/npm常用命令/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>###npm install <name>安装nodejs的依赖包</name></p>
-<p>例如npm install express 就会默认安装express的最新版本，也可以通过在后面加版本号的方式安装指定版本，如npm install express@3.0.6</p>
-<p>###npm install <name> -g  将包安装到全局环境中</name></p>
-<p>但是代码中，直接通过require()的方式是没有办法调用全局安装的包的。全局的安装是供命令行使用的，就好像全局安装了vmarket后，就可以在命令行中直接运行vm命令</p>
-<p>###npm install <name> –save  安装的同时，将信息写入package.json中</name></p>
-<p>项目路径中如果有package.json文件时，直接使用npm install方法就可以根据dependencies配置安装所有的依赖包</p>
-<p>这样代码提交到github时，就不用提交node_modules这个文件夹了。</p>
-<p>###npm init  会引导你创建一个package.json文件，包括名称、版本、作者这些信息等</p>
-<p>###npm remove <name>移除</name></p>
-<p>###npm update <name>更新</name></p>
-<p>###npm ls 列出当前安装的了所有包</p>
-<p>###npm root 查看当前包的安装路径</p>
-<p>###npm root -g  查看全局的包的安装路径</p>
-<p>###npm help  帮助，如果要单独查看install命令的帮助，可以使用的npm help install</p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1477,7 +1466,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">33</span>
+              <span class="site-state-item-count">34</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
