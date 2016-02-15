@@ -250,6 +250,104 @@
             
               
                 
+                <a class="post-title-link" href="/2016/02/01/Check-if-a-property-is-in-a-Object/" itemprop="url">
+                  Check if a property is in a Object
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-01T11:26:57+08:00" content="2016-02-01">
+              2016-02-01
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/01/Check-if-a-property-is-in-a-Object/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/Check-if-a-property-is-in-a-Object/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>#Check if a property is in a Object</p>
+<h2 id="the_ambition_is_to_check_if_a_property_is_in_a_Object"><a href="#the_ambition_is_to_check_if_a_property_is_in_a_Object" class="headerlink" title="the ambition is to check if a property is in a Object"></a>the ambition is to check if a property is in a Object</h2><p>When you have to check if a property is present of an object, you probably are doing something like this:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#10;var myObject = &#123;&#10;  name: &#39;@tips_js&#39;&#10;&#125;;&#10;&#10;if (myObject.name) &#123; ... &#125;</span><br></pre></td></tr></table></figure>
+<p>Thats ok, but you have to know that there are two native ways for this kind of thing, the in operator and Object.hasOwnProperty, every object descended from Object, has available both ways.<br>See the big Difference</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#10;var myObject = &#123;&#10;  name: &#39;@tips_js&#39;&#10;&#125;;&#10;&#10;myObject.hasOwnProperty(&#39;name&#39;); // true&#10;&#39;name&#39; in myObject; // true&#10;&#10;myObject.hasOwnProperty(&#39;valueOf&#39;); // false, valueOf is inherited from the prototype chain&#10;&#39;valueOf&#39; in myObject; // true</span><br></pre></td></tr></table></figure>
+<p>Both differs in the depth how check the properties, in other words hasOwnProperty will only return true if key is available on that object directly, however in operator doesn’t discriminate between properties created on an object and properties inherited from the prototype chain.</p>
+<p>Here another example</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#10;var myFunc = function() &#123;&#10;  this.name = &#39;@tips_js&#39;;&#10;&#125;;&#10;myFunc.prototype.age = &#39;10 days&#39;;&#10;&#10;var user = new myFunc();&#10;&#10;user.hasOwnProperty(&#39;name&#39;); // true&#10;user.hasOwnProperty(&#39;age&#39;); // false, because age is from the prototype chain</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/02/01/Hoisting/" itemprop="url">
                   Hoisting
                 </a>
@@ -1327,99 +1425,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/02/01/Communicate-Between-Components/" itemprop="url">
-                  Communicate Between Components
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-01T10:55:54+08:00" content="2016-02-01">
-              2016-02-01
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/02/01/Communicate-Between-Components/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/Communicate-Between-Components/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>Communicate Between Components<br>For parent-child communication, simply pass props.<br>For child-parent communication: Say your GroceryList component has a list of items generated through an array. When a list item is clicked, you want to display its name:</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var GroceryList = React.createClass(&#123;&#10;  handleClick: function(i) &#123;&#10;    console.log(&#39;You clicked: &#39; + this.props.items[i]);&#10;  &#125;,&#10;&#10;  render: function() &#123;&#10;    return (&#10;      &#60;div&#62;&#10;        &#123;this.props.items.map(function(item, i) &#123;&#10;          return (&#10;            &#60;div onClick=&#123;this.handleClick.bind(this, i)&#125; key=&#123;i&#125;&#62;&#123;item&#125;&#60;/div&#62;&#10;          );&#10;        &#125;, this)&#125;&#10;      &#60;/div&#62;&#10;    );&#10;  &#125;&#125;);&#10;&#10;ReactDOM.render(&#10;  &#60;GroceryList items=&#123;[&#39;Apple&#39;, &#39;Banana&#39;, &#39;Cranberry&#39;]&#125; /&#62;, mountNode);</span><br></pre></td></tr></table></figure>
-<p>Notice the use of bind(this, arg1, arg2, …): we’re simply passing more arguments tohandleClick. This is not a new React concept; it’s just JavaScript.<br>For communication between two components that don’t have a parent-child relationship, you can set up your own global event system. Subscribe to events in componentDidMount(), unsubscribe in componentWillUnmount(), and call setState() when you receive an event.Flux pattern is one of the possible ways to arrange this.</p>
-
-          
-        
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
 
   </section>
 
@@ -1466,7 +1471,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">34</span>
+              <span class="site-state-item-count">35</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>

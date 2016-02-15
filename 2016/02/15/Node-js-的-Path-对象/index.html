@@ -57,22 +57,31 @@
 
 
 
-<meta name="description" content="#z-index 与 position 之间的关系
-##层级遮盖 bug 出现的原因IE6/7 对 z-index 的表现跟 IE8 及以上浏览器不一致.position 值为非 static 时, 如果不设置 z-index 属性, IE6/7 下 z-index 默认为 0, 而 IE8 及以上浏览器 z-index 为 auto, 且 zindex:auto 的元素不参与堆叠优先级比较.
-#">
+<meta name="description" content="NodeJS中的Path对象，用于处理目录的对象，提高开发效率。用NodeJS的Path命令，与使用Linux下的shell脚本命令相似。引入path对象:
+var path = require(&amp;#39;path&amp;#39;);
+比较实用的方法：
+格式化路径 path.normalize(p)特点：将不符合规范的路径格式化，简化开发人员中处理各种复杂的路径判断
+示例：
+&amp;#9;&amp;#10;path.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="z-index 与 position 之间的关系">
-<meta property="og:url" content="http://yoursite.com/2016/02/01/z-index-与-position-之间的关系/index.html">
+<meta property="og:title" content="Node.js 的 Path 对象">
+<meta property="og:url" content="http://yoursite.com/2016/02/15/Node-js-的-Path-对象/index.html">
 <meta property="og:site_name" content="Lucy's Blog">
-<meta property="og:description" content="#z-index 与 position 之间的关系
-##层级遮盖 bug 出现的原因IE6/7 对 z-index 的表现跟 IE8 及以上浏览器不一致.position 值为非 static 时, 如果不设置 z-index 属性, IE6/7 下 z-index 默认为 0, 而 IE8 及以上浏览器 z-index 为 auto, 且 zindex:auto 的元素不参与堆叠优先级比较.
-#">
-<meta property="og:updated_time" content="2016-02-01T03:53:01.000Z">
+<meta property="og:description" content="NodeJS中的Path对象，用于处理目录的对象，提高开发效率。用NodeJS的Path命令，与使用Linux下的shell脚本命令相似。引入path对象:
+var path = require(&amp;#39;path&amp;#39;);
+比较实用的方法：
+格式化路径 path.normalize(p)特点：将不符合规范的路径格式化，简化开发人员中处理各种复杂的路径判断
+示例：
+&amp;#9;&amp;#10;path.">
+<meta property="og:updated_time" content="2016-02-15T13:32:15.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="z-index 与 position 之间的关系">
-<meta name="twitter:description" content="#z-index 与 position 之间的关系
-##层级遮盖 bug 出现的原因IE6/7 对 z-index 的表现跟 IE8 及以上浏览器不一致.position 值为非 static 时, 如果不设置 z-index 属性, IE6/7 下 z-index 默认为 0, 而 IE8 及以上浏览器 z-index 为 auto, 且 zindex:auto 的元素不参与堆叠优先级比较.
-#">
+<meta name="twitter:title" content="Node.js 的 Path 对象">
+<meta name="twitter:description" content="NodeJS中的Path对象，用于处理目录的对象，提高开发效率。用NodeJS的Path命令，与使用Linux下的shell脚本命令相似。引入path对象:
+var path = require(&amp;#39;path&amp;#39;);
+比较实用的方法：
+格式化路径 path.normalize(p)特点：将不符合规范的路径格式化，简化开发人员中处理各种复杂的路径判断
+示例：
+&amp;#9;&amp;#10;path.">
 
 
 
@@ -90,7 +99,7 @@
   };
 </script>
 
-  <title> z-index 与 position 之间的关系 | Lucy's Blog </title>
+  <title> Node.js 的 Path 对象 | Lucy's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -248,7 +257,7 @@
             
             
               
-                z-index 与 position 之间的关系
+                Node.js 的 Path 对象
               
             
           </h1>
@@ -260,8 +269,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-02-01T11:52:45+08:00" content="2016-02-01">
-              2016-02-01
+            <time itemprop="dateCreated" datetime="2016-02-15T21:29:11+08:00" content="2016-02-15">
+              2016-02-15
             </time>
           </span>
 
@@ -271,8 +280,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/02/01/z-index-与-position-之间的关系/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/z-index-与-position-之间的关系/" itemprop="commentsCount"></span>
+                <a href="/2016/02/15/Node-js-的-Path-对象/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/15/Node-js-的-Path-对象/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -293,10 +302,34 @@
       
 
       
-        <p>#z-index 与 position 之间的关系</p>
-<p>##层级遮盖 bug 出现的原因<br>IE6/7 对 z-index 的表现跟 IE8 及以上浏览器不一致.<br>position 值为非 static 时, 如果不设置 z-index 属性, IE6/7 下 z-index 默认为 0, 而 IE8 及以上浏览器 z-index 为 auto, 且 zindex:auto 的元素不参与堆叠优先级比较.</p>
-<p>##z-index 与 position 之间的关系<br>对于同级元素, 默认 (或 position:static) 情况下文档流后面的元素会覆盖前面的.<br>对于同级元素, position 不为 static 且 z-index 存在的情况下 z-index 大的元素会覆盖 z-index 小的元素, 即 z-index 越大优先级越高.<br>IE6/7 下 position 不为 static, 且 z-index 不存在时 z-index 为 0, 除此之外的浏览器 z-index 为 auto.<br>z-index 为 auto 的元素不参与层级关系的比较, 由向上遍历至此且 z-index 不为 auto 的元素来参与比较.</p>
-
+        <p>NodeJS中的Path对象，用于处理目录的对象，提高开发效率。<br>用NodeJS的Path命令，与使用Linux下的shell脚本命令相似。<br>引入path对象:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var path = require(&#39;path&#39;);</span><br></pre></td></tr></table></figure>
+<p>比较实用的方法：</p>
+<p>格式化路径 path.normalize(p)<br>特点：将不符合规范的路径格式化，简化开发人员中处理各种复杂的路径判断</p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#9;&#10;path.normalize(&#39;/foo/bar//baz/asdf/quux/..&#39;);&#10;=&#62; &#39;/foo/bar/baz/asdf&#39;</span><br></pre></td></tr></table></figure>
+<p>路径合并 path.join([path1], [path2], […])<br>特点：将所有名称用path.seq串联起来，然后用normailze格式化</p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">path.join(&#39;///foo&#39;, &#39;bar&#39;, &#39;//baz/asdf&#39;, &#39;quux&#39;, &#39;..&#39;);&#10;=&#62;&#39;/foo/bar/baz/asdf&#39;</span><br></pre></td></tr></table></figure>
+<p>路径寻航 path.resolve([from …], to)<br>特点：相当于不断的调用系统的cd命令</p>
+<p>示例：<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">path.resolve(&#39;foo/bar&#39;, &#39;/tmp/file/&#39;, &#39;..&#39;, &#39;a/../subfile&#39;)&#10; &#10;//&#30456;&#24403;&#20110;&#65306;&#10;cd foo/bar&#10;cd /tmp/file/&#10;cd ..&#10;cd a/../subfile&#10;pwd</span><br></pre></td></tr></table></figure></p>
+<p>相对路径 path.relative(from, to)<br>特点：返回某个路径下相对于另一个路径的相对位置串，相当于：path.resolve(from, path.relative(from, to)) == path.resolve(to)</p>
+<p>示例：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">path.relative(&#39;C:\\orandea\\test\\aaa&#39;, &#39;C:\\orandea\\impl\\bbb&#39;)&#10;=&#62;&#39;..\\..\\impl\\bbb&#39;&#10; &#10;path.relative(&#39;/data/orandea/test/aaa&#39;, &#39;/data/orandea/impl/bbb&#39;)&#10;=&#62;&#39;../../impl/bbb&#39;&#10;``` &#10;&#10;&#25991;&#20214;&#22841;&#21517;&#31216; path.dirname(p)&#10;&#29305;&#28857;&#65306;&#36820;&#22238;&#36335;&#24452;&#30340;&#25152;&#22312;&#30340;&#25991;&#20214;&#22841;&#21517;&#31216;&#10;&#10;&#31034;&#20363;&#65306;</span><br></pre></td></tr></table></figure>
+<p>path.dirname(‘/foo/bar/baz/asdf/quux’)<br>=&gt;’/foo/bar/baz/asdf’<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#10;&#25991;&#20214;&#21517;&#31216; path.basename(p, [ext])&#10;&#29305;&#28857;&#65306;&#36820;&#22238;&#25351;&#23450;&#30340;&#25991;&#20214;&#21517;&#65292;&#36820;&#22238;&#32467;&#26524;&#21487;&#25490;&#38500;[ext]&#21518;&#32512;&#23383;&#31526;&#20018;&#10;&#10;&#31034;&#20363;&#65306;</span><br></pre></td></tr></table></figure></p>
+<p>path.basename(‘/foo/bar/baz/asdf/quux.html’)<br>=&gt;’quux.html’</p>
+<p>path.basename(‘/foo/bar/baz/asdf/quux.html’, ‘.html’)<br>=&gt;’quux’<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#10;&#25193;&#23637;&#21517;&#31216; path.extname(p)&#10;&#29305;&#28857;&#65306;&#36820;&#22238;&#25351;&#23450;&#25991;&#20214;&#21517;&#30340;&#25193;&#23637;&#21517;&#31216;&#10;&#10;&#31034;&#20363;&#65306;&#10;&#10;```&#9;&#10;path.extname(&#39;index.html&#39;)&#10;=&#62;&#39;.html&#39;&#10; &#10;path.extname(&#39;index.&#39;)&#10;=&#62;&#39;.&#39;&#10; &#10;path.extname(&#39;index&#39;)&#10;=&#62;&#39;&#39;</span><br></pre></td></tr></table></figure></p>
+<p>特定平台的文件分隔符 path.sep</p>
+<p>特点：获取文件路径的分隔符，主要是与操作系统相关</p>
+<p>示例：<br>linux:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#39;foo/bar/baz&#39;.split(path.sep)&#10;=&#62;[&#39;foo&#39;, &#39;bar&#39;, &#39;baz&#39;]</span><br></pre></td></tr></table></figure>
+<p>window:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#39;foo\\bar\\baz&#39;.split(path.sep)&#10;=&#62;[&#39;foo&#39;, &#39;bar&#39;, &#39;baz&#39;]</span><br></pre></td></tr></table></figure>
+<p>特定平台的路径分隔符 path.delimiter<br>特定平台的路径分隔符, ‘;‘ 或者 ‘:‘.</p>
+<p>*nix 上的例子:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">process.env.PATH.split(path.delimiter)&#10;// returns&#10;[&#39;/usr/bin&#39;, &#39;/bin&#39;, &#39;/usr/sbin&#39;, &#39;/sbin&#39;, &#39;/usr/local/bin&#39;]</span><br></pre></td></tr></table></figure>
+<p>Windows 上的例子:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">console.log(process.env.PATH)&#10;// &#39;C:\Windows\system32;C:\Windows;C:\Program Files\nodejs\&#39;&#10; &#10;process.env.PATH.split(path.delimiter)&#10;// returns&#10;[&#39;C:\Windows\system32&#39;, &#39;C:\Windows&#39;, &#39;C:\Program Files\nodejs\&#39;]&#10; &#10;process.env.PATH.split(path.delimiter)&#10;// returns&#10;[&#39;C:\Windows\system32&#39;, &#39;C:\Windows&#39;, &#39;C:\Program Files\nodejs\&#39;]</span><br></pre></td></tr></table></figure>
       
     </div>
 
@@ -307,17 +340,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/02/01/Flux-快速上手/" rel="next" title="Flux 快速上手">
-                <i class="fa fa-chevron-left"></i> Flux 快速上手
+              <a href="/2016/02/15/webpack-参数配置/" rel="next" title="webpack-参数配置">
+                <i class="fa fa-chevron-left"></i> webpack-参数配置
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/02/01/用Navigation-Timing测量页面加载速度/" rel="prev" title="用Navigation Timing测量页面加载速度">
-                用Navigation Timing测量页面加载速度 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -343,8 +372,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/02/01/z-index-与-position-之间的关系/"
-           data-title="z-index 与 position 之间的关系" data-url="http://yoursite.com/2016/02/01/z-index-与-position-之间的关系/">
+      <div class="ds-thread" data-thread-key="2016/02/15/Node-js-的-Path-对象/"
+           data-title="Node.js 的 Path 对象" data-url="http://yoursite.com/2016/02/15/Node-js-的-Path-对象/">
       </div>
     
   </div>

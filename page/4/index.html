@@ -250,6 +250,99 @@
             
               
                 
+                <a class="post-title-link" href="/2016/02/01/Communicate-Between-Components/" itemprop="url">
+                  Communicate Between Components
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-01T10:55:54+08:00" content="2016-02-01">
+              2016-02-01
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/01/Communicate-Between-Components/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/Communicate-Between-Components/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>Communicate Between Components<br>For parent-child communication, simply pass props.<br>For child-parent communication: Say your GroceryList component has a list of items generated through an array. When a list item is clicked, you want to display its name:</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var GroceryList = React.createClass(&#123;&#10;  handleClick: function(i) &#123;&#10;    console.log(&#39;You clicked: &#39; + this.props.items[i]);&#10;  &#125;,&#10;&#10;  render: function() &#123;&#10;    return (&#10;      &#60;div&#62;&#10;        &#123;this.props.items.map(function(item, i) &#123;&#10;          return (&#10;            &#60;div onClick=&#123;this.handleClick.bind(this, i)&#125; key=&#123;i&#125;&#62;&#123;item&#125;&#60;/div&#62;&#10;          );&#10;        &#125;, this)&#125;&#10;      &#60;/div&#62;&#10;    );&#10;  &#125;&#125;);&#10;&#10;ReactDOM.render(&#10;  &#60;GroceryList items=&#123;[&#39;Apple&#39;, &#39;Banana&#39;, &#39;Cranberry&#39;]&#125; /&#62;, mountNode);</span><br></pre></td></tr></table></figure>
+<p>Notice the use of bind(this, arg1, arg2, …): we’re simply passing more arguments tohandleClick. This is not a new React concept; it’s just JavaScript.<br>For communication between two components that don’t have a parent-child relationship, you can set up your own global event system. Subscribe to events in componentDidMount(), unsubscribe in componentWillUnmount(), and call setState() when you receive an event.Flux pattern is one of the possible ways to arrange this.</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/02/01/npm常用命令/" itemprop="url">
                   npm常用命令
                 </a>
@@ -777,7 +870,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">34</span>
+              <span class="site-state-item-count">35</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
