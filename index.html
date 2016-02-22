@@ -519,6 +519,148 @@
             
               
                 
+                <a class="post-title-link" href="/2016/02/15/webpack参数详解/" itemprop="url">
+                  webpack参数详解
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-15T21:08:13+08:00" content="2016-02-15">
+              2016-02-15
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/15/webpack参数详解/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/15/webpack参数详解/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>代码来自于阮一峰 Github的 webpack-demos</p>
+<h1 id="u6253_u5305_u529F_u80FD"><a href="#u6253_u5305_u529F_u80FD" class="headerlink" title="打包功能"></a>打包功能</h1><p>配置入口文件为main.js,当在命令行运行webpack就会把main.js,打包成bundle.js。<br>而我们在html文件中，载入的应该是打包好的bundle.js。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//webpack.config.js&#10;module.exports = &#123;&#10;  entry: &#39;./main.js&#39;,&#10;  output: &#123;&#10;    filename: &#39;bundle.js&#39;&#10;  &#125;&#10;&#125;;</span><br></pre></td></tr></table></figure>
+<p>运行webpack命令</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#10140;  demo01 git:(master) &#10007; webpack           &#10;Hash: e3276a3cf85fde2fb115&#10;Version: webpack 1.12.2&#10;Time: 48ms&#10;    Asset     Size  Chunks             Chunk Names&#10;bundle.js  1.43 kB       0  [emitted]  main&#10;   [0] ./main.js 39 bytes &#123;0&#125; [built]</span><br></pre></td></tr></table></figure>
+<p>可以设置多个入口文件,该配置会生成bundle1.js和bundle2.js。<br>此时我们在html文件中，我们应该载入的是打包好了的。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//webpack.config.js&#10;module.exports = &#123;&#10;  entry: &#123;&#10;    bundle1: &#39;./main1.js&#39;,&#10;    bundle2: &#39;./main2.js&#39;&#10;  &#125;,&#10;  output: &#123;&#10;    filename: &#39;[name].js&#39;&#10;  &#125;&#10;&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#10140;  demo02 git:(master) &#10007; webpack&#10;Hash: 0a2f9607b51bdfef96d3&#10;Version: webpack 1.12.2&#10;Time: 58ms&#10;     Asset     Size  Chunks             Chunk Names&#10;bundle1.js  1.43 kB       0  [emitted]  bundle1&#10;bundle2.js  1.43 kB       1  [emitted]  bundle2&#10;   [0] ./main1.js 40 bytes &#123;0&#125; [built]&#10;   [0] ./main2.js 42 bytes &#123;1&#125; [built]</span><br></pre></td></tr></table></figure>
+<h1 id="JSX_Loader__u7684_u914D_u7F6E"><a href="#JSX_Loader__u7684_u914D_u7F6E" class="headerlink" title="JSX Loader 的配置"></a>JSX Loader 的配置</h1><p>presets 预先装置<br>exclude 排除<br>排除/node_modules/文件<br>载入babel-loader预先装置es2015和react,对于jsx、js文件启用(x是可选的)。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//webpack.config.js&#10;module.exports = &#123;&#10;  entry: &#39;./main.jsx&#39;,&#10;  output: &#123;&#10;    filename: &#39;bundle.js&#39;&#10;  &#125;,&#10;  module: &#123;&#10;    loaders:[&#10;      &#123;&#10;        test: /\.js[x]?$/,&#10;        exclude: /node_modules/,&#10;        loader: &#39;babel-loader?presets[]=es2015&#38;presets[]=react&#39;,&#10;      &#125;,&#10;    ]&#10;  &#125;&#10;&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&#10140;  demo03 git:(master) &#10007; webpack&#10;Hash: 96a3c9535a0827dffb47&#10;Version: webpack 1.12.2&#10;Time: 6223ms&#10;    Asset    Size  Chunks             Chunk Names&#10;bundle.js  676 kB       0  [emitted]  main&#10;    + 159 hidden modules</span><br></pre></td></tr></table></figure>
+<h1 id="Style_Loader__u7684_u914D_u7F6E"><a href="#Style_Loader__u7684_u914D_u7F6E" class="headerlink" title="Style Loader 的配置"></a>Style Loader 的配置</h1><p>意思大概就是对于css文件，使用style-loader和css-loader。<br>style-loader将js中引入的转换为style标签<br>css-loader才是载入这些样式</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//webpack.config.js&#10;module.exports = &#123;&#10;  entry: &#39;./main.js&#39;,&#10;  output: &#123;&#10;    filename: &#39;bundle.js&#39;&#10;  &#125;,&#10;  module: &#123;&#10;    loaders:[&#10;      &#123; test: /\.css$/, loader: &#39;style-loader!css-loader&#39; &#125;,&#10;    ]&#10;  &#125;&#10;&#125;;</span><br></pre></td></tr></table></figure>
+<p>假如在当前目录下有一个app.css，webpack会替你去加载这些样式。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//&#20837;&#21475;&#25991;&#20214; main.js&#10;require(&#39;./app.css&#39;);</span><br></pre></td></tr></table></figure>
+<p>根据下面的加载顺序，我是这样想的，执行loader的顺序是从右向左的，首先由css-loader拿到样式， 然后由style-loader生成一个标签插入到页面。<br>假如想要通过less-loader的处理，那么less-loader应该写在最后，这个！来生成链式调用。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Hash: 1ad6d580e8f45f5fb631&#10;Version: webpack 1.12.9&#10;Time: 544ms&#10;    Asset     Size  Chunks             Chunk Names&#10;bundle.js  10.5 kB       0  [emitted]  main&#10;chunk    &#123;0&#125; bundle.js (main) 8.72 kB [rendered]&#10;    [0] ./main.js 22 bytes &#123;0&#125; [built]&#10;    [1] ./app.css 901 bytes &#123;0&#125; [built]&#10;    [2] ../~/css-loader!./app.css 194 bytes &#123;0&#125; [built]&#10;    [3] ../~/css-loader/lib/css-base.js 1.51 kB &#123;0&#125; [built]&#10;    [4] ../~/style-loader/addStyles.js 6.09 kB &#123;0&#125; [built]</span><br></pre></td></tr></table></figure>
+<h1 id="Url_Loader__u7684_u914D_u7F6E_28_u4E3B_u8981_u7528_u4E8E_u56FE_u7247_u7684_u8DEF_u5F84_29"><a href="#Url_Loader__u7684_u914D_u7F6E_28_u4E3B_u8981_u7528_u4E8E_u56FE_u7247_u7684_u8DEF_u5F84_29" class="headerlink" title="Url Loader 的配置(主要用于图片的路径)"></a>Url Loader 的配置(主要用于图片的路径)</h1><p>对png、jpg图形文件，要通过url-loader的处理。<br>limit=8192这个我没明白是什么，可能就像字面上那样，限制了大小而已。<br>big.png的大小是 47.96K 可能是超过这个大小限制，就不用base64了吧。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//webpack.config.js&#10;module.exports = &#123;&#10;  entry: &#39;./main.js&#39;,&#10;  output: &#123;&#10;    filename: &#39;bundle.js&#39;&#10;  &#125;,&#10;  module: &#123;&#10;    loaders:[&#10;      &#123; test: /\.(png|jpg)$/, loader: &#39;url-loader?limit=8192&#39;&#125;&#10;    ]&#10;  &#125;&#10;&#125;;&#10;//&#20837;&#21475; main.js&#10;var img1 = document.createElement(&#34;img&#34;);&#10;img1.src = require(&#34;./small.png&#34;);&#10;document.body.appendChild(img1);&#10;&#10;var img2 = document.createElement(&#34;img&#34;);&#10;img2.src = require(&#34;./big.png&#34;);&#10;document.body.appendChild(img2);&#10;//&#29983;&#25104;&#30340;&#26631;&#31614;&#65292;&#19968;&#20010;&#29983;&#25104;&#20102;2&#20010;&#10;//&#30001;&#20110;&#29983;&#25104;&#30340;&#32534;&#30721;&#22826;&#38271;&#25105;&#23601;&#30465;&#30053;&#20102;&#10;&#60;img src=&#34;data:image/png;base64,......&#34;&#62;&#10;&#60;img src=&#34;4853ca667a2b8b8844eb2693ac1b2578.png&#34;&#62;</span><br></pre></td></tr></table></figure>
+<h1 id="CSS__u548C_JSX__u914D_u5408_u7684_u914D_u7F6E"><a href="#CSS__u548C_JSX__u914D_u5408_u7684_u914D_u7F6E" class="headerlink" title="CSS 和 JSX 配合的配置"></a>CSS 和 JSX 配合的配置</h1><p>注意css-loader后面的参数modules</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//webpack.config.js&#10;module.exports = &#123;&#10;  entry: &#39;./main.jsx&#39;,&#10;  output: &#123;&#10;    filename: &#39;bundle.js&#39;&#10;  &#125;,&#10;  module: &#123;&#10;    loaders:[&#10;      &#123; test: /\.js[x]?$/, exclude: /node_modules/, loader: &#39;babel-loader?presets[]=es2015&#38;presets[]=react&#39; &#125;,&#10;      &#123; test: /\.css$/, loader: &#39;style-loader!css-loader?modules&#39; &#125;&#10;    ]&#10;  &#125;&#10;&#125;;&#10;//&#20837;&#21475; main.js&#10;var React = require(&#39;react&#39;);&#10;var ReactDOM = require(&#39;react-dom&#39;);&#10;var style = require(&#39;./app.css&#39;);&#10;&#10;ReactDOM.render(&#10;  &#60;div&#62;&#10;    &#60;h1 className=&#123;style.h1&#125;&#62;Hello World&#60;/h1&#62;&#10;    &#60;h2 className=&#34;h2&#34;&#62;Hello Webpack&#60;/h2&#62;&#10;  &#60;/div&#62;,&#10;  document.getElementById(&#39;example&#39;)&#10;);&#10;//index.html&#10;&#60;html&#62;&#10;&#60;body&#62;&#10;  &#60;h1 class=&#34;h1&#34;&#62;Hello World&#60;/h1&#62;&#10;  &#60;h2 class=&#34;h2&#34;&#62;Hello Webpack&#60;/h2&#62;&#10;  &#60;div id=&#34;example&#34;&#62;&#60;/div&#62;&#10;  &#60;script src=&#34;./bundle.js&#34;&#62;&#60;/script&#62;&#10;&#60;/body&#62;&#10;&#60;/html&#62;&#10;/*app.css*/&#10;.h1 &#123;&#10;  color:red;&#10;&#125;&#10;&#10;:global(.h2) &#123;&#10;  color: blue;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>当我们添加了modules参数，页面里面生成的css会是这个样子,所以html文件里面原本的h1就不会变成红色，只有react渲染出来的才会有，这就是这个modules模块参数的作用吧。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">._2TSEVtnYKGduKLH0Hv-lQ5 &#123;&#10;  color:red;&#10;&#125;&#10;&#10;.h2 &#123;&#10;  color: blue;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<p>当我们去掉modules,那么生成的样式，就跟app.css里面的一样。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">.h1 &#123;&#10;  color:red;&#10;&#125;&#10;&#10;.h2 &#123;&#10;  color: blue;&#10;&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="JS_u538B_u7F29_u63D2_u4EF6_u7684_u4F7F_u7528"><a href="#JS_u538B_u7F29_u63D2_u4EF6_u7684_u4F7F_u7528" class="headerlink" title="JS压缩插件的使用"></a>JS压缩插件的使用</h1><p>optimize 使最优化<br>从webpack.optimize对象里面拿到这个对象，再在plugins插件数组里面实例化。<br>打包后的文件，可以看见是经过压缩的js文件。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var webpack = require(&#39;webpack&#39;);&#10;var uglifyJsPlugin = webpack.optimize.UglifyJsPlugin;&#10;module.exports = &#123;&#10;  entry: &#39;./main.js&#39;,&#10;  output: &#123;&#10;    filename: &#39;bundle.js&#39;&#10;  &#125;,&#10;  plugins: [&#10;    new uglifyJsPlugin(&#123;&#10;      compress: &#123;&#10;        warnings: false&#10;      &#125;&#10;    &#125;)&#10;  ]&#10;&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="html-webpack-plugin__u548C_open-browser-webpack-plugin"><a href="#html-webpack-plugin__u548C_open-browser-webpack-plugin" class="headerlink" title="html-webpack-plugin 和 open-browser-webpack-plugin"></a>html-webpack-plugin 和 open-browser-webpack-plugin</h1><p>open-browser-webpack-plugin 启动一个服务器的插件，不过必须要用webpack-dev-server命令<br>html-webpack-plugin 是生成HTML文件的插件</p>
+<p>生成一个index.html,并且会载入bundle.js，标题为Webpack-demos。<br>假如你用的webpack-dev-server命令运行，会自动打开浏览器到<a href="http://localhost:8080，且能看到正常运行的页面。" target="_blank" rel="external">http://localhost:8080，且能看到正常运行的页面。</a></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var HtmlwebpackPlugin = require(&#39;html-webpack-plugin&#39;);&#10;var OpenBrowserPlugin = require(&#39;open-browser-webpack-plugin&#39;);&#10;&#10;module.exports = &#123;&#10;  entry: &#39;./main.js&#39;,&#10;  output: &#123;&#10;    filename: &#39;bundle.js&#39;&#10;  &#125;,&#10;  plugins: [&#10;    new HtmlwebpackPlugin(&#123;&#10;      title: &#39;Webpack-demos&#39;&#10;    &#125;),&#10;    new OpenBrowserPlugin(&#123;&#10;      url: &#39;http://localhost:8080&#39;&#10;    &#125;)&#10;  ]&#10;&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="u73AF_u5883_u53D8_u91CF_u7684_u8BBE_u7F6E"><a href="#u73AF_u5883_u53D8_u91CF_u7684_u8BBE_u7F6E" class="headerlink" title="环境变量的设置"></a>环境变量的设置</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//main.js&#10;document.write(&#39;&#60;h1&#62;Hello World&#60;/h1&#62;&#39;);&#10;&#10;if (__DEV__) &#123;&#10;  document.write(new Date());&#10;&#125;&#10;&#22312;&#22806;&#38754;&#23454;&#20363;&#21270;DefinePlugin&#10;JSON.stringify &#25226; &#20174;&#19968;&#20010;&#23545;&#35937;&#35299;&#26512;&#20986;&#23383;&#31526;&#20018;&#10;JSON.parse &#25226;JSON&#23383;&#31526;&#36716;&#25442;&#20026;&#23545;&#35937;&#10;process.env &#20445;&#23384;&#20102;Nodejs&#37324;&#38754;&#25152;&#26377;&#30340;&#29615;&#22659;&#21464;&#37327;&#10;&#10;var webpack = require(&#39;webpack&#39;);&#10;&#10;var devFlagPlugin = new webpack.DefinePlugin(&#123;&#10;  __DEV__: JSON.stringify(JSON.parse(process.env.DEBUG || &#39;false&#39;))&#10;&#125;);&#10;&#10;module.exports = &#123;&#10;  entry: &#39;./main.js&#39;,&#10;  output: &#123;&#10;    filename: &#39;bundle.js&#39;&#10;  &#125;,&#10;  plugins: [devFlagPlugin]&#10;&#125;;</span><br></pre></td></tr></table></figure>
+<p>通过这条命令去设置<strong>DEV</strong>变量</p>
+<p>env DEBUG=true webpack-dev-server</p>
+<h1 id="u591A_u4E2AJS_u6587_u4EF6_u7684_u76F8_u4E92_u4F9D_u8D56"><a href="#u591A_u4E2AJS_u6587_u4EF6_u7684_u76F8_u4E92_u4F9D_u8D56" class="headerlink" title="多个JS文件的相互依赖"></a>多个JS文件的相互依赖</h1><p>CommonJs<br>调用 open() 方法打开一个新文档并且用 write() 方法设置文档内容后，必须记住用 close 方法关闭文档，并迫使其内容显示出来。<br>页面上会显示Hello World</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// main.js&#10;require.ensure([&#39;./a&#39;], function(require) &#123;&#10;  var content = require(&#39;./a&#39;);&#10;  document.open(); //&#25171;&#24320;&#19968;&#20010;&#26032;&#25991;&#26723;&#65292;&#24182;&#25830;&#38500;&#24403;&#21069;&#25991;&#26723;&#30340;&#20869;&#23481;&#10;  document.write(&#39;&#60;h1&#62;&#39; + content + &#39;&#60;/h1&#62;&#39;);&#10;  document.close(); //&#20851;&#38381;&#25991;&#26723;&#10;&#125;);&#10;&#10;//a.js&#10;module.exports = &#39;Hello World&#39;;&#10;&#20551;&#22914;&#26159; AMD &#26631;&#20934;&#37027;&#20040;&#20320;&#24212;&#35813;&#24819;&#36825;&#20010;&#26679;&#23376;&#10;&#10;// main.js&#10;require([&#34;module-a&#34;, &#34;module-b&#34;], function(a, b) &#123;&#10;    // ...&#10;&#125;);</span><br></pre></td></tr></table></figure>
+<h1 id="u5229_u7528_bundle-loader__u5B8C_u6210_u4EE3_u7801_u7684_u4F9D_u8D56"><a href="#u5229_u7528_bundle-loader__u5B8C_u6210_u4EE3_u7801_u7684_u4F9D_u8D56" class="headerlink" title="利用 bundle-loader 完成代码的依赖"></a>利用 bundle-loader 完成代码的依赖</h1><p>显示与上面相同，Hello World ，webpack.config.js只需要配置入口，和打包好的文件即可</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// main.js&#10;var load = require(&#39;bundle-loader!./a.js&#39;);&#10;&#10;load(function(file) &#123;&#10;  document.open();&#10;  document.write(&#39;&#60;h1&#62;&#39; + file + &#39;&#60;/h1&#62;&#39;);&#10;  document.close();&#10;&#125;);&#10;&#10;//a.js&#10;module.exports = &#39;Hello World&#39;;</span><br></pre></td></tr></table></figure>
+<h1 id="u5229_u7528_CommonsChunkPlugin__u628A_u516C_u5171_u7684_u63D0_u53D6_u51FA_u6765"><a href="#u5229_u7528_CommonsChunkPlugin__u628A_u516C_u5171_u7684_u63D0_u53D6_u51FA_u6765" class="headerlink" title="利用 CommonsChunkPlugin 把公共的提取出来"></a>利用 CommonsChunkPlugin 把公共的提取出来</h1><p>main1.js 和 main2.js都依赖 React 模块。<br>把公共的React模块，提取到init.js</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var CommonsChunkPlugin = require(&#34;webpack/lib/optimize/CommonsChunkPlugin&#34;);&#10;module.exports = &#123;&#10;  entry: &#123;&#10;    bundle1: &#39;./main1.jsx&#39;,&#10;    bundle2: &#39;./main2.jsx&#39;&#10;  &#125;,&#10;  output: &#123;&#10;    filename: &#39;[name].js&#39;&#10;  &#125;,&#10;  module: &#123;&#10;    loaders:[&#10;      &#123; test: /\.js[x]?$/, exclude: /node_modules/, loader: &#39;babel-loader?presets[]=es2015&#38;presets[]=react&#39; &#125;,&#10;    ]&#10;  &#125;,&#10;  plugins: [&#10;    new CommonsChunkPlugin(&#39;init.js&#39;)&#10;  ]&#10;&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="u5047_u5982_u6211_u4EEC_u9700_u8981_Vendor__u91CC_u9762_u7684_u5E93_uFF1F"><a href="#u5047_u5982_u6211_u4EEC_u9700_u8981_Vendor__u91CC_u9762_u7684_u5E93_uFF1F" class="headerlink" title="假如我们需要 Vendor 里面的库？"></a>假如我们需要 Vendor 里面的库？</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//webpack.config.js&#10;//entry &#37324;&#38754;&#30340; vendor &#23545;&#24212; CommonChunkPlugin &#37324;&#38754;&#30340; chunkName&#12290;  &#10;//&#23545;&#24212;&#19981;&#19978;&#23601;&#19981;&#33021;&#27491;&#24120;&#21152;&#36733;&#65292;&#25171;&#21253;&#22909;&#30340;&#21517;&#23383;&#21483; vendor.js &#65292;&#19988;&#35201;&#20877;bundle.js &#20043;&#21069;&#21152;&#36733;&#10;&#10;var webpack = require(&#39;webpack&#39;);&#10;&#10;module.exports = &#123;&#10;  entry: &#123;&#10;    app: &#39;./main.js&#39;,&#10;    vendor: [&#39;jquery&#39;],&#10;  &#125;,&#10;  output: &#123;&#10;    filename: &#39;bundle.js&#39;&#10;  &#125;,&#10;  plugins: [&#10;    new webpack.optimize.CommonsChunkPlugin(/* chunkName= */&#39;vendor&#39;, /* filename= */&#39;vendor.js&#39;)&#10;  ]&#10;&#125;;</span><br></pre></td></tr></table></figure>
+<p>配置好之后，我们在main.js文件里面直接 require 就可以了。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">// main.js&#10;var $ = require(&#39;jquery&#39;);&#10;$(&#39;h1&#39;).text(&#39;Hello World&#39;);</span><br></pre></td></tr></table></figure>
+<h1 id="u66B4_u9732_u5168_u5C40_u7684_u53D8_u91CF"><a href="#u66B4_u9732_u5168_u5C40_u7684_u53D8_u91CF" class="headerlink" title="暴露全局的变量"></a>暴露全局的变量</h1><p>想这样配置就是全局的了。 假如你把这个 ‘data’: ‘data’ 注释掉，你会发现报出找不到模块的错误</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">module.exports = &#123;&#10;  entry: &#39;./main.jsx&#39;,&#10;  output: &#123;&#10;    filename: &#39;bundle.js&#39;&#10;  &#125;,&#10;  module: &#123;&#10;    loaders:[&#10;      &#123; test: /\.js[x]?$/, exclude: /node_modules/, loader: &#39;babel-loader?presets[]=es2015&#38;presets[]=react&#39; &#125;,&#10;    ]&#10;  &#125;,&#10;  externals: &#123;&#10;    // require(&#34;jquery&#34;) is external and available&#10;    //  on the global var jQuery&#10;    //  &#34;jquery&#34;: &#34;jQuery&#34;&#10;    &#39;data&#39;: &#39;data&#39;&#10;  &#125;&#10;&#125;;</span><br></pre></td></tr></table></figure>
+<p>你可以把 var data = require(‘data’) 注释，可以发现依然可以取得 data 的值</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//main.js&#10;var data = require(&#39;data&#39;);&#10;var React = require(&#39;react&#39;);&#10;var ReactDOM = require(&#39;react-dom&#39;);&#10;&#10;ReactDOM.render(&#10;  &#60;h1&#62;&#123;data&#125;&#60;/h1&#62;,&#10;  document.body&#10;);&#10;&#24517;&#39035;&#36733;&#20837; data.js &#25991;&#20214;&#65292;&#35201;&#19981;&#28982;&#23601;&#19981;&#20250;&#26377; data &#36825;&#20010;&#21464;&#37327;&#65288;undefine&#65289;&#10;&#10;&#60;html&#62;&#10;  &#60;body&#62;&#10;    &#60;script src=&#34;data.js&#34;&#62;&#60;/script&#62;&#10;    &#60;script src=&#34;bundle.js&#34;&#62;&#60;/script&#62;&#10;  &#60;/body&#62;&#10;&#60;/html&#62;</span><br></pre></td></tr></table></figure>
+<h1 id="u6A21_u5757_u7684_u70ED_u8F7D_u5165"><a href="#u6A21_u5757_u7684_u70ED_u8F7D_u5165" class="headerlink" title="模块的热载入"></a>模块的热载入</h1><p>捣鼓了很久，才知道这玩意，就是一个监听作用，当你修改文件的时候,他会自动同步到你的浏览器端<br>而且记住你一个访问的Url是<a href="http://localhost:8080/而不是http://localhost:8080/webpack-dev-server/" target="_blank" rel="external">http://localhost:8080/而不是http://localhost:8080/webpack-dev-server/</a><br>因为无论你是否开启了热载入，<a href="http://localhost:8080/webpack-dev-server/都会监听你的文件" target="_blank" rel="external">http://localhost:8080/webpack-dev-server/都会监听你的文件</a></p>
+<p>1.命令行开启</p>
+<p>–hot 添加 HotModuleReplacementPlugin 插件和切换服务器热插拔载入<br>–inline 在 webpack-dev-server 运行的适合嵌入bundle<br>webpack-dev-server –hot –inline<br>2.在 webpack.config.js 中配置</p>
+<p>publicPath 表示发布到哪个目录下面<br>对path对象不熟悉的可以看看这个 Path对象<br>__dirname 表示当前目录</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//main.js&#10;var webpack = require(&#39;webpack&#39;);&#10;var path = require(&#39;path&#39;);&#10;&#10;module.exports = &#123;&#10;  entry: [&#10;    &#39;webpack/hot/dev-server&#39;,&#10;    &#39;webpack-dev-server/client?http://localhost:8080&#39;,&#10;    &#39;./index.js&#39;&#10;  ],&#10;  output: &#123;&#10;    filename: &#39;bundle.js&#39;,&#10;    publicPath: &#39;/static/&#39;&#10;  &#125;,&#10;  plugins: [&#10;    new webpack.HotModuleReplacementPlugin()&#10;  ],&#10;  module: &#123;&#10;    loaders: [&#123;&#10;      test: /\.jsx?$/,&#10;      exclude: /node_modules/,&#10;      loaders: [&#39;babel-loader&#39;],&#10;      query: &#123;&#10;        presets: [&#39;es2015&#39;, &#39;react&#39;]&#10;      &#125;&#10;      include: path.join(__dirname, &#39;.&#39;)&#10;    &#125;]&#10;  &#125;&#10;&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="React__u7684_u8DEF_u7531"><a href="#React__u7684_u8DEF_u7531" class="headerlink" title="React 的路由"></a>React 的路由</h1><p>这里没有什么 webpack 可讲解的，就是用了一个jsx-loader 、 style-loader 、 css-loader<br>createBrowserHistory就想字面上说的，创建浏览器历史，重写浏览器的历史。因为是SPA，不能让浏览器刷新，所以要重写。<br>App 是一个导航，里面包含了3个连接<br>其他的就是返回自己名字而已的组件<br>在渲染的时候，把自己重写的浏览器历史传入，当访问/的时候，返回App组件，并且里面主路由IndexRoute返回Dashboard组件，也就是说默认显示</p><p>Dashboard</p>。<br>当访问/inbox的时候返回Inbox组件，也就是说显示<p>Inbox</p>。<br>当访问*(也就是匹配不到的时候)的时候返回Dashboard组件，也就是说显示<p>Dashboard</p>。<p></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">//main.js&#10;import React from &#39;react&#39;;&#10;import &#123; render &#125; from &#39;react-dom&#39;;&#10;import &#123; Router, Route, Link, IndexRoute &#125; from &#39;react-router&#39;;&#10;import createBrowserHistory from &#39;history/lib/createBrowserHistory&#39;;&#10;&#10;require(&#39;./app.css&#39;);&#10;&#10;var App = React.createClass(&#123;&#10;  render: function () &#123;&#10;    return (&#10;      &#60;div&#62;&#10;        &#60;header&#62;&#10;          &#60;ul&#62;&#10;            &#60;li&#62;&#60;Link to=&#34;/app&#34;&#62;Dashboard&#60;/Link&#62;&#60;/li&#62;&#10;            &#60;li&#62;&#60;Link to=&#34;/inbox&#34;&#62;Inbox&#60;/Link&#62;&#60;/li&#62;&#10;            &#60;li&#62;&#60;Link to=&#34;/calendar&#34;&#62;Calendar&#60;/Link&#62;&#60;/li&#62;&#10;          &#60;/ul&#62;&#10;          Logged in as Jane&#10;        &#60;/header&#62;&#10;        &#123;this.props.children&#125;&#10;      &#60;/div&#62;&#10;    );&#10;  &#125;&#10;&#125;);&#10;&#10;var Dashboard = React.createClass(&#123;&#10;  render: function () &#123;&#10;    return (&#10;      &#60;div&#62;&#10;        &#60;p&#62;Dashboard&#60;/p&#62;&#10;      &#60;/div&#62;&#10;    );&#10;  &#125;&#10;&#125;);&#10;&#10;var Inbox = React.createClass(&#123;&#10;  render: function () &#123;&#10;    return (&#10;      &#60;div&#62;&#10;        &#60;p&#62;Inbox&#60;/p&#62;&#10;      &#60;/div&#62;&#10;    );&#10;  &#125;&#10;&#125;);&#10;&#10;var Calendar = React.createClass(&#123;&#10;  render: function () &#123;&#10;    return (&#10;      &#60;div&#62;&#10;        &#60;p&#62;Calendar&#60;/p&#62;&#10;      &#60;/div&#62;&#10;    );&#10;  &#125;&#10;&#125;);&#10;&#10;let history = createBrowserHistory();&#10;&#10;render((&#10;  &#60;Router history=&#123;history&#125;&#62;&#10;    &#60;Route path=&#34;/&#34; component=&#123;App&#125;&#62;&#10;      &#60;IndexRoute component=&#123;Dashboard&#125;/&#62;&#10;      &#60;Route path=&#34;app&#34; component=&#123;Dashboard&#125;/&#62;&#10;      &#60;Route path=&#34;inbox&#34; component=&#123;Inbox&#125;/&#62;&#10;      &#60;Route path=&#34;calendar&#34; component=&#123;Calendar&#125;/&#62;&#10;      &#60;Route path=&#34;*&#34; component=&#123;Dashboard&#125;/&#62;&#10;    &#60;/Route&#62;&#10;  &#60;/Router&#62;&#10;), document.body);&#10;header *&#123;&#10;  display: inline;&#10;  margin: 1em;&#10;  border-bottom: 1px solid black;&#10;&#125;</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/02/01/2015年工作总结/" itemprop="url">
                   2015年工作总结
                 </a>
