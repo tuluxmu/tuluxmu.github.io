@@ -255,6 +255,113 @@
             
               
                 
+                <a class="post-title-link" href="/2016/02/01/webpack学习resources-2/" itemprop="url">
+                  webpack学习resources[2]
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-02-01T10:58:22+08:00" content="2016-02-01">
+              2016-02-01
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/02/01/webpack学习resources-2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/02/01/webpack学习resources-2/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>webpack<br>安装Webpack首先得有Node.js</p>
+<p>然后通过npm install -g webpack安装webpack，当然也可以通过gulp来处理webpack任务，如果使用gulp的话就npm install –save-dev gulp-webpack</p>
+<p>配置Webpack</p>
+<p>Webpack的构建过程需要一个配置文件，一个典型的配置文件大概就是这样</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">var webpack = require(&#39;webpack&#39;);&#10;var commonsPlugin = new webpack.optimize.CommonsChunkPlugin(&#39;common.js&#39;);&#10;&#10;module.exports = &#123;&#10;    entry: &#123;&#10;        entry1: &#39;./entry/entry1.js&#39;,&#10;        entry2: &#39;./entry/entry2.js&#39;&#10;    &#125;,&#10;    output: &#123;&#10;        path: __dirname,&#10;        filename: &#39;[name].entry.js&#39;&#10;    &#125;,&#10;    resolve: &#123;&#10;        extensions: [&#39;&#39;, &#39;.js&#39;, &#39;.jsx&#39;]&#10;    &#125;,&#10;    module: &#123;&#10;        loaders: [&#123;&#10;            test: /\.js$/,&#10;            loader: &#39;babel-loader&#39;&#10;        &#125;, &#123;&#10;            test: /\.jsx$/,&#10;            loader: &#39;babel-loader!jsx-loader?harmony&#39;&#10;        &#125;]&#10;    &#125;,&#10;    plugins: [commonsPlugin]&#10;&#125;;</span><br></pre></td></tr></table></figure>
+<p>这里对Webpack的打包行为做了配置，主要分为几个部分：</p>
+<ul>
+<li>entry：指定打包的入口文件，每有一个键值对，就是一个入口文件</li>
+<li>output：配置打包结果，path定义了输出的文件夹，filename则定义了打包结果文件的名称，filename里面的[name]会由entry中的键（这里是entry1和entry2）替换</li>
+<li>resolve：定义了解析模块路径时的配置，常用的就是extensions，可以用来指定模块的后缀，这样在引入模块时就不需要写后缀了，会自动补全</li>
+<li>module：定义了对模块的处理逻辑，这里可以用loaders定义了一系列的加载器，以及一些正则。当需要加载的文件匹配test的正则时，就会调用后面的loader对文件进行处理，这正是webpack强大的原因。比如这里定义了凡是.js结尾的文件都是用babel-loader做处理，而.jsx结尾的文件会先经过jsx-loader处理，然后经过babel-loader处理。当然这些loader也需要通过npm install安装</li>
+<li>plugins: 这里定义了需要使用的插件，比如commonsPlugin在打包多个入口文件时会提取出公用的部分，生成common.js</li>
+</ul>
+<p>执行打包</p>
+<p>如果通过npm install -g webpack方式安装webpack的话，可以通过命令行直接执行打包命令，比如这样：</p>
+<p>$webpack –config webpack.config.js</p>
+<p>这样就会读取当前目录下的webpack.config.js作为配置文件执行打包操作</p>
+
+          
+        
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/02/01/Communicate-Between-Components/" itemprop="url">
                   Communicate Between Components
                 </a>
@@ -875,7 +982,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">35</span>
+              <span class="site-state-item-count">36</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
